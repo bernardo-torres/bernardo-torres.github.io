@@ -1,12 +1,54 @@
 # main links
+# main links links
 main:
-  - title: "Quick-Start Guide"
-    url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
-  # - title: "About"
-  #   url: https://mmistakes.github.io/minimal-mistakes/about/
-  # - title: "Sample Posts"
-  #   url: /year-archive/
-  # - title: "Sample Collections"
-  #   url: /collection-archive/
-  # - title: "Sitemap"
-  #   url: /sitemap/
+  - title: "Research"
+    url: /research/
+    
+  - title: "Bio and CV"
+    url: /bio_cv/
+    
+  # - title: "Projects"
+  #   url: /projects/
+    
+  # - title: "Blog"
+  #   url: /blog/
+
+# general research links
+research:
+  - title: "Publications"
+    url: /research/
+  
+  # - title: "Projects"
+  #   url: /projects/
+    # children:
+    #   - title: "Creative AI"
+    #     url: /projects-ai/
+    #   - title: "Musical orchestration"
+    #     url: /projects-orchestration/
+    #   - title: "Time series mining"
+    #     url: /projects-ts/
+    #   - title: "Ecological monitoring"
+    #     url: /projects-monitoring/
+  
+
+
+research-publications:
+  - title: "Publications"
+    url: /research/
+   
+  - title: "Projects"
+    url: /projects/
+
+# teaching:
+#   - title: "ATIAM"
+#     url: /atiam/
+#   - title: "L3 - JAVA"
+#     url: /teaching-java/
+#   - title: "M1 - DLP"
+#     url: /teaching-dlp/
+#   - title: "M1 - PC2R"
+#     url: /teaching-pc2r/
+#   - title: "M2 - PPC"
+#     url: /teaching-ppc/
+#   - title: "Summary"
+#     url: /teaching-summary/

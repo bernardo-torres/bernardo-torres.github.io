@@ -7,3 +7,17 @@ search: false
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
+
+/* Override avatar styling */
+.author__avatar, .avatar {
+    border-radius: 0 !important; /* Removes any border radius */
+    height: auto; /* Ensures the height is not forced by other styles */
+    width: auto; /* Ensures the width is not forced by other styles */
+  }
+
+  img.u-photo {
+    border-radius: 0 !important; /* Removes rounded corners */
+    object-fit: cover; /* Ensures the image covers the area without being stretched */
+    width: 369; /* Or the width you desire */
+    height: 469; /* Or the height you desire, should match width for a square */
+  }
