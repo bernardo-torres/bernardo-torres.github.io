@@ -34,8 +34,5 @@ Previously, I was an intern at [Sony CSL Paris](https://cslmusicteam.sony.fr/).
 
 [LinkedIn](https://www.linkedin.com/in/bernardo-ferreira-torres/)
 
-Telecom Paris 
-
-*ADASP* team  
 
 </div>{: .notice--blank}

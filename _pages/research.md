@@ -1,12 +1,21 @@
 ---
-layout: single
+# layout: single
+layout: splash
 permalink: /research/
 author_profile: false
-sidebar:
-  nav: "research"
+classes: wide
+# sidebar:
+#   nav: "research"
 ---
 
 <div markdown = "1">
+
+<!-- Add a bit of space -->
+
+<br>
+
+
+
 
 # Research
 I am currently working on topics ranging from music source separation using synthesis, signal processing informed deep learning and differentiable digital signal processing.

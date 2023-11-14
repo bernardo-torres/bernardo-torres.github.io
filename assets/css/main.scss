@@ -21,3 +21,46 @@ search: false
     width: 369; /* Or the width you desire */
     height: 469; /* Or the height you desire, should match width for a square */
   }
+
+
+
+/* Normal link color within text content */
+.page__content a {
+  color: #224b8d; /* Deep blue color */
+}
+
+/* Link color on hover within text content */
+.page__content a:hover {
+  color: #1c3e70; /* A slightly darker shade of blue for hover */
+}
+
+/* Link color when focused within text content */
+.page__content a:focus {
+  color: #1c3e70; /* Same as hover for consistency */
+  outline: thin dotted; /* Optional: adds outline on focus for accessibility */
+}
+
+/* Link color for visited links within text content */
+.page__content a:visited {
+  color: #1a3665; /* Even darker shade of blue for visited links */
+}
+
+
+// .wide-page .page__content {
+//   max-width: 90%; /* Adjust the width as needed */
+// }
+
+// .main-content {
+//     width: calc(85% - 60px); /* 100% minus sidebar width and any desired margin */
+// }
+
+
+
+// .wide-page .sidebar {
+//   width: 15%; /* Adjust this value as needed */
+// }
+
+// .wide-page page__content {
+//   width: calc(70%); /* 100% minus sidebar width and any desired margin */
+// }
+
