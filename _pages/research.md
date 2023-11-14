@@ -21,7 +21,7 @@ I am currently working on topics ranging from music source separation using synt
 ## Publications  
 
 
-**Torres, B.**, Lattner, S. and Richard, G., 2023. *Singer Identity Representation Learning using Self-Supervised Techniques*. In International Society for Music Information Retrieval Conference (ISMIR 2023).[[paper]](https://telecom-paris.hal.science/hal-04186048v1/document) [[code]](https://github.com/SonyCSLParis/ssl-singer-identity)  [[blog]](https://sites.google.com/view/singer-representation-learning) [[poster]](/documents/ISMIR Poster) 
+**Torres, B.**, Lattner, S. and Richard, G., 2023. *Singer Identity Representation Learning using Self-Supervised Techniques*. In International Society for Music Information Retrieval Conference (ISMIR 2023).[[paper]](https://telecom-paris.hal.science/hal-04186048v1/document) [[code]](https://github.com/SonyCSLParis/ssl-singer-identity)  [[blog]](https://sites.google.com/view/singer-representation-learning) [[poster]](/documents/ISMIR_23_Poster.pdf) 
 </div>{: .notice--blank}
 
 ## Theses
