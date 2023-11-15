@@ -26,7 +26,7 @@ Previously, I was an intern at [Sony CSL Paris](https://cslmusicteam.sony.fr/).
 
 [Research](/research/)
   <!-- * [Publications](/publications/) -->
-
+[Bio and CV](/bio_cv/)
 
 ## Contact 
 <!-- > Bernardo Torres -->
