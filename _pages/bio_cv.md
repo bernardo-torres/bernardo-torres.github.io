@@ -1,5 +1,5 @@
 ---
-layout: single
+layout: splash
 permalink: /bio_cv/
 author_profile: false
 # sidebar:
@@ -20,6 +20,7 @@ I have a bachelors in Electrical Engineering with a focus on Computer Engineerin
 
 I am currently working on topics ranging from music source separation using synthesis, signal processing informed deep learning and differentiable digital signal processing. I am generally interested in audio signal processing, machine learning and the crossroads between the two. 
 
+I have also taken a particular interest recently in contemplative practices, especially meditation, and philosophy. 
 
 
 
