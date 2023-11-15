@@ -8,20 +8,27 @@ search: false
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
 
-/* Override avatar styling */
-.author__avatar, .avatar {
-    border-radius: 0 !important; /* Removes any border radius */
-    height: auto; /* Ensures the height is not forced by other styles */
-    width: auto; /* Ensures the width is not forced by other styles */
-  }
+// /* Override avatar styling */
+// .author__avatar, .avatar, .bio-photo {
+  
+//     border-radius: 0 !important; /* Removes any border radius */
+//     min-width: 80em;
+//     height: 500; /* Ensures the height is not forced by other styles */
+//     width: 500; /* Ensures the width is not forced by other styles */
+//   }
 
-  img.u-photo {
-    border-radius: 0 !important; /* Removes rounded corners */
-    object-fit: cover; /* Ensures the image covers the area without being stretched */
-    width: 500; /* Or the width you desire */
-    height: 500; /* Or the height you desire, should match width for a square */
-  }
+//   img.u-photo {
+//     border-radius: 0 !important; /* Removes rounded corners */
+//     object-fit: cover; /* Ensures the image covers the area without being stretched */
+//     width: 500; /* Or the width you desire */
+//     height: 500; /* Or the height you desire, should match width for a square */
+//   }
 
+  .author__avatar img {
+    border-radius: 0%;
+    max-width: 200px;
+    object-fit: cover;
+  }
 
 
 /* Normal link color within text content */
@@ -47,7 +54,7 @@ search: false
 
 
 // .wide-page .page__content {
-//   max-width: 90%; /* Adjust the width as needed */
+//   width: calc(70%);/* Adjust the width as needed */
 // }
 
 // .main-content {
@@ -56,11 +63,12 @@ search: false
 
 
 
-// .wide-page .sidebar {
-//   width: 15%; /* Adjust this value as needed */
-// }
+.wide-page .sidebar {
+  width: 10%; /* Adjust this value as needed */
+}
 
-// .wide-page page__content {
-//   width: calc(70%); /* 100% minus sidebar width and any desired margin */
-// }
+.wide-page .page {
+  // max-width: 90%; /* 100% minus sidebar width and any desired margin */
+  padding-right: 80px;
+}
 

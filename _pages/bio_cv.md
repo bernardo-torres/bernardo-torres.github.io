@@ -1,15 +1,19 @@
 ---
-layout: splash
+# layout: splash
+layout: single
+author_profile: true
 permalink: /bio_cv/
-author_profile: false
+# author_profile: false
 # sidebar:
 #   nav: "research"
+classes: wide-page
 ---
 
 <div markdown = "1">
 
-# Bio
+<br>
 
+# Bio
 
 I am currently a first year PhD student at [Telecom Paris](https://www.telecom-paris.fr/),  working under the supervision of Gaël Richard and Geoffroy Peeters. I am part of the [ADASP](https://adasp.telecom-paris.fr/) group and the [HI-Audio](https://hi-audio.imt.fr/) project.
 
