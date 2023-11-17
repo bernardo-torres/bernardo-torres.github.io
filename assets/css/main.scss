@@ -26,11 +26,12 @@ search: false
 
 
 
-
 html {
   font-size: 12px; // originally 16px
   @include breakpoint($medium) {
       font-size: 14px; // originally 18px
+      // font-family: "Garamond", serif;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
 
   @include breakpoint($large) {
@@ -52,7 +53,9 @@ html {
 
 /* Normal link color within text content */
 .page__content a {
-  color: #224b8d; /* Deep blue color */
+  color: #3f6aaf; /* Deep blue color */
+  // Remove the underline from links
+  text-decoration: none;
 }
 
 /* Link color on hover within text content */
@@ -108,4 +111,53 @@ html {
   .author__avatar img {
     max-width: 100%; /* allows the image to resize within the container */
   }
+}
+
+.shifted-paragraph {
+  margin-left: 500px;
+  /* or padding-left: 20px; */
+}
+
+
+.pdf-box {
+  display: inline-block;
+  padding: 1px 5px;
+  margin: 0px;
+  border: 1px solid #000; /* Black border */
+  // background-color: #f2f2f2; /* Light grey background */
+  text-align: center;
+  text-decoration: none; /* Removes underline from the link */
+  color: black; /* Text color */
+  font-weight: bold; /* Makes text bold */
+  border-radius: 5px; /* Optional: rounds the corners */
+  font-size: 11px;
+}
+
+// .abstract-box {
+//   display: inline-block;
+//   padding: 1px 5px;
+//   margin: 0px;
+//   border: 1px solid #000; /* Black border */
+//   background-color: #f2f2f2; /* Light grey background */
+//   text-align: center;
+//   text-decoration: none; /* Removes underline from the link */
+//   color: black; /* Text color */
+//   font-weight: bold; /* Makes text bold */
+//   border-radius: 5px; /* Optional: rounds the corners */
+//   cursor: pointer; /* Changes the mouse cursor to signify it's clickable */
+// }
+
+.abstract-content {
+  display: none; /* Keeps the abstract hidden initially */
+  border: 1px solid #ccc; /* Thin, light grey border */
+  padding: 10px; /* Adds padding inside the box for spacing */
+  margin-top: 10px; /* Space between the button and the box */
+  box-sizing: border-box; /* Ensures padding and border are included in total width and height */
+  /* Optional: Add more styling as needed */
+  // font-family: 'Times New Roman', Times, serif;
+  font-size: 14px; /* Reduce the font size */
+  // line-height: 1.6; /* Adjust line spacing for readability */
+  // color: #333;
+  text-align: justify;
+  width: 70%;
 }
