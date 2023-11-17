@@ -30,7 +30,7 @@ function toggleAbstract() {
 
 
 # Research
-I am currently working on topics ranging from music source separation using synthesis, signal processing informed deep learning and differentiable digital signal processing.
+I am currently working on topics related to music source separation using synthesis, analysis-by-synthesis, deep learning for audio generation and differentiable digital signal processing. Broader research interests include self-supervised learning, music information retrieval, timbre, optimal transport and generative models.
 <!-- <p style="font-family:verdana"></p> -->
 
 
