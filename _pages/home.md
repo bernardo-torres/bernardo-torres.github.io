@@ -24,9 +24,9 @@ I am currently a first year PhD student at [Telecom Paris](https://www.telecom-p
 Previously, I was an intern at [Sony CSL Paris](https://cslmusicteam.sony.fr/).
 
 
-[Research](/research/)
+- [Research](/research/) <br>
   <!-- * [Publications](/publications/) -->
-[Bio and CV](/bio_cv/)
+- [Bio and CV](/bio_cv/)
 
 ## Contact 
 <!-- > Bernardo Torres -->
