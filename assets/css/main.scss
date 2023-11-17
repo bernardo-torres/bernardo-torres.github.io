@@ -24,6 +24,25 @@ search: false
 //     height: 500; /* Or the height you desire, should match width for a square */
 //   }
 
+
+
+
+html {
+  font-size: 12px; // originally 16px
+  @include breakpoint($medium) {
+      font-size: 14px; // originally 18px
+  }
+
+  @include breakpoint($large) {
+      font-size: 16px; // originally 20px
+  }
+
+  @include breakpoint($x-large) {
+      font-size: 18px; // originally 22px
+  }
+}
+
+
   .author__avatar img {
     border-radius: 0%;
     max-width: 200px;
@@ -63,12 +82,30 @@ search: false
 
 
 
-.wide-page .sidebar {
-  width: 10%; /* Adjust this value as needed */
-}
+// .wide-page .sidebar {
+//   width: 10%; /* Adjust this value as needed */
+// }
 
-.wide-page .page {
+// .wide-page .page {
+//   // max-width: 90%; /* 100% minus sidebar width and any desired margin */
+//   padding-right: 40px;
+// }
+
+@media (min-width: 1024px) { /* adjust 767px to your specific breakpoint */
+  .wide-page .page {
   // max-width: 90%; /* 100% minus sidebar width and any desired margin */
-  padding-right: 80px;
+  padding-right: 40px;
+}
 }
 
+/* Media query for smaller screens */
+@media (max-width: 1024px) { /* adjust 767px to your specific breakpoint */
+  .author__avatar {
+    width: 75px; /* desired width for smaller screens */
+    height: 75px; /* desired height for smaller screens */
+  }
+
+  .author__avatar img {
+    max-width: 100%; /* allows the image to resize within the container */
+  }
+}

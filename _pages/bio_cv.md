@@ -7,6 +7,7 @@ permalink: /bio_cv/
 # sidebar:
 #   nav: "research"
 classes: wide-page
+classes: wide
 ---
 
 <div markdown = "1">
@@ -15,7 +16,7 @@ classes: wide-page
 
 # Bio
 
-I am currently a first year PhD student at [Telecom Paris](https://www.telecom-paris.fr/),  working under the supervision of Gaël Richard and Geoffroy Peeters. I am part of the [ADASP](https://adasp.telecom-paris.fr/) group and the [HI-Audio](https://hi-audio.imt.fr/) project.
+I am currently a first year PhD student at [Telecom Paris](https://www.telecom-paris.fr/),  working under the supervision of prof. [Gaël Richard](https://www.telecom-paris.fr/gael-richard) and prof. [Geoffroy Peeters](https://perso.telecom-paristech.fr/gpeeters/). I am part of the [ADASP](https://adasp.telecom-paris.fr/) group and the [HI-Audio](https://hi-audio.imt.fr/) project.
 
 Previously, I was an intern at [Sony CSL Paris](https://cslmusicteam.sony.fr/) as part of my Master's program research internship.
 
