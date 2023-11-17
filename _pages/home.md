@@ -32,7 +32,7 @@ Previously, I was an intern at [Sony CSL Paris](https://cslmusicteam.sony.fr/).
 <!-- > Bernardo Torres -->
 > bernardo [dot] torres AT telecom-paris [dot] fr <br> <br>
  <i class="fab fa-fw fa-github"></i> [Github](
-  https://github.com/bernardo-torress) <i class="fab fa-fw fa-twitter"></i> [Twitter](
+  https://github.com/bernardo-torres) <i class="fab fa-fw fa-twitter"></i> [Twitter](
   https://twitter.com/torres_be_)  <i class="fab fa-fw fa-linkedin"></i> [LinkedIn](https://www.linkedin.com/in/bernardo-ferreira-torres/) 
 
 <!-- Add line break -->

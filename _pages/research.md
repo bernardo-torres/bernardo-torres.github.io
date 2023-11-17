@@ -103,7 +103,36 @@ in double degree with Telecom Paris. Research performed in an intership at Sony 
         <br>
         <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('masters')">ABS</a>
         <div id="masters" class="abstract-content">
-            <!-- lala -->
+            The human voice is a musical instrument highly limited by the physiology of the singer, making it
+difficult for a singer to move out of the limitations of one’s voice. Compared to the most basic
+synthesizers, existing systems designed for voice synthesis or transformation are still
+rudimentary in terms of giving the user control of the timbral aspects of the sound. It is even
+more so for perceptually-motivated synthesis, in which the user uses an intuitive control to
+perform sound transformations (e.g. pitch and identity).
+This work explores the domain of voice transformation, using the singer’s identity as the primary
+control, a process known as Singing Voice Conversion (SVC). We focus on
+answering two main questions: 1) how to extract the vocal identity of a singer, and 2) how can we control
+it during synthesis? 
+
+We resort to recent developments in Deep Learning for obtaining (or learning) answers to
+these questions using data-driven solutions. Furthermore, we design a voice modification
+system that works on zero-shot conditions: it must generalize well outside the data used to train
+it so anyone can use it with their voice.
+For the first part, we explore Self-supervised learning (SSL) to obtain representations that
+uniquely identify a singer based on an excerpt of his voice. SSL leverages significant amounts
+of unlabeled data by solving a pretext (unsupervised) task without using labelled data, and the
+learned representations can be transferred to other tasks. This work compares contrastive and
+non-contrastive approaches and different neural network architectures. Metrics borrowed from
+Singer Identification and Verification literature are used to evaluate the trained models and
+compare them to baselines. A qualitative evaluation is also performed to assess the quality of
+the learned identity representations.
+In the second part, we explore audio synthesis architectures and modify them to inject the
+identity information extracted in the first part. Changing only the injected identity information can
+change the voice’s identity while keeping the linguistic information intact. We focus on a recent
+trend in the domain of neural audio synthesis that attempts to join classical signal processing
+techniques with the data-driven workflow of deep neural networks grouped under the name of
+differentiable signal models. This work adapts a differentiable model based on the source-filter
+model of speech production for the injection of identity information.
         </div>
     </div>
 </div>
