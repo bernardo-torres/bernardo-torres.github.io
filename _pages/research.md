@@ -40,6 +40,27 @@ I am currently working on topics related to music source separation using synthe
 
 <div class="notice--blank">
   <p style="margin: 0; padding: 0; margin-top: 25px">
+    <strong>Unsupervised Harmonic Parameter Estimation Using Differentiable DSP and Spectral Optimal Transport</strong>
+  </p> 
+  <div style="margin-left: 20px; margin-top: 5px;">
+    Bernardo Torres, Geoffroy Peeters and Gaël Richard, 2023. Accepted for <em>IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP 2024)</em>. 
+    <br>
+    <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('sot')">ABS</a>
+    <a href="https://hal.science/hal-04358467v1/document" class="pdf-box"> PDF
+    </a>
+    <a href="https://github.com/bernardo-torres/1d-spectral-optimal-transport" class="pdf-box"> <i class="fab fa-fw fa-github"></i> code 
+    </a>
+
+    
+  <div id="sot" class="abstract-content">
+        In neural audio signal processing, pitch conditioning has been used to enhance the performance of synthesizers. However, jointly training pitch estimators and synthesizers is a challenge when using standard audio-to-audio reconstruction loss, leading to reliance on external pitch trackers. To address this issue, we propose using a spectral loss function inspired by optimal transportation theory that minimizes the displacement of spectral energy. We validate this approach through an unsupervised autoencoding task that fits a harmonic template to harmonic signals. We jointly estimate the fundamental frequency and amplitudes of harmonics using a lightweight encoder and reconstruct the signals using a differentiable harmonic synthesizer. The proposed approach offers a promising direction for improving unsupervised parameter estimation in neural audio applications.
+  </div>
+</div>
+</div>
+
+
+<div class="notice--blank">
+  <p style="margin: 0; padding: 0; margin-top: 25px">
     <strong>Singer Identity Representation Learning using Self-Supervised Techniques</strong>
   </p> 
   <div style="margin-left: 20px; margin-top: 5px;">
