@@ -43,10 +43,12 @@ I am currently working on topics related to music source separation using synthe
     <strong>Unsupervised Harmonic Parameter Estimation Using Differentiable DSP and Spectral Optimal Transport</strong>
   </p> 
   <div style="margin-left: 20px; margin-top: 5px;">
-    Bernardo Torres, Geoffroy Peeters and Gaël Richard, 2023. Accepted for <em>IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP 2024)</em>. 
+    Bernardo Torres, Geoffroy Peeters and Gaël Richard
+    <br>
+     Accepted for <em>IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP 2024)</em>. 
     <br>
     <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('sot')">ABS</a>
-    <a href="https://hal.science/hal-04358467v1/document" class="pdf-box"> PDF
+    <a href="https://arxiv.org/pdf/2312.14507.pdf" class="pdf-box"> PDF (arXiv)
     </a>
     <a href="https://github.com/bernardo-torres/1d-spectral-optimal-transport" class="pdf-box"> <i class="fab fa-fw fa-github"></i> code 
     </a>
@@ -64,10 +66,12 @@ I am currently working on topics related to music source separation using synthe
     <strong>Singer Identity Representation Learning using Self-Supervised Techniques</strong>
   </p> 
   <div style="margin-left: 20px; margin-top: 5px;">
-    Bernardo Torres, Stefan Lattner and Gaël Richard, 2023. In <em>International Society for Music Information Retrieval Conference (ISMIR 2023)</em>. 
+    Bernardo Torres, Stefan Lattner and Gaël Richard
+    <br>
+    <em>International Society for Music Information Retrieval Conference (ISMIR 2023)</em>. 
     <br>
     <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('ssl_sing_id')">ABS</a>
-    <a href="https://telecom-paris.hal.science/hal-04186048v1/document" class="pdf-box"> PDF
+    <a href="https://telecom-paris.hal.science/hal-04186048v1/document" class="pdf-box"> PDF (hal)
     </a>
     <a href="https://github.com/SonyCSLParis/ssl-singer-identity" class="pdf-box"> <i class="fab fa-fw fa-github"></i> code 
     </a>
@@ -120,7 +124,9 @@ in double degree with Telecom Paris. Research performed in an intership at Sony 
     <strong>Singer identity conversion using self-supervised learning and differentiable source-filter models</strong>
   </p> 
     <div style="margin-left: 20px; margin-top: 5px;">
-        Bernardo Torres. <em> Master’s (M2) thesis for program <a href="https://www.master-mva.com/">Mathematiques, Vision, Apprentissage (MVA) </a>. Research performed while interning at Sony CSL Paris.</em>
+        Bernardo Torres
+        <br>
+        <em> Master’s (M2) thesis for program <a href="https://www.master-mva.com/">Mathematiques, Vision, Apprentissage (MVA)</a>. Research performed while interning at Sony CSL Paris.</em>
         <br>
         <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('masters')">ABS</a>
         <div id="masters" class="abstract-content">
