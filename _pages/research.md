@@ -1,117 +1,121 @@
 ---
-# layout: single
 layout: splash
 permalink: /research/
 author_profile: false
 classes: wide
-# sidebar:
-#   nav: "research"
 ---
 
-<!-- <script>
-function toggleAbstract() {
-    var abstract = document.getElementById("abstractContent");
+<script>
+function toggleAbstract(abstractId) {
+    var abstract = document.getElementById(abstractId);
     if (abstract.style.display === "none") {
         abstract.style.display = "block";
     } else {
         abstract.style.display = "none";
     }
 }
-<script> -->
+</script>
 
-
-<div markdown = "1">
-
-<!-- Add a bit of space -->
-
+<div markdown="1">
 <br>
-
-
-
 
 # Research
 I am currently working on topics related to music source separation using synthesis, analysis-by-synthesis, deep learning for audio generation and differentiable digital signal processing. Broader research interests include self-supervised learning, music information retrieval, timbre, optimal transport and generative models.
-<!-- <p style="font-family:verdana"></p> -->
 
-
-## Publications  
-<!-- add small space, not full line break -->
-
-
-<div class="notice--blank">
-  <p style="margin: 0; padding: 0; margin-top: 25px">
-    <strong>Unsupervised Harmonic Parameter Estimation Using Differentiable DSP and Spectral Optimal Transport</strong>
-  </p> 
-  <div style="margin-left: 20px; margin-top: 5px;">
-    Bernardo Torres, Geoffroy Peeters and Gaël Richard
-    <br>
-     Accepted for <em>IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP 2024)</em>. 
-    <br>
-    <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('sot')">ABS</a>
-    <a href="https://arxiv.org/pdf/2312.14507.pdf" class="pdf-box"> PDF (arXiv)
-    </a>
-    <a href="https://github.com/bernardo-torres/1d-spectral-optimal-transport" class="pdf-box"> <i class="fab fa-fw fa-github"></i> code 
-    </a>
-
-    
-  <div id="sot" class="abstract-content">
-        In neural audio signal processing, pitch conditioning has been used to enhance the performance of synthesizers. However, jointly training pitch estimators and synthesizers is a challenge when using standard audio-to-audio reconstruction loss, leading to reliance on external pitch trackers. To address this issue, we propose using a spectral loss function inspired by optimal transportation theory that minimizes the displacement of spectral energy. We validate this approach through an unsupervised autoencoding task that fits a harmonic template to harmonic signals. We jointly estimate the fundamental frequency and amplitudes of harmonics using a lightweight encoder and reconstruct the signals using a differentiable harmonic synthesizer. The proposed approach offers a promising direction for improving unsupervised parameter estimation in neural audio applications.
-  </div>
-</div>
+<div style="text-align: center; font-size: 1.2em; font-weight: bold; margin: 10px 0 20px;">
+    Publications
+    <hr style="border: none; height: 1px; color: #ddd; background-color: #ddd; width: 12%; margin: 0 auto;">
 </div>
 
+<style>
+    .publication-item {
+        display: flex;
+        align-items: flex-start;
+        margin-top: 0px;
+    }
+    .pub-year {
+        /* italic */
+        font-style: italic;
+        margin-right: 30px;
+        /* font-size: 1.5em; */
+    }
+    .pub-details {
+        flex-grow: 1;
+        margin-top: 0; /* Adjust or reset margins as needed */
+        padding-top: 0; /* Adjust or reset paddings as needed */
+    }
+</style>
 
-<div class="notice--blank">
-  <p style="margin: 0; padding: 0; margin-top: 25px">
-    <strong>A Fully Differentiable Model for Unsupervised Singing Voice Separation</strong>
-  </p> 
-  <div style="margin-left: 20px; margin-top: 5px;">
-    Gaël Richard, Pierre Chouteau, and Bernardo Torres
-    <br>
-     Accepted for <em>IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP 2024)</em>. 
-    <br>
-    <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('fully-dif')">ABS</a>
-    <a href="https://telecom-paris.hal.science/hal-04356813v1/document" class="pdf-box"> PDF (hal)
-    </a>
-    <a href="https://github.com/PierreChouteau/umss" class="pdf-box"> <i class="fab fa-fw fa-github"></i> code 
-    </a>
+<div class="publication-item">
+    <div class="pub-year">2024</div>
+    <div class="pub-details">
+        <p style="margin: 0; padding: 0;">
+            <strong>Unsupervised Harmonic Parameter Estimation Using Differentiable DSP and Spectral Optimal Transport</strong>
+        </p>
+        <p style="margin-left: 0px; margin-top: 5px;">
+            Bernardo Torres, Geoffroy Peeters and Gaël Richard
+            <br>
+            Accepted for <em>IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP 2024)</em>.
+            <br>
+            <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('sot')">ABS</a>
+            <a href="https://arxiv.org/pdf/2312.14507.pdf" class="pdf-box">PDF (arXiv)</a>
+            <a href="https://github.com/bernardo-torres/1d-spectral-optimal-transport" class="pdf-box"><i class="fab fa-fw fa-github"></i> code</a>
+            <div id="sot" class="abstract-content" style="display: none;">
+                In neural audio signal processing, pitch conditioning has been used to enhance the performance of synthesizers. However, jointly training pitch estimators and synthesizers is a challenge when using standard audio-to-audio reconstruction loss, leading to reliance on external pitch trackers. To address this issue, we propose using a spectral loss function inspired by optimal transportation theory that minimizes the displacement of spectral energy. We validate this approach through an unsupervised autoencoding task that fits a harmonic template to harmonic signals. We jointly estimate the fundamental frequency and amplitudes of harmonics using a lightweight encoder and reconstruct the signals using a differentiable harmonic synthesizer. The proposed approach offers a promising direction for improving unsupervised parameter estimation in neural audio applications.
+            </div>
+        </p>
+    </div>
+</div>
 
-    
-  <div id="fully-dif" class="abstract-content">
+
+<div class="publication-item">
+    <div class="pub-year">2024</div>
+    <div class="pub-details">
+        <p style="margin: 0; padding: 0;">
+            <strong> Fully Differentiable Model for Unsupervised Singing Voice Separation</strong>
+        </p>
+        <p style="margin-left: 0px; margin-top: 5px;">
+            Gaël Richard, Pierre Chouteau, and Bernardo Torres
+            <br>
+            Accepted for <em>IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP 2024)</em>.
+            <br>
+            <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('fully-dif')">ABS</a>
+            <a href="https://telecom-paris.hal.science/hal-04356813v1/document" class="pdf-box"> PDF (hal)
+            </a>
+            <a href="https://github.com/PierreChouteau/umss" class="pdf-box"> <i class="fab fa-fw fa-github"></i> code 
+            </a>
+            <div id="fully-dif" class="abstract-content" style="display: none;">
         A novel model was recently proposed by Schulze-Forster et al. in [1] for unsupervised music source separation. This model allows to tackle some of the major shortcomings of existing source separation frameworks. Specifically, it eliminates the need for isolated sources during training, performs efficiently with limited data, and can handle homogeneous sources (such as singing voice). But, this model relies on an external multipitch estimator and incorporates an Ad hoc voice assignment procedure. In this paper, we propose to extend this framework and to build a fully differentiable model by integrating a multipitch estimator and a novel differentiable assignment module within the core model. We show the merits of our approach through a set of experiments, and we highlight in particular its potential for processing diverse and unseen data.
-  </div>
+      </div>
+        </p>
+    </div>
 </div>
-</div>
 
 
 
 
-<div class="notice--blank">
-  <p style="margin: 0; padding: 0; margin-top: 25px">
-    <strong>Singer Identity Representation Learning using Self-Supervised Techniques</strong>
-  </p> 
-  <div style="margin-left: 20px; margin-top: 5px;">
-    Bernardo Torres, Stefan Lattner and Gaël Richard
-    <br>
-    <em>International Society for Music Information Retrieval Conference (ISMIR 2023)</em>. 
-    <br>
-    <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('ssl_sing_id')">ABS</a>
-    <a href="https://telecom-paris.hal.science/hal-04186048v1/document" class="pdf-box"> PDF (hal)
-    </a>
-    <a href="https://github.com/SonyCSLParis/ssl-singer-identity" class="pdf-box"> <i class="fab fa-fw fa-github"></i> code 
-    </a>
-    <!-- <a href="https://telecom-paris.hal.science/hal-04186048v1/document"> <i class="fas fa-file-pdf"></i></a>  -->
-   <a href="https://sites.google.com/view/singer-representation-learning" class="pdf-box"> blog 
-    </a>
-    <a href="/documents/ISMIR_23_Poster.pdf" class="pdf-box"> poster 
-    </a>
-
-    <!-- <a href=""> <i class="fab fa-fw fa-github"></i></a>  -->
-    <!-- <a href="/documents/ISMIR_23_Poster.pdf">[poster]</a> -->
-
-    
-    <div id="ssl_sing_id" class="abstract-content">
-        Significant strides have been made in creating voice
+<div class="publication-item">
+    <div class="pub-year">2023</div>
+    <div class="pub-details">
+        <p style="margin: 0; padding: 0;">
+            <strong> Singer Identity Representation Learning using Self-Supervised Techniques</strong>
+        </p>
+        <p style="margin-left: 0px; margin-top: 5px;">
+            Bernardo Torres, Stefan Lattner and Gaël Richard
+            <br>
+            In <em>International Society for Music Information Retrieval Conference (ISMIR 2023)</em>.
+            <br>
+            <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('ssl_sing_id')">ABS</a>
+            <a href="https://telecom-paris.hal.science/hal-04186048v1/document" class="pdf-box"> PDF (hal)
+            </a>
+            <a href="https://github.com/SonyCSLParis/ssl-singer-identity" class="pdf-box"> <i class="fab fa-fw fa-github"></i> code 
+            </a>
+            <a href="https://sites.google.com/view/singer-representation-learning" class="pdf-box"> blog 
+            </a>
+            <a href="/documents/ISMIR_23_Poster.pdf" class="pdf-box"> poster 
+            </a>
+            <div id="ssl_sing_id" class="abstract-content" style="display: none;">
+            Significant strides have been made in creating voice
             identity representations using speech data. However, the
             same level of progress has not been achieved for singing
             voices. To bridge this gap, we suggest a framework for
@@ -125,36 +129,34 @@ I am currently working on topics related to music source separation using synthe
             framework produces high-quality embeddings that outperform both speaker verification and wav2vec 2.0 pre-trained
             baselines on singing voice while operating at 44.1 kHz. We
             release our code and trained models to facilitate further research on singing voice and related areas.
-  </div>
+      </div>
+        </p>
+    </div>
 </div>
+
+
+<br><br>
+
+<div style="text-align: center; font-size: 1.2em; font-weight: bold; margin: 10px 0 20px;">
+    Theses
+    <hr style="border: none; height: 1px; color: #ddd; background-color: #ddd; width: 12%; margin: 0 auto;">
 </div>
 
+<!-- Add the thesis section following a similar structure -->
 
-
-
-
-<!-- 
-**Torres, B.**, Lattner, S. and Richard, G., 2023. *Singer Identity Representation Learning using Self-Supervised Techniques*. In International Society for Music Information Retrieval Conference (ISMIR 2023).    <a href="https://telecom-paris.hal.science/hal-04186048v1/document"> <i class="fas fa-file-pdf"></i></a> <a href="https://github.com/SonyCSLParis/ssl-singer-identity"> <i class="fab fa-fw fa-github"></i></a> [[blog]](https://sites.google.com/view/singer-representation-learning) [[poster]](/documents/ISMIR_23_Poster.pdf) 
-</div>{: .notice--blank} -->
-
-
-
-## Theses
-
-<!-- Bernardo Torres. *Singer identity conversion using self-supervised learning and differentiable source-filter models*. Master’s (M2) thesis for master's program [Mathematiques, Vision, Apprentissage (MVA)](https://www.master-mva.com/),
-in double degree with Telecom Paris. Research performed in an intership at Sony CSL Paris. -->
-
-<div class="notice--blank">
-  <p style="margin: 0; padding: 0; margin-top: 25px">
-    <strong>Singer identity conversion using self-supervised learning and differentiable source-filter models</strong>
-  </p> 
-    <div style="margin-left: 20px; margin-top: 5px;">
-        Bernardo Torres
-        <br>
-        <em> Master’s (M2) thesis for program <a href="https://www.master-mva.com/">Mathematiques, Vision, Apprentissage (MVA)</a>. Research performed while interning at Sony CSL Paris.</em>
-        <br>
-        <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('masters')">ABS</a>
-        <div id="masters" class="abstract-content">
+<div class="publication-item">
+    <div class="pub-year">2022</div>
+    <div class="pub-details">
+        <p style="margin: 0; padding: 0;">
+            <strong> Singer identity conversion using self-supervised learning and differentiable source-filter models</strong>
+        </p>
+        <p style="margin-left: 0px; margin-top: 5px;">
+            Bernardo Torres
+            <br>
+            <em> Master’s (M2) thesis for program <a href="https://www.master-mva.com/">Mathematiques, Vision, Apprentissage (MVA)</a>. Research performed while interning at Sony CSL Paris.</em>.
+            <br>
+            <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('masters')">ABS</a>
+            <div id="masters" class="abstract-content" style="display: none;">
             The human voice is a musical instrument highly limited by the physiology of the singer, making it
 difficult for a singer to move out of the limitations of one’s voice. Compared to the most basic
 synthesizers, existing systems designed for voice synthesis or transformation are still
@@ -185,7 +187,9 @@ trend in the domain of neural audio synthesis that attempts to join classical si
 techniques with the data-driven workflow of deep neural networks grouped under the name of
 differentiable signal models. This work adapts a differentiable model based on the source-filter
 model of speech production for the injection of identity information.
-        </div>
+      </div>
+        </p>
     </div>
 </div>
 
+</div>
