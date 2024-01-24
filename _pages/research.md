@@ -72,7 +72,7 @@ I am currently working on topics related to music source separation using synthe
     <div class="pub-year">2024</div>
     <div class="pub-details">
         <p style="margin: 0; padding: 0;">
-            <strong> Fully Differentiable Model for Unsupervised Singing Voice Separation</strong>
+            <strong> A Fully Differentiable Model for Unsupervised Singing Voice Separation</strong>
         </p>
         <p style="margin-left: 0px; margin-top: 5px;">
             Gaël Richard, Pierre Chouteau, and Bernardo Torres
@@ -82,8 +82,8 @@ I am currently working on topics related to music source separation using synthe
             <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('fully-dif')">ABS</a>
             <a href="https://telecom-paris.hal.science/hal-04356813v1/document" class="pdf-box"> PDF (hal)
             </a>
-            <a href="https://github.com/PierreChouteau/umss" class="pdf-box"> <i class="fab fa-fw fa-github"></i> code 
-            </a>
+            <!-- <a href="https://github.com/PierreChouteau/umss" class="pdf-box"> <i class="fab fa-fw fa-github"></i> code 
+            </a> -->
             <div id="fully-dif" class="abstract-content" style="display: none;">
         A novel model was recently proposed by Schulze-Forster et al. in [1] for unsupervised music source separation. This model allows to tackle some of the major shortcomings of existing source separation frameworks. Specifically, it eliminates the need for isolated sources during training, performs efficiently with limited data, and can handle homogeneous sources (such as singing voice). But, this model relies on an external multipitch estimator and incorporates an Ad hoc voice assignment procedure. In this paper, we propose to extend this framework and to build a fully differentiable model by integrating a multipitch estimator and a novel differentiable assignment module within the core model. We show the merits of our approach through a set of experiments, and we highlight in particular its potential for processing diverse and unseen data.
       </div>
