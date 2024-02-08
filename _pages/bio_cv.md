@@ -16,7 +16,7 @@ classes: wide
 
 # Bio
 
-I am currently a first year PhD student at [Telecom Paris](https://www.telecom-paris.fr/),  working under the supervision of prof. [Gaël Richard](https://www.telecom-paris.fr/gael-richard) and prof. [Geoffroy Peeters](https://perso.telecom-paristech.fr/gpeeters/). I am part of the [ADASP](https://adasp.telecom-paris.fr/) group and the [HI-Audio](https://hi-audio.imt.fr/) project.
+Hello! I am a PhD student at [Telecom Paris](https://www.telecom-paris.fr/),  working under the supervision of prof. [Gaël Richard](https://www.telecom-paris.fr/gael-richard) and prof. [Geoffroy Peeters](https://perso.telecom-paristech.fr/gpeeters/), part of the [ADASP](https://adasp.telecom-paris.fr/) group and the [HI-Audio](https://hi-audio.imt.fr/) project.
 
 Previously, I was an intern at [Sony CSL Paris](https://cslmusicteam.sony.fr/) as part of my Master's program research internship.
 
@@ -24,7 +24,7 @@ My academic path has taken me from a Bachelor's in Electrical Engineering with a
 
 I am currently working on topics ranging from music source separation using synthesis, signal processing informed deep learning and differentiable digital signal processing. I am generally interested in audio signal processing, machine learning and the crossroads between the two, but my broader research interests include self-supervised learning, music information retrieval, timbre, optimal transport and generative models.
 
-Outside the lab, I've recently developed a keen interest in contemplative practices, particularly meditation, and philosophy. 
+Outside the lab, I've recently developed an interest in contemplative practices, particularly meditation, and philosophy. 
 
 
 <!-- You can find detailed lists of  

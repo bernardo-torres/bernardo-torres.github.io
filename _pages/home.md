@@ -19,7 +19,7 @@ $(document).ready(function(){
 
 <div markdown = "1">
 
-I am currently a first year PhD student at [Telecom Paris](https://www.telecom-paris.fr/),  working under the supervision of prof. [Gaël Richard](https://www.telecom-paris.fr/gael-richard) and prof. [Geoffroy Peeters](https://perso.telecom-paristech.fr/gpeeters/). I am part of the [ADASP](https://adasp.telecom-paris.fr/) group and the [HI-Audio](https://hi-audio.imt.fr/) project.
+Hello! I am a PhD student at [Telecom Paris](https://www.telecom-paris.fr/),  working under the supervision of prof. [Gaël Richard](https://www.telecom-paris.fr/gael-richard) and prof. [Geoffroy Peeters](https://perso.telecom-paristech.fr/gpeeters/), part of the [ADASP](https://adasp.telecom-paris.fr/) group and the [HI-Audio](https://hi-audio.imt.fr/) project.
 
 Previously, I was an intern at [Sony CSL Paris](https://cslmusicteam.sony.fr/).
 
