@@ -80,7 +80,7 @@ I am currently working on topics related to music source separation using synthe
             Accepted for <em>IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP 2024)</em>.
             <br>
             <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('fully-dif')">ABS</a>
-            <a href="https://telecom-paris.hal.science/hal-04356813v1/document" class="pdf-box"> PDF (hal)
+            <a href="https://telecom-paris.hal.science/hal-04356813/document" class="pdf-box"> PDF (hal)
             </a>
             <!-- <a href="https://github.com/PierreChouteau/umss" class="pdf-box"> <i class="fab fa-fw fa-github"></i> code 
             </a> -->
