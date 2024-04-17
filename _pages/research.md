@@ -60,6 +60,8 @@ I am currently working on topics related to music source separation using synthe
             <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('sot')">ABS</a>
             <a href="https://arxiv.org/pdf/2312.14507.pdf" class="pdf-box">PDF (arXiv)</a>
             <a href="https://github.com/bernardo-torres/1d-spectral-optimal-transport" class="pdf-box"><i class="fab fa-fw fa-github"></i> code</a>
+            <a href="/documents/Torres_ICASSP_2024_poster.pdf" class="pdf-box"> poster 
+            </a>
             <div id="sot" class="abstract-content" style="display: none;">
                 In neural audio signal processing, pitch conditioning has been used to enhance the performance of synthesizers. However, jointly training pitch estimators and synthesizers is a challenge when using standard audio-to-audio reconstruction loss, leading to reliance on external pitch trackers. To address this issue, we propose using a spectral loss function inspired by optimal transportation theory that minimizes the displacement of spectral energy. We validate this approach through an unsupervised autoencoding task that fits a harmonic template to harmonic signals. We jointly estimate the fundamental frequency and amplitudes of harmonics using a lightweight encoder and reconstruct the signals using a differentiable harmonic synthesizer. The proposed approach offers a promising direction for improving unsupervised parameter estimation in neural audio applications.
             </div>
