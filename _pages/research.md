@@ -55,7 +55,7 @@ I am currently working on topics related to music source separation using synthe
         <p style="margin-left: 0px; margin-top: 5px;">
             Bernardo Torres, Geoffroy Peeters and Gaël Richard
             <br>
-            Accepted for <em>IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP 2024)</em>.
+            In <em>IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP 2024)</em>.
             <br>
             <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('sot')">ABS</a>
             <a href="https://arxiv.org/pdf/2312.14507.pdf" class="pdf-box">PDF (arXiv)</a>
@@ -79,7 +79,7 @@ I am currently working on topics related to music source separation using synthe
         <p style="margin-left: 0px; margin-top: 5px;">
             Gaël Richard, Pierre Chouteau, and Bernardo Torres
             <br>
-            Accepted for <em>IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP 2024)</em>.
+            In <em>IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP 2024)</em>.
             <br>
             <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('fully-dif')">ABS</a>
             <a href="https://telecom-paris.hal.science/hal-04356813/document" class="pdf-box"> PDF (hal)
