@@ -154,6 +154,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Abstract content styles */
 .abstract-content {
+  font-size: 0.9em;
   display: none;
   padding: 10px;
   margin-top: -10px;
@@ -170,33 +171,58 @@ h1, h2, h3, h4, h5, h6 {
 /* Responsive design */
 @media screen and (max-width: 768px) {
   .intro-wrapper {
-    flex-direction: row;  // Keep horizontal layout
-    gap: 1rem;  // Reduce gap for smaller screens
+    flex-direction: column !important;  // Force column layout on mobile
+    align-items: center;
+    gap: 1.5rem;
   }
   
   .profile-photo {
-    width: 120px;  // Make photo smaller
-    margin-left: 1rem;  // Reduce margin
+    width: 200px;  // Slightly larger for top position
+    margin-left: 0;  // Remove side margin
+    order: -1;  // This puts the photo first
     
     img {
-      max-width: 120px;
+      max-width: 200px;
     }
   }
   
   .intro-content {
-    font-size: 0.9em;  // Optionally make text slightly smaller
+    font-size: 0.9em;
+    width: 100%;  // Full width for text
   }
 }
 
 /* Even smaller screens */
 @media screen and (max-width: 480px) {
   .profile-photo {
-    width: 100px;
-    margin-left: 0.5rem;
+    width: 150px;
     
     img {
-      max-width: 100px;
+      max-width: 150px;
     }
+  }
+}
+
+/* Publication items responsive */
+@media screen and (max-width: 768px) {
+  .publication-item {
+    flex-direction: column;
+    
+    .pub-thumbnail {
+      margin-right: 0;
+      margin-bottom: 1em;
+      text-align: center;
+      
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+  }
+  
+  .abstract-content {
+    font-size: 0.85em;  // Even smaller on mobile
+    width: 100%;  // Full width on mobile
   }
 }
 
