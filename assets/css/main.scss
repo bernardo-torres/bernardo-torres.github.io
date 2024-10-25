@@ -7,164 +7,298 @@ search: false
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
 
-// /* Override avatar styling */
-// .author__avatar, .avatar, .bio-photo {
-  
-//     border-radius: 0 !important; /* Removes any border radius */
-//     min-width: 80em;
-//     height: 500; /* Ensures the height is not forced by other styles */
-//     width: 500; /* Ensures the width is not forced by other styles */
+// html {
+//   font-size: 14px;
+//   @include breakpoint($medium) {
+//       font-size: 14px;
+//       font-family: Verdana, Geneva, Tahoma, sans-serif;
 //   }
 
-//   img.u-photo {
-//     border-radius: 0 !important; /* Removes rounded corners */
-//     object-fit: cover; /* Ensures the image covers the area without being stretched */
-//     width: 500; /* Or the width you desire */
-//     height: 500; /* Or the height you desire, should match width for a square */
+//   @include breakpoint($large) {
+//       font-size: 16px;
 //   }
 
+//   @include breakpoint($x-large) {
+//       font-size: 18px;
+//   }
+// }
 
+$font_family: 'Roboto', monospace;
 
+// Update your html settings
 html {
-  font-size: 14px; // originally 16px
+  font-size: 14px;
+  font-family: $font_family;
+  
   @include breakpoint($medium) {
-      font-size: 14px; // originally 18px
-      // font-family: "Garamond", serif;
-      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+    // Remove or comment out the old font-family
+    // font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
 
   @include breakpoint($large) {
-      font-size: 16px; // originally 20px
+    font-size: 16px;
   }
 
   @include breakpoint($x-large) {
-      font-size: 18px; // originally 22px
+    font-size: 18px;
   }
 }
 
+.site-title {
+  font-family: $font_family !important;
+  font-size: 1.5em !important;
+}
 
-  .author__avatar img {
+// Also style the masthead author name if present
+.masthead__menu-item {
+  font-family: $font_family !important;
+}
+
+.masthead, .greedy-nav {
+  font-family: $font_family !important;
+}
+
+// If you also want to style the navigation items
+.greedy-nav a {
+  font-family: $font_family !important;
+}
+
+// Add this to ensure the font is applied everywhere
+body {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+// You might also want to specifically style headings
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;  // Makes headings bold
+}
+
+
+// New intro layout styles
+.intro-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  margin: 2rem 0 3rem 0;
+  width: 100%;
+}
+
+.profile-photo {
+  flex-shrink: 0;
+  width: 200px;
+  margin-left: 2rem;
+
+  img {
+    width: 100%;
     border-radius: 0%;
+    margin-top: 0.5rem;
     max-width: 200px;
     object-fit: cover;
   }
+}
 
+// Option 1: Space Mono - A modern typewriter font
+// Option 3: Fira Code - Very modern, developer-friendly
+.intro-content {
+  h1 {
+    // font-family: 'Fira Code', monospace;
+    font-size: 2.2em;
+    margin-bottom: 1em;
+  }
+  // p {
+  //   font-family: 'Fira Code', monospace;
+  // }
+}
 
-/* Normal link color within text content */
+.contact-section {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+/* Link styles */
 .page__content a {
-  color: #3f6aaf; /* Deep blue color */
-  // Remove the underline from links
+  color: #3f6aaf;
   text-decoration: none;
-}
-
-/* Link color on hover within text content */
-.page__content a:hover {
-  color: #1c3e70; /* A slightly darker shade of blue for hover */
-}
-
-/* Link color when focused within text content */
-.page__content a:focus {
-  color: #1c3e70; /* Same as hover for consistency */
-  outline: thin dotted; /* Optional: adds outline on focus for accessibility */
-}
-
-/* Link color for visited links within text content */
-.page__content a:visited {
-  color: #1a3665; /* Even darker shade of blue for visited links */
-}
-
-
-// .wide-page .page__content {
-//   width: calc(70%);/* Adjust the width as needed */
-// }
-
-// .main-content {
-//     width: calc(85% - 60px); /* 100% minus sidebar width and any desired margin */
-// }
-
-
-
-// .wide-page .sidebar {
-//   width: 10%; /* Adjust this value as needed */
-// }
-
-// .wide-page .page {
-//   // max-width: 90%; /* 100% minus sidebar width and any desired margin */
-//   padding-right: 40px;
-// }
-
-@media (min-width: 1024px) { /* adjust 767px to your specific breakpoint */
-  .wide-page .page {
-  // max-width: 90%; /* 100% minus sidebar width and any desired margin */
-  padding-right: 40px;
-}
-}
-
-/* Media query for smaller screens */
-@media (max-width: 1024px) { /* adjust 767px to your specific breakpoint */
-  .author__avatar {
-    width: 75px; /* desired width for smaller screens */
-    height: 75px; /* desired height for smaller screens */
+  
+  &:hover {
+    color: #1c3e70;
   }
-
-  .author__avatar img {
-    max-width: 100%; /* allows the image to resize within the container */
+  
+  &:focus {
+    color: #1c3e70;
+    outline: thin dotted;
+  }
+  
+  &:visited {
+    color: #1a3665;
   }
 }
 
-.shifted-paragraph {
-  margin-left: 500px;
-  /* or padding-left: 20px; */
-}
-
-
+/* PDF box styles */
 .pdf-box {
   display: inline-block;
   padding: 1px 5px;
   margin: 0px;
-  border: 1px solid #000; /* Black border */
-  // background-color: #f2f2f2; /* Light grey background */
+  border: 1px solid #000;
   text-align: center;
-  text-decoration: none; /* Removes underline from the link */
-  color: black; /* Text color */
-  font-weight: bold; /* Makes text bold */
-  border-radius: 5px; /* Optional: rounds the corners */
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  border-radius: 5px;
   font-size: 11px;
 }
 
-// .abstract-box {
-//   display: inline-block;
-//   padding: 1px 5px;
-//   margin: 0px;
-//   border: 1px solid #000; /* Black border */
-//   background-color: #f2f2f2; /* Light grey background */
-//   text-align: center;
-//   text-decoration: none; /* Removes underline from the link */
-//   color: black; /* Text color */
-//   font-weight: bold; /* Makes text bold */
-//   border-radius: 5px; /* Optional: rounds the corners */
-//   cursor: pointer; /* Changes the mouse cursor to signify it's clickable */
-// }
-
+/* Abstract content styles */
 .abstract-content {
-  display: none; /* Keeps the abstract hidden initially */
-  // border: 1px solid #ccc; /* Thin, light grey border */
-  padding: 10px; /* Adds padding inside the box for spacing */
-  margin-top: 0px; /* Space between the button and the box */
-  box-sizing: border-box; /* Ensures padding and border are included in total width and height */
-  /* Optional: Add more styling as needed */
-  // font-family: 'Times New Roman', Times, serif;
-  // font-size: 13px; /* Reduce the font size */
-  // line-height: 1.6; /* Adjust line spacing for readability */
-  // color: #333;
-  // change font color to slightly lighter
-
-
+  display: none;
+  padding: 10px;
+  margin-top: -10px;
+  box-sizing: border-box;
   text-align: justify;
   width: 90%;
-  //  text should be in italics
-  font-style: italic;
-  //  background very light blue
-  // background-color: #EDF8FD;
+  // font-style: italic;
+  // Lets make it a bit more readable
+  background-color: #f8f9fa;
+  // Change the border color to match the theme
+  border: 1px solid #3f6aaf;
+}
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+  .intro-wrapper {
+    flex-direction: row;  // Keep horizontal layout
+    gap: 1rem;  // Reduce gap for smaller screens
+  }
+  
+  .profile-photo {
+    width: 120px;  // Make photo smaller
+    margin-left: 1rem;  // Reduce margin
+    
+    img {
+      max-width: 120px;
+    }
+  }
+  
+  .intro-content {
+    font-size: 0.9em;  // Optionally make text slightly smaller
+  }
+}
+
+/* Even smaller screens */
+@media screen and (max-width: 480px) {
+  .profile-photo {
+    width: 100px;
+    margin-left: 0.5rem;
+    
+    img {
+      max-width: 100px;
+    }
+  }
+}
+
+.contact-line {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin-top: 2em;
+  
+  strong {
+    white-space: nowrap;
+  }
+}
+
+.social-links {
+  margin-top: 0.5em;
+}
+
+
+// Custom color variables
+$background-color: #f8f9fa;  // A very light grey
+$header-color: #3C3B6C;      // Your dark purple-blue
+$link-color: #8C37E5;        // Your bright purple
+$link-hover: #b561e2;        // Your lighter purple
+$text-color: #2d2d2d;        // Slightly softer than pure black
+
+// Base background color
+body {
+  background-color: $background-color;
+}
+
+// Headers color
+h1, h2, h3, h4, h5, h6 {
+  color: $header-color;
+}
+
+// Link colors
+.page__content a {
+  color: $link-color;
+  text-decoration: none;
+  
+  &:hover {
+    color: $link-hover;
+  }
+  
+  &:focus {
+    color: $link-hover;
+    outline: thin dotted;
+  }
+  
+  &:visited {
+    color: $link-color;
+  }
+}
+
+// PDF box styling update
+.pdf-box {
+  border: 1px solid $header-color;
+  color: $header-color;
+  
+  &:hover {
+    background-color: $header-color;
+    color: white;
+  }
+}
+
+// Social icons color
+.fab, .fa {
+  color: $header-color;
+}
+
+// Publications section styling
+.publication-item {
+  strong {
+    color: $header-color;
+  }
+}
+
+// Masthead styling (if you want to match the theme)
+.masthead {
+  background-color: $background-color;
+  
+  .site-title {
+    color: $header-color;
+  }
+}
+
+.masthead, .greedy-nav {
+  background-color: $background-color !important;
+}
+
+// Make sure this applies to the entire navigation area
+.greedy-nav {
+  .site-title {
+    color: $header-color !important;
+  }
+  
+  .visible-links {
+    background-color: $background-color !important;
+    
+    a {
+      color: $header-color !important;
+    }
+  }
 }

@@ -1,11 +1,11 @@
 # main links
 # main links links
-main:
-  - title: "Research"
-    url: /research/
+# main:
+#   - title: "Research"
+#     url: /research/
     
-  - title: "Bio and CV"
-    url: /bio_cv/
+#   - title: "Bio and CV"
+#     url: /bio_cv/
     
   # - title: "Projects"
   #   url: /projects/
