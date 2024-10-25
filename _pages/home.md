@@ -34,6 +34,8 @@ Previously, I was an intern at [Sony CSL Paris](https://cslmusicteam.sony.fr/).
  <i class="fab fa-fw fa-github"></i> [Github](
   https://github.com/bernardo-torres) <i class="fab fa-fw fa-twitter"></i> [Twitter](
   https://twitter.com/torres_be_)  <i class="fab fa-fw fa-linkedin"></i> [LinkedIn](https://www.linkedin.com/in/bernardo-ferreira-torres/) 
+   <i class="fa fa-graduation-cap"></i> [Google Scholar](https://scholar.google.com/citations?user=S5h1fHIAAAAJ&hl=en) 
+   
 
 <!-- Add line break -->
 
