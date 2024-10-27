@@ -25,16 +25,17 @@ $(document).ready(function(){
 <div class="intro-wrapper">
  <div class="intro-content" style="text-align: justify;">
    <p>
-   Hello! I am a second-year PhD student at <a href="https://www.telecom-paris.fr/">Telecom Paris</a>, working under the supervision of prof. <a href="https://www.telecom-paris.fr/gael-richard">Gaël Richard</a> and prof. <a href="https://perso.telecom-paristech.fr/gpeeters/">Geoffroy Peeters</a>, part of the <a href="https://adasp.telecom-paris.fr/">ADASP</a> group and the <a href="https://hi-audio.imt.fr/">HI-Audio</a> project.   Previously, I was an intern at <a href="https://cslmusicteam.sony.fr/">Sony CSL (Music Team)</a>.
-   </p>
+    Hello! I am a second-year PhD student at <a href="https://www.telecom-paris.fr/">Telecom Paris</a>, working on machine learning and audio signal processing under the supervision of prof. <a href="https://www.telecom-paris.fr/gael-richard">Gaël Richard</a> and prof. <a href="https://perso.telecom-paristech.fr/gpeeters/">Geoffroy Peeters</a>. I am part of the <a href="https://adasp.telecom-paris.fr/">ADASP</a> group and the <a href="https://hi-audio.imt.fr/">HI-Audio</a> project. Previously, I was an intern at <a href="https://cslmusicteam.sony.fr/">Sony CSL (Music Team)</a>.
+    </p>
+
+<p>
+My research focuses on developing novel approaches at the intersection of signal processing and deep learning for music information retrieval, source separation and audio synthesis. I am particularly interested in unsupervised and self-supervised methods for training smart and efficient models, using techniques such as Differentiable Digital Signal Processing (DDSP) and analysis-by-synthesis.
+</p>
 
    <p>
-   I have a Bachelor's in Electrical and Computer Engineering from <a href="https://ufmg.br/">Universidade Federal de Minas Gerais</a>, and an engineering degree from <a href="https://www.telecom-paris.fr/">Telecom Paris</a>. In 2022, I also graduated with a Master's degree from <a href="https://www.ens-paris-saclay.fr/">Ecole Normale Superieure Paris-Saclay</a> in Artificial Intelligence from the <a href="https://www.master-mva.com/">MVA</a> program 
-   </p>
+I hold a Bachelor's in Electrical and Computer Engineering from <a href="https://ufmg.br/">Universidade Federal de Minas Gerais</a> and an engineering degree from <a href="https://www.telecom-paris.fr/">Telecom Paris</a>. In 2022, I completed my Master's degree in Artificial Intelligence from the <a href="https://www.master-mva.com/">MVA</a> program at <a href="https://www.ens-paris-saclay.fr/">Ecole Normale Superieure Paris-Saclay</a>.
+</p>
 
-   <p>
-   My current research focuses on the intersection between signal processing and deep learning for music information retrieval, source separation and audio synthesis, with a focus on unsupervised and self-supervised methods.
-   </p>
 
    <p style="margin-bottom: 1em;">
   <strong>Contact:</strong> <em>bernardo [dot] torres AT telecom-paris [dot] fr</em>
@@ -46,10 +47,13 @@ $(document).ready(function(){
   <i class="fab fa-fw fa-linkedin"></i> <a href="https://www.linkedin.com/in/bernardo-ferreira-torres/">LinkedIn</a>
   <i class="fa fa-graduation-cap"></i> <a href="https://scholar.google.com/citations?user=S5h1fHIAAAAJ&hl=en">Google Scholar</a>
 </p>
+You can find my CV <a href="/documents/Bernardo_Torres_CV_2024.pdf">here</a>. 
  </div>
  <div class="profile-photo">
    <img src="/assets/images/bernardo_torres.png" alt="Bernardo Torres">
  </div>
+
+ 
 </div>
 
    
