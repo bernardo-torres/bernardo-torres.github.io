@@ -112,7 +112,7 @@ I am currently working on topics related to music source separation using synthe
         <p style="margin-left: 0px; margin-top: 5px;">
             Alain Riou, Bernardo Torres, Ben Hayes, Stefan Lattner, Gaëtan Hadjeres, Gaël Richard, Geoffroy Peeters
             <br>
-            Submitted to <em>Transactions of the International Society of Music Information Retrieval</em>.
+            Submitted to <em>Transactions of the International Society of Music Information Retrieval (TISMIR)</em>.
             <br>
             <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('sot')">ABS</a>
             <a class="pdf-box">Preprint (soon)</a>
