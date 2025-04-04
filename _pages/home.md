@@ -25,7 +25,7 @@ $(document).ready(function(){
 <div class="intro-wrapper">
  <div class="intro-content" style="text-align: justify;">
    <p>
-    Hello! I am a second-year PhD student at <a href="https://www.telecom-paris.fr/">Telecom Paris</a>, working on machine learning and audio signal processing under the supervision of prof. <a href="https://www.telecom-paris.fr/gael-richard">Gaël Richard</a> and prof. <a href="https://perso.telecom-paristech.fr/gpeeters/">Geoffroy Peeters</a>. I am part of the <a href="https://adasp.telecom-paris.fr/">ADASP</a> group and the <a href="https://hi-audio.imt.fr/">HI-Audio</a> project. Previously, I was an intern at <a href="https://cslmusicteam.sony.fr/">Sony CSL (Music Team)</a>.
+    Hello! I am a third-year PhD student at <a href="https://www.telecom-paris.fr/">Telecom Paris</a>, working on machine learning and audio signal processing under the supervision of prof. <a href="https://www.telecom-paris.fr/gael-richard">Gaël Richard</a> and prof. <a href="https://perso.telecom-paristech.fr/gpeeters/">Geoffroy Peeters</a>. I am part of the <a href="https://adasp.telecom-paris.fr/">ADASP</a> group and the <a href="https://hi-audio.imt.fr/">HI-Audio</a> project. Previously, I was an intern at <a href="https://cslmusicteam.sony.fr/">Sony CSL (Music Team)</a>.
     </p>
 
 <p>
@@ -98,6 +98,34 @@ I am currently working on topics related to music source separation using synthe
         height: auto;
     }
 </style>
+
+
+<div class="publication-item">
+    <!-- <div class="pub-year">2024</div> -->
+    <!-- <div class="pub-thumbnail">
+        <img src="/assets/images/poster_spectra_horizontal_transport_lines.png" alt="Thumbnail">
+    </div> -->
+    <div class="pub-details">
+        <p style="margin: 0; padding: 0;">
+            <strong>PESTO: Real-Time Pitch Estimation with Self-supervised Transposition-equivariant Objective</strong>
+        </p>
+        <p style="margin-left: 0px; margin-top: 5px;">
+            Alain Riou, Bernardo Torres, Ben Hayes, Stefan Lattner, Gaëtan Hadjeres, Gaël Richard, Geoffroy Peeters
+            <br>
+            Submitted to <em>Transactions of the International Society of Music Information Retrieval</em>.
+            <br>
+            <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('sot')">ABS</a>
+            <a class="pdf-box">Preprint (soon)</a>
+            <a href="https://github.com/SonyCSLParis/pesto" class="pdf-box"><i class="fab fa-fw fa-github"></i> code</a>
+            <div id="sot" class="abstract-content" style="display: none;">
+                In this paper, we introduce PESTO, a self-supervised learning approach for single-pitch estimation using a Siamese architecture. Our model processes individual frames of a Variable-$Q$ Transform (VQT) and predicts pitch distributions. The neural network is designed to be equivariant to translations, notably by introducing a Toeplitz fully-connected layer. In addition, we construct pitch-shifted pairs by translating and cropping the VQT frames and train our model with a novel class-based transposition-equivariant objective, eliminating the need for annotated data. Thanks to this architecture and training objective, our model achieves remarkable performances while being very lightweight (130k parameters).
+
+Evaluations on music and speech datasets (MIR-1K, MDB-stem-synth, and PTDB) demonstrate that PESTO not only outperforms self-supervised baselines but also competes with supervised methods, exhibiting superior cross-dataset generalization. Finally, we enhance PESTO's practical utility by developing a streamable VQT implementation using cached convolutions. Combined with our model's low latency (less than 10 milliseconds) and minimal parameter count, this makes PESTO particularly suitable for real-time applications.
+            </div>
+        </p>
+    </div>
+</div>
+
 
 <div class="publication-item">
     <!-- <div class="pub-year">2024</div> -->
