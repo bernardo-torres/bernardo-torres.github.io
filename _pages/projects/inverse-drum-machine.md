@@ -20,9 +20,10 @@ function toggleAudio(audioId) {
 
 # Inverse Drum Machine
 
-This page is the companion website for our paper "Unsupervised Harmonic Parameter Estimation Using Differentiable DSP and Spectral Optimal Transport" published at ICASSP 2024.
+This page is the companion website for our paper "UThe Inverse Drum Machine: Source Separation Through Joint
+Transcription and Analysis-by-Synthesis". If you are reading this please come back in a few days as I will push this webpage very soon. 
 
-## Abstract
+<!-- ## Abstract
 
 In neural audio signal processing, pitch conditioning has been used to enhance the performance of synthesizers. However, jointly training pitch estimators and synthesizers is a challenge when using standard audio-to-audio reconstruction loss, leading to reliance on external pitch trackers. To address this issue, we propose using a spectral loss function inspired by optimal transportation theory that minimizes the displacement of spectral energy. We validate this approach through an unsupervised autoencoding task that fits a harmonic template to harmonic signals. We jointly estimate the fundamental frequency and amplitudes of harmonics using a lightweight encoder and reconstruct the signals using a differentiable harmonic synthesizer. The proposed approach offers a promising direction for improving unsupervised parameter estimation in neural audio applications.
 
@@ -52,9 +53,9 @@ Below are some examples demonstrating the capabilities of our Inverse Drum Machi
     </div>
 </div>
 
-### Example 2: Parameter Extraction and Manipulation
+### Example 2: Parameter Extraction and Manipulation -->
 
-<div class="audio-examples">
+<!-- <div class="audio-examples">
     <div class="audio-example">
         <h4>Original</h4>
         <audio id="original2" src="/assets/audio/inverse-drum-machine/original2.wav" preload="auto"></audio>
@@ -77,9 +78,9 @@ Our approach uses a novel spectral loss function based on optimal transport theo
 
 ### Spectral Optimal Transport Loss
 
-The key innovation in our work is the use of a spectral optimal transport loss that aligns the energy distribution in the frequency domain between the original and synthesized signals.
+The key innovation in our work is the use of a spectral optimal transport loss that aligns the energy distribution in the frequency domain between the original and synthesized signals. -->
 
-<img src="/assets/images/inverse-drum-machine/transport_visualization.png" alt="Spectral transport visualization" class="full-width-image">
+<!-- <img src="/assets/images/inverse-drum-machine/transport_visualization.png" alt="Spectral transport visualization" class="full-width-image">
 
 ## Results
 
@@ -134,4 +135,4 @@ For questions about this project, please contact Bernardo Torres at [bernardo.to
     border-radius: 5px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
-</style>
+</style> -->
