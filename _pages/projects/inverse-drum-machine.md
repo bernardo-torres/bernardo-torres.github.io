@@ -191,8 +191,8 @@ This is the accompanying page for the paper "The Inverse Drum Machine: Source Se
 
 ## Paper and Code
 
-- [Paper (PDF)](#) <!-- Add your paper link when available -->
-- [GitHub Repository](#) <!-- Add your GitHub repo link -->
+- [Paper (PDF)](/documents/inverse_drum_machine.pdf) <!-- Add your paper link when available -->
+- [GitHub Repository](https://github.com/bernardo-torres/inverse-drum-machine) <!-- Add your GitHub repo link -->
 
 
 <h2>Drum Samples and Envelopes</h2>
@@ -1126,7 +1126,11 @@ async function initializeStemWaveform(track, model, instrument) {
 });
 </script>
 
-## Method
+## TODO
+
+- Add volume control for samples, too loud now
+- Add synth model and baselines
+- Add waveform control from stems not only mix
 
 
 ## Citation
