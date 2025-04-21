@@ -167,6 +167,11 @@ This is the accompanying page for the paper "The Inverse Drum Machine: Source Se
 - [GitHub Repository](#) <!-- Add your GitHub repo link -->
 
 
+<!-- 
+  Fixed Inverse Drum Machine Audio Demo
+  HTML implementation with WaveSurfer.js
+-->
+
 <div class="audio-demos-section">
   <h2>Audio Demos</h2>
   
@@ -193,151 +198,8 @@ This is the accompanying page for the paper "The Inverse Drum Machine: Source Se
   <div id="audio-demos"></div>
 </div>
 
-<style>
-  .audio-demos-section {
-    margin-bottom: 2rem;
-  }
-  
-  .track-section {
-    margin-bottom: 2.5rem;
-    border-bottom: 1px solid #eaeaea;
-    padding-bottom: 1.5rem;
-  }
-
-  .track-title {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-    color: #2b6cb0;
-  }
-
-  .comparison-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 1.5rem;
-  }
-
-  .comparison-table th, .comparison-table td {
-    padding: 0.5rem;
-    border: 1px solid #e2e8f0;
-    text-align: center;
-  }
-
-  .comparison-table th {
-    background-color: #f7fafc;
-    font-weight: 600;
-  }
-
-  .model-name {
-    font-weight: 600;
-    text-align: left !important;
-    min-width: 100px;
-  }
-
-  .player-button {
-    background-color: #4299e1;
-    color: white;
-    border: none;
-    border-radius: 0.25rem;
-    padding: 0.5rem;
-    cursor: pointer;
-    width: 100%;
-    position: relative;
-    transition: all 0.2s;
-  }
-
-  .player-button:hover {
-    background-color: #3182ce;
-  }
-
-  .player-button.playing {
-    background-color: #e53e3e;
-  }
-
-  .player-button.playing:hover {
-    background-color: #c53030;
-  }
-
-  .player-button.unavailable {
-    background-color: #a0aec0;
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-
-  .progress-indicator {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 3px;
-    width: 0%;
-    background-color: rgba(255, 255, 255, 0.7);
-    transition: width 0.1s linear;
-  }
-
-  .global-controls {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-    padding: 0.75rem;
-    background-color: #f0f9ff;
-    border-radius: 0.5rem;
-    align-items: center;
-  }
-
-  .control-group {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .volume-slider {
-    width: 100px;
-  }
-
-  .stop-all-button {
-    background-color: #e53e3e;
-    color: white;
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 0.25rem;
-    cursor: pointer;
-  }
-
-  .stop-all-button:hover {
-    background-color: #c53030;
-  }
-
-  @media (max-width: 768px) {
-    .comparison-table {
-      display: block;
-      overflow-x: auto;
-    }
-    
-    .comparison-table td, 
-    .comparison-table th {
-      padding: 0.3rem;
-    }
-    
-    .player-button {
-      padding: 0.3rem;
-      font-size: 0.8rem;
-    }
-    
-    .global-controls {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    
-    .control-group.volume {
-      width: 100%;
-    }
-    
-    .volume-slider {
-      width: 100%;
-    }
-  }
-</style>
+<!-- Load WaveSurfer.js -->
+<script src="https://unpkg.com/wavesurfer.js@6.6.3/dist/wavesurfer.min.js"></script>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
@@ -345,13 +207,13 @@ This is the accompanying page for the paper "The Inverse Drum Machine: Source Se
     const tracks = [
       {
         id: "rock",
-        title: "Rock 120 BPM, 4/4 Beat (Portland)",
+        title: "43_rock_120_beat_4-4, drum kit: portland",
         baseFile: "43_rock_120_beat_4-4_portland"
       },
       {
         id: "funk",
-        title: "Funk 110 BPM (Minneapolis)",
-        baseFile: "28_funk_110_minneapolis"
+        title: "93_hiphop_75_beat_4-4, drum kit: heavy",
+        baseFile: "93_hiphop_75_beat_4-4_heavy"
       }
     ];
     
@@ -359,8 +221,9 @@ This is the accompanying page for the paper "The Inverse Drum Machine: Source Se
     const models = [
       { id: "original", name: "Original Mix", instruments: ["full"] },
       { id: "GT", name: "Ground Truth" },
-      { id: "IDM", name: "Our Method" },
-      { id: "Larsnet", name: "Larsnet" },
+      { id: "Oracle", name: "Oracle" },
+      { id: "IDM", name: "IDM (Our Method)" },
+      { id: "LarsNet", name: "LarsNet" },
       { id: "NMFD", name: "NMFD" }
     ];
     
@@ -381,11 +244,12 @@ This is the accompanying page for the paper "The Inverse Drum Machine: Source Se
     const volumeSlider = document.getElementById('volumeSlider');
     const audioDemosContainer = document.getElementById('audio-demos');
     
-    // Audio state
+    // Audio & waveform state
     let currentlyPlaying = null;
     let currentTrackId = null;
     let audioObjects = {};
-    let currentPlaybackTime = 0;
+    const waveSurfers = {};
+    let isUpdatingWaveform = false; // Flag to prevent event loops
     
     // Build the track sections
     tracks.forEach(track => {
@@ -399,6 +263,12 @@ This is the accompanying page for the paper "The Inverse Drum Machine: Source Se
       trackTitle.className = 'track-title';
       trackTitle.textContent = track.title;
       trackSection.appendChild(trackTitle);
+      
+      // Add waveform container
+      const wfDiv = document.createElement('div');
+      wfDiv.className = 'waveform';
+      wfDiv.id = `waveform-${track.id}`;
+      trackSection.appendChild(wfDiv);
       
       // Create table
       const table = document.createElement('table');
@@ -420,7 +290,7 @@ This is the accompanying page for the paper "The Inverse Drum Machine: Source Se
       
       // Add instrument headers
       displayInstruments.forEach(instrument => {
-        if (instrument.id !== "full") {  // Skip "Full Mix" column header
+        if (instrument.id !== "full") {
           const th = document.createElement('th');
           th.textContent = instrument.name;
           th.dataset.instrument = instrument.id;
@@ -439,36 +309,29 @@ This is the accompanying page for the paper "The Inverse Drum Machine: Source Se
         const row = document.createElement('tr');
         row.dataset.model = model.id;
         
-        // Model name cell
         const modelCell = document.createElement('td');
         modelCell.className = 'model-name';
         modelCell.textContent = model.name;
         row.appendChild(modelCell);
         
-        // If Original Mix, add Full Mix button
         if (model.id === "original") {
           const fullMixCell = document.createElement('td');
-          fullMixCell.colSpan = displayInstruments.length - 1; // Span all instrument columns except "full"
+          fullMixCell.colSpan = displayInstruments.length - 1;
           
           const audioId = `${track.id}_${model.id}_full`;
           const audioPath = `/assets/audio/inverse-drum-machine/GT/${track.baseFile}_mix.wav`;
           
           const button = createPlayerButton(audioId, audioPath, track.id);
-          
           fullMixCell.appendChild(button);
           row.appendChild(fullMixCell);
         } else {
-          // Add cells for each instrument (excluding "full")
           displayInstruments.forEach(instrument => {
-            if (instrument.id === "full") return; // Skip "full" instrument for non-original models
+            if (instrument.id === "full") return;
             
             const cell = document.createElement('td');
-            
             const audioId = `${track.id}_${model.id}_${instrument.id}`;
             const audioPath = `/assets/audio/inverse-drum-machine/${model.id}/${track.baseFile}_${instrument.id}.wav`;
-            
             const button = createPlayerButton(audioId, audioPath, track.id);
-            
             cell.appendChild(button);
             row.appendChild(cell);
           });
@@ -480,9 +343,54 @@ This is the accompanying page for the paper "The Inverse Drum Machine: Source Se
       table.appendChild(tbody);
       trackSection.appendChild(table);
       audioDemosContainer.appendChild(trackSection);
+      
+      // Initialize WaveSurfer for this track
+      const ws = WaveSurfer.create({
+        container: `#waveform-${track.id}`,
+        waveColor: '#ccd6f6',
+        progressColor: '#4c51bf',
+        height: 80,
+        responsive: true,
+        barWidth: 2,
+        cursorWidth: 1, // Add cursor for better visual feedback
+        interact: true
+      });
+      
+      // Load the original track mix
+      ws.load(`/assets/audio/inverse-drum-machine/GT/${track.baseFile}_mix.wav`);
+      
+      // Configure WaveSurfer events
+      ws.on('ready', () => {
+        console.log(`WaveSurfer ready for track ${track.id}`);
+        ws.setMute(true); // Mute wavesurfer, we'll use our own audio elements
+      });
+      
+      ws.on('seek', position => {
+        if (isUpdatingWaveform) return;
+        if (currentTrackId !== track.id) return;
+        
+        // When user seeks in waveform, sync all audio elements for this track
+        const t = ws.getDuration() * position;
+        Object.keys(audioObjects)
+          .filter(id => id.startsWith(track.id))
+          .forEach(id => {
+            const audio = audioObjects[id];
+            if (Math.abs(audio.currentTime - t) > 0.1) {
+              audio.currentTime = t;
+            }
+          });
+      });
+      
+      // Handle waveform errors
+      ws.on('error', err => {
+        console.warn('WaveSurfer error:', err);
+      });
+      
+      // Store WaveSurfer instance
+      waveSurfers[track.id] = ws;
     });
     
-    // Create player button helper function
+    // Create player button helper
     function createPlayerButton(audioId, audioPath, trackId) {
       const button = document.createElement('button');
       button.className = 'player-button';
@@ -490,62 +398,85 @@ This is the accompanying page for the paper "The Inverse Drum Machine: Source Se
       button.dataset.id = audioId;
       button.dataset.track = trackId;
       
-      // Progress indicator
       const progress = document.createElement('div');
       progress.className = 'progress-indicator';
       button.appendChild(progress);
       
       button.addEventListener('click', () => handlePlayClick(audioId, audioPath, trackId));
-      
       return button;
     }
     
-    // Handle play button click
+    // Update progress indicator
+    function updateProgress(audioId) {
+      const audio = audioObjects[audioId];
+      const btn = document.querySelector(`button[data-id="${audioId}"]`);
+      const prog = btn && btn.querySelector('.progress-indicator');
+      
+      if (prog && audio && audio.duration) {
+        prog.style.width = `${(audio.currentTime / audio.duration) * 100}%`;
+      }
+    }
+    
+    // Handle play/stop, now also driving the waveform
     function handlePlayClick(audioId, audioPath, trackId) {
-      // If this is the currently playing audio, stop it
+      // If same clip, just toggle stop
       if (currentlyPlaying === audioId) {
         stopAudio();
         return;
       }
       
-      // Check if we're switching instruments within the same track
+      const ws = waveSurfers[trackId];
       const isSameTrack = trackId === currentTrackId;
+      let startPos = 0;
       
-      // Capture current position before stopping if we're syncing playback
-      let startPosition = 0;
       if (isSameTrack && syncCheckbox.checked && currentlyPlaying) {
-        startPosition = audioObjects[currentlyPlaying]?.currentTime || 0;
+        startPos = audioObjects[currentlyPlaying]?.currentTime || 0;
       }
       
-      // If something else is playing, stop it first
       if (currentlyPlaying) {
-        stopAudio(false); // Don't reset track info
+        stopAudio(false);
       }
       
-      // Create or get the audio object
+      // Create or reuse audio element
       if (!audioObjects[audioId]) {
-        // Create new audio object
-        const audio = new Audio();
-        audio.src = audioPath;
+        const audio = new Audio(audioPath);
         audio.preload = 'auto';
+        audio.dataset.track = trackId;
         
-        // Set up event handlers
-        audio.addEventListener('error', () => {
-          const button = document.querySelector(`button[data-id="${audioId}"]`);
-          if (button) {
-            button.classList.add('unavailable');
-            button.textContent = 'N/A';
-            button.disabled = true;
+        audio.addEventListener('error', (e) => {
+          console.warn(`Audio error for ${audioId}:`, e);
+          const btn = document.querySelector(`button[data-id="${audioId}"]`);
+          if (btn) { 
+            btn.classList.add('unavailable'); 
+            btn.textContent = 'N/A'; 
           }
         });
         
-        // Time update for progress bar
+        // Update progress on timeupdate
         audio.addEventListener('timeupdate', () => {
+          if (currentlyPlaying !== audioId) return;
+          
+          // Update button progress
           updateProgress(audioId);
-          currentPlaybackTime = audio.currentTime;
+          
+          // Always update waveform position to ensure progress is visible
+          if (ws && ws.isReady && currentTrackId === trackId) {
+            const currentPos = audio.currentTime / (audio.duration || 1);
+            if (!isNaN(currentPos)) {
+              // Direct update for waveform progress
+              if (!isUpdatingWaveform) {
+                isUpdatingWaveform = true;
+                try {
+                  ws.seekTo(currentPos);
+                } catch (e) {
+                  console.warn('Error updating waveform position:', e);
+                }
+                setTimeout(() => { isUpdatingWaveform = false; }, 10);
+              }
+            }
+          }
         });
         
-        // Ended event
         audio.addEventListener('ended', () => {
           if (!audio.loop) {
             resetPlayButton(audioId);
@@ -558,113 +489,160 @@ This is the accompanying page for the paper "The Inverse Drum Machine: Source Se
       }
       
       const audio = audioObjects[audioId];
-      
-      // Apply settings
       audio.volume = parseFloat(volumeSlider.value);
       audio.loop = loopCheckbox.checked;
       
-      // Set start position if syncing and same track
-      if (isSameTrack && syncCheckbox.checked && startPosition > 0) {
-        audio.currentTime = startPosition;
+      // Set starting position if needed
+      if (ws && ws.isReady && isSameTrack && syncCheckbox.checked && startPos > 0) {
+        try {
+          audio.currentTime = startPos;
+          isUpdatingWaveform = true;
+          ws.seekTo(startPos / (ws.getDuration() || 1));
+          setTimeout(() => { isUpdatingWaveform = false; }, 50);
+        } catch (e) {
+          console.warn('Error setting start position:', e);
+        }
       }
       
-      // Play the audio
-      audio.play()
-        .then(() => {
-          // Update button state
-          const button = document.querySelector(`button[data-id="${audioId}"]`);
-          if (button) {
-            button.textContent = 'Stop';
-            button.classList.add('playing');
-          }
-          
-          // Set as currently playing
-          currentlyPlaying = audioId;
-          currentTrackId = trackId;
-        })
-        .catch(error => {
-          console.error('Error playing audio:', error);
-          const button = document.querySelector(`button[data-id="${audioId}"]`);
-          if (button) {
-            button.classList.add('unavailable');
-            button.textContent = 'Error';
-          }
-        });
+      // Play audio with error handling
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            const btn = document.querySelector(`button[data-id="${audioId}"]`);
+            if (btn) { 
+              btn.textContent = 'Stop'; 
+              btn.classList.add('playing'); 
+            }
+            
+            currentlyPlaying = audioId;
+            currentTrackId = trackId;
+            
+            // Start waveform animation
+            if (ws && ws.isReady) {
+              ws.play();
+              ws.setMute(true);
+            }
+          })
+          .catch(err => {
+            console.error('Error playing audio:', err);
+            const btn = document.querySelector(`button[data-id="${audioId}"]`);
+            if (btn) { 
+              btn.classList.add('unavailable'); 
+              btn.textContent = 'Error'; 
+            }
+          });
+      } else {
+        // Fallback for browsers without promise support
+        const btn = document.querySelector(`button[data-id="${audioId}"]`);
+        if (btn) { 
+          btn.textContent = 'Stop'; 
+          btn.classList.add('playing'); 
+        }
+        
+        currentlyPlaying = audioId;
+        currentTrackId = trackId;
+        
+        // Start waveform animation
+        if (ws && ws.isReady) {
+          ws.play();
+          ws.setMute(true);
+        }
+      }
     }
     
-    // Stop currently playing audio
+    // Stop audio + waveform
     function stopAudio(resetTrackInfo = true) {
-      if (!currentlyPlaying || !audioObjects[currentlyPlaying]) {
-        return;
-      }
+      if (!currentlyPlaying) return;
       
-      // Get the audio
+      // Stop audio
       const audio = audioObjects[currentlyPlaying];
+      if (audio) {
+        try {
+          audio.pause();
+        } catch (e) {
+          console.warn('Error pausing audio:', e);
+        }
+      }
       
-      // Pause it
-      audio.pause();
+      // Stop waveform
+      const ws = waveSurfers[currentTrackId];
+      if (ws && ws.isReady) {
+        try {
+          ws.pause();
+        } catch (e) {
+          console.warn('Error pausing wavesurfer:', e);
+        }
+      }
       
-      // Reset button
       resetPlayButton(currentlyPlaying);
-      
-      // Clear current
       currentlyPlaying = null;
-      if (resetTrackInfo) {
-        currentTrackId = null;
-      }
+      if (resetTrackInfo) currentTrackId = null;
     }
     
-    // Reset play button appearance
     function resetPlayButton(audioId) {
-      const button = document.querySelector(`button[data-id="${audioId}"]`);
-      if (button) {
-        button.textContent = 'Play';
-        button.classList.remove('playing');
+      const btn = document.querySelector(`button[data-id="${audioId}"]`);
+      if (btn) { 
+        btn.textContent = 'Play'; 
+        btn.classList.remove('playing'); 
       }
     }
     
-    // Update progress indicator
-    function updateProgress(audioId) {
-      if (!audioObjects[audioId]) return;
-      
-      const audio = audioObjects[audioId];
-      const button = document.querySelector(`button[data-id="${audioId}"]`);
-      
-      if (!button) return;
-      
-      const progress = button.querySelector('.progress-indicator');
-      if (!progress) return;
-      
-      if (audio.duration > 0) {
-        const percent = (audio.currentTime / audio.duration) * 100;
-        progress.style.width = `${percent}%`;
-      }
-    }
-    
-    // Stop all button
+    // Wire up global controls
     stopAllButton.addEventListener('click', () => stopAudio(true));
     
-    // Volume slider
     volumeSlider.addEventListener('input', () => {
       const volume = parseFloat(volumeSlider.value);
-      
-      // Update volume of currently playing audio
       if (currentlyPlaying && audioObjects[currentlyPlaying]) {
-        audioObjects[currentlyPlaying].volume = volume;
+        try {
+          audioObjects[currentlyPlaying].volume = volume;
+        } catch (e) {
+          console.warn('Error setting volume:', e);
+        }
       }
     });
     
-    // Loop checkbox
     loopCheckbox.addEventListener('change', () => {
       const isLooping = loopCheckbox.checked;
-      
-      // Update loop setting of currently playing audio
       if (currentlyPlaying && audioObjects[currentlyPlaying]) {
-        audioObjects[currentlyPlaying].loop = isLooping;
+        try {
+          audioObjects[currentlyPlaying].loop = isLooping;
+        } catch (e) {
+          console.warn('Error setting loop:', e);
+        }
       }
     });
+    
+    // Cleanup function for page unload
+    window.addEventListener('beforeunload', () => {
+      // Stop any playing audio first
+      stopAudio(true);
+      
+      // Destroy WaveSurfer instances to free resources
+      Object.values(waveSurfers).forEach(ws => {
+        if (ws && typeof ws.destroy === 'function') {
+          try {
+            ws.destroy();
+          } catch (e) {
+            console.warn('Error destroying WaveSurfer:', e);
+          }
+        }
+      });
+      
+      // Clear audio objects
+      Object.values(audioObjects).forEach(audio => {
+        if (audio) {
+          try {
+            audio.src = '';
+            audio.load();
+          } catch (e) {
+            console.warn('Error cleaning up audio:', e);
+          }
+        }
+      });
+    });
   });
-</script>   
+</script>
 
 ## Method
 
