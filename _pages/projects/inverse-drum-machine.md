@@ -197,7 +197,18 @@ This is the accompanying page for the paper "The Inverse Drum Machine: Source Se
 <div class="audio-demos-section">
   <h2>Audio Demos</h2>
   
-  <p>Compare how different models separate drums from the same audio mixtures. Use the buttons to play the separated audio for each drum instrument across different models.</p>
+  <p>We present some audio demos showcasing the performance of our model and our baselines. The following examples were not curated. As the individual stems for drums are often very sparse, listening can be tricky. We therefore present an interactive demo where the tracks are played on loop and you and choose the model and stem you want to "solo" out. You can click on the waveform of the Original mix to come back to parts of the audio of interest.
+  
+  
+  We recommend using headphones for the best experience. If you encounter any issues, please let us know!
+
+  The following controls are available:
+    - **Stop All**: Stop all currently playing audio.
+    - **Sync Playback**: When enabled, switching between models or stems will sync the playback position across all audio elements. When disabled, each audio element will play from the beginning.
+    - **Loop**: When enabled, the audio will loop continuously.
+  
+  </p>
+
 
   <div class="global-controls">
     <div class="control-group">
@@ -1012,8 +1023,6 @@ If you use our work in your research, please cite our paper:
 @inproceedings{torres2024inverse,
   title={The Inverse Drum Machine: Source Separation Through Joint Transcription and Analysis-by-Synthesis},
   author={Torres, Bernardo and Peeters, Geoffroy and Richard, Gaël},
-  booktitle={Proceedings of...},
   year={2024},
-  organization={...}
 }
 ```
