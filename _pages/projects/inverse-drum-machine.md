@@ -228,14 +228,31 @@ This is the accompanying page for the paper "The Inverse Drum Machine: Source Se
   // Track configuration data
   const tracks = [
     {
-      id: "rock",
-      title: "43_rock_120_beat_4-4, drum kit: portland",
+      id: "43",
+      title: "43_rock_120_beat_4-4.wav, drum kit: portland",
       baseFile: "43_rock_120_beat_4-4_portland"
     },
     {
-      id: "funk",
-      title: "93_hiphop_75_beat_4-4, drum kit: heavy",
+      id: "93",
+      title: "93_hiphop_75_beat_4-4.wav, drum kit: heavy",
       baseFile: "93_hiphop_75_beat_4-4_heavy"
+    },
+    {
+      id: "18",
+      title: "18_rock_118_fill_4-4.wav, drum kit: east bay",
+      baseFile: "18_rock_118_fill_4-4_east_bay"
+    }
+    ,
+    {
+      id: "73",
+      title: "73_neworleans-funk_93_fill_4-4.wav, drum kit: heavy",
+      baseFile: "73_neworleans-funk_93_fill_4-4_heavy"
+    }
+    ,
+    {
+      id: "114",
+      title: "114_jazz-fusion_96_beat_4-4.wav, drum kit: heavy",
+      baseFile: "114_jazz-fusion_96_beat_4-4_heavy"
     }
   ];
   
@@ -244,7 +261,8 @@ This is the accompanying page for the paper "The Inverse Drum Machine: Source Se
     { id: "original", name: "Original Mix", instruments: ["full"] },
     { id: "GT", name: "Ground Truth" },
     { id: "Oracle", name: "Oracle" },
-    { id: "IDM", name: "IDM (Our Method)" },
+    { id: "IDM_masked", name: "IDM masked (Ours)" },
+    { id: "IDM_synth", name: "IDM synth (Ours)" },
     { id: "LarsNet", name: "LarsNet" },
     { id: "NMFD", name: "NMFD" }
   ];
