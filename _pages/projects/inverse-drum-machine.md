@@ -310,18 +310,22 @@ This is the accompanying page for the paper "The Inverse Drum Machine: Source Se
 
 <div class="audio-demos-section">
   <h2>Audio Demos</h2>
-  
-  <p>We present some audio demos showcasing the performance of our model and our baselines. The following examples were not curated. As the individual stems for drums are often very sparse, listening can be tricky. We therefore present an interactive demo where the tracks are played on loop and you and choose the model and stem you want to "solo" out. You can click on the waveform of the Original mix to come back to parts of the audio of interest.
-  
-  
-  We recommend using headphones for the best experience. If you encounter any issues, please let us know!
+<p>
+  We present some audio demos showcasing the performance of our model and our baselines. The following examples were not curated. As the individual stems for drums are often very sparse, listening can be tricky. We therefore present an interactive demo where the tracks are played on loop and you can choose the model and stem you want to "solo" out. You can click on the waveform of the Original mix to come back to parts of the audio of interest.
+</p>
 
+<p>
+  We recommend using headphones for the best experience. If you encounter any issues, please let us know!
+</p>
+
+<p>
   The following controls are available:
-    - **Stop All**: Stop all currently playing audio.
-    - **Sync Playback**: When enabled, switching between models or stems will sync the playback position across all audio elements. When disabled, each audio element will play from the beginning.
-    - **Loop**: When enabled, the audio will loop continuously.
-  
-  </p>
+</p>
+<ul>
+  <li><strong>Stop All</strong>: Stop all currently playing audio.</li>
+  <li><strong>Sync Playback</strong>: When enabled, switching between models or stems will sync the playback position across all audio elements. When disabled, each audio element will play from the beginning.</li>
+  <li><strong>Loop</strong>: When enabled, the audio will loop continuously.</li>
+</ul>
 
 
   <div class="global-controls">
