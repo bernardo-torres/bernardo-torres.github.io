@@ -399,10 +399,10 @@ This is the accompanying page for the paper "The Inverse Drum Machine: Source Se
   // Instrument configuration
   const instruments = [
     { id: "full", name: "Full Mix" },
-    { id: "KD", name: "Kick Drum" },
-    { id: "SD", name: "Snare Drum" },
-    { id: "HH", name: "Hi-Hat" },
-    { id: "CY", name: "Crash Cymbal" },
+    { id: "KD", name: "Kick" },
+    { id: "SD", name: "Snare" },
+    { id: "HH", name: "Hi-Hats" },
+    { id: "CY", name: "Cymbals" },
     { id: "TT", name: "Tom-Tom" }
   ];
   
