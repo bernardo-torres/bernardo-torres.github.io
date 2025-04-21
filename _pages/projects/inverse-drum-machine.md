@@ -194,6 +194,120 @@ This is the accompanying page for the paper "The Inverse Drum Machine: Source Se
 - [Paper (PDF)](#) <!-- Add your paper link when available -->
 - [GitHub Repository](#) <!-- Add your GitHub repo link -->
 
+
+<h2>Drum Samples and Envelopes</h2>
+
+<div class="additional-content-controls">
+  <p class="content-notice">
+    <i>Note: The interactive drum samples and envelopes visualizations may take some time to load. For best performance, you can toggle them on only when needed, or <a href="/assets/html/inverse-drum-machine/IDM/test_drum_samples.html" target="_blank">open the drum samples</a> and <a href="/assets/html/inverse-drum-machine/IDM/test_envelopes.html" target="_blank">envelopes</a> in separate windows.</i>
+  </p>
+  
+  <button id="toggleVisualizationsBtn" class="toggle-button">Show Visualizations</button>
+</div>
+
+<div id="visualizationsContainer" style="display: none; margin-top: 1rem;">
+  <div class="iframe-container" style="display: flex; flex-wrap: wrap; gap: 1rem;">
+    <div style="flex: 1 1 100%; min-width: 300px;">
+      <h3>Drum Samples</h3>
+      <div class="iframe-placeholder" data-src="/assets/html/inverse-drum-machine/IDM/test_drum_samples.html">
+        <div class="placeholder-content">Click to load Drum Samples visualization</div>
+      </div>
+    </div>
+    
+    <div style="flex: 1 1 100%; min-width: 300px;">
+      <h3>Envelopes</h3>
+      <div class="iframe-placeholder" data-src="/assets/html/inverse-drum-machine/IDM/test_envelopes.html">
+        <div class="placeholder-content">Click to load Envelopes visualization</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .additional-content-controls {
+    background-color: #f0f9ff;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .content-notice {
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+    color: #4a5568;
+  }
+  
+  .toggle-button {
+    background-color: #4299e1;
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+  
+  .toggle-button:hover {
+    background-color: #3182ce;
+  }
+  
+  .iframe-placeholder {
+    border: 1px dashed #cbd5e0;
+    border-radius: 0.25rem;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: #f7fafc;
+    transition: background-color 0.2s;
+  }
+  
+  .iframe-placeholder:hover {
+    background-color: #edf2f7;
+  }
+  
+  .placeholder-content {
+    color: #4a5568;
+    font-size: 0.9rem;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggleBtn = document.getElementById('toggleVisualizationsBtn');
+    const container = document.getElementById('visualizationsContainer');
+    const placeholders = document.querySelectorAll('.iframe-placeholder');
+    
+    // Toggle visualizations container
+    toggleBtn.addEventListener('click', () => {
+      if (container.style.display === 'none') {
+        container.style.display = 'block';
+        toggleBtn.textContent = 'Hide Visualizations';
+      } else {
+        container.style.display = 'none';
+        toggleBtn.textContent = 'Show Visualizations';
+      }
+    });
+    
+    // Set up lazy loading for iframes
+    placeholders.forEach(placeholder => {
+      placeholder.addEventListener('click', () => {
+        const src = placeholder.getAttribute('data-src');
+        const iframe = document.createElement('iframe');
+        iframe.src = src;
+        iframe.width = '100%';
+        iframe.height = '500px';
+        iframe.frameBorder = '0';
+        iframe.style.borderRadius = '0.25rem';
+        
+        // Replace placeholder with iframe
+        placeholder.parentNode.replaceChild(iframe, placeholder);
+      });
+    });
+  });
+</script>
+
 <div class="audio-demos-section">
   <h2>Audio Demos</h2>
   
