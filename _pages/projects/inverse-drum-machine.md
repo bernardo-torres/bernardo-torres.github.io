@@ -280,6 +280,47 @@ This is the accompanying page for the paper "The Inverse Drum Machine: Source Se
   We present some uncurated audio demos showcasing the performance of our model and our baselines. As the individual stems for drums are often very sparse, listening can be tricky. We therefore present an interactive demo where the tracks are played on loop and you can choose the model and stem you want to "solo" out. You can click on the waveform to come back to parts of the audio of interest.
 </p>
 
+
+<div style="text-align: center; margin: 1.5rem 0;">
+  <table class="comparison-table" style="margin: 0 auto; max-width: 550px;">
+    <caption style="caption-side: top; margin-bottom: 0.5rem; font-weight: 600; color: #2d3748;">
+      Method Comparison for the Audio Demos
+    </caption>
+    <thead>
+      <tr>
+        <th>Method</th>
+        <th>Training</th>
+        <th>Inference</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="baseline-model">
+        <td class="model-name">Oracle <sup>†</sup></td>
+        <td>--</td>
+        <td>Isolated stems</td>
+      </tr>
+      <tr class="baseline-model">
+        <td class="model-name">NMFD <sup>†</sup></td>
+        <td>--</td>
+        <td>Transcription + one-shots</td>
+      </tr>
+      <tr class="baseline-model">
+        <td class="model-name">LarsNet <sup>†</sup></td>
+        <td>Isolated stems</td>
+        <td>--</td>
+      </tr>
+      <tr class="our-model">
+        <td class="model-name"><strong>IDM (ours)</strong></td>
+        <td>Transcription</td>
+        <td>--</td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="font-size: 0.85rem; color: #4a5568; margin-top: 0.5rem; font-style: italic;">
+    <sup>†</sup> Baseline methods
+  </div>
+</div>
+
 <p>
   We recommend using headphones for the best experience. If you encounter any issues, please let us know!
 </p>
@@ -292,6 +333,23 @@ This is the accompanying page for the paper "The Inverse Drum Machine: Source Se
   <li><strong>Sync Playback</strong>: When enabled, switching between models or stems will sync the playback position across all audio elements. When disabled, each audio element will play from the beginning.</li>
   <li><strong>Loop</strong>: When enabled, the audio will loop continuously.</li>
 </ul>
+
+
+<style>
+  .baseline-model {
+    background-color: #f8fafc !important;
+  }
+  
+  .our-model {
+    background-color: #ebf8ff !important;
+    border-left: 3px solid #3182ce;
+  }
+  
+  .our-model td {
+    background-color: #ebf8ff !important;
+  }
+</style>
+
 
 
   <div class="global-controls">
