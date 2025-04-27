@@ -273,45 +273,11 @@ This is the accompanying page for the paper "The Inverse Drum Machine: Source Se
   }
 </style>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const toggleBtn = document.getElementById('toggleVisualizationsBtn');
-    const container = document.getElementById('visualizationsContainer');
-    const placeholders = document.querySelectorAll('.iframe-placeholder');
-    
-    // Toggle visualizations container
-    toggleBtn.addEventListener('click', () => {
-      if (container.style.display === 'none') {
-        container.style.display = 'block';
-        toggleBtn.textContent = 'Hide Visualizations';
-      } else {
-        container.style.display = 'none';
-        toggleBtn.textContent = 'Show Visualizations';
-      }
-    });
-    
-    // Set up lazy loading for iframes
-    placeholders.forEach(placeholder => {
-      placeholder.addEventListener('click', () => {
-        const src = placeholder.getAttribute('data-src');
-        const iframe = document.createElement('iframe');
-        iframe.src = src;
-        iframe.width = '100%';
-        iframe.height = '500px';
-        iframe.frameBorder = '0';
-        iframe.style.borderRadius = '0.25rem';
-        
-        // Replace placeholder with iframe
-        placeholder.parentNode.replaceChild(iframe, placeholder);
-      });
-    });
-  });
-</script>
 
 <div class="audio-demos-section">
   <h2>Audio Demos</h2>
 <p>
-  We present some audio demos showcasing the performance of our model and our baselines. The following examples were not curated. As the individual stems for drums are often very sparse, listening can be tricky. We therefore present an interactive demo where the tracks are played on loop and you can choose the model and stem you want to "solo" out. You can click on the waveform of the Original mix to come back to parts of the audio of interest.
+  We present some uncurated audio demos showcasing the performance of our model and our baselines. As the individual stems for drums are often very sparse, listening can be tricky. We therefore present an interactive demo where the tracks are played on loop and you can choose the model and stem you want to "solo" out. You can click on the waveform to come back to parts of the audio of interest.
 </p>
 
 <p>
@@ -352,38 +318,71 @@ This is the accompanying page for the paper "The Inverse Drum Machine: Source Se
 <!-- Load WaveSurfer.js -->
 <script src="https://unpkg.com/wavesurfer.js@6.6.3/dist/wavesurfer.min.js"></script>
 
+
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-  // Track configuration data
+    const toggleBtn = document.getElementById('toggleVisualizationsBtn');
+    const container = document.getElementById('visualizationsContainer');
+    const placeholders = document.querySelectorAll('.iframe-placeholder');
+    
+    // Toggle visualizations container
+    toggleBtn.addEventListener('click', () => {
+      if (container.style.display === 'none') {
+        container.style.display = 'block';
+        toggleBtn.textContent = 'Hide Visualizations';
+      } else {
+        container.style.display = 'none';
+        toggleBtn.textContent = 'Show Visualizations';
+      }
+    });
+    
+    // Set up lazy loading for iframes
+    placeholders.forEach(placeholder => {
+      placeholder.addEventListener('click', () => {
+        const src = placeholder.getAttribute('data-src');
+        const iframe = document.createElement('iframe');
+        iframe.src = src;
+        iframe.width = '100%';
+        iframe.height = '500px';
+        iframe.frameBorder = '0';
+        iframe.style.borderRadius = '0.25frem';
+        
+        // Replace placeholder with iframe
+        placeholder.parentNode.replaceChild(iframe, placeholder);
+      });
+    });
+
+
   const tracks = [
-    {
-      id: "43",
-      title: "43_rock_120_beat_4-4.wav, drum kit: portland",
-      baseFile: "43_rock_120_beat_4-4_portland"
-    },
-    {
-      id: "93",
-      title: "93_hiphop_75_beat_4-4.wav, drum kit: heavy",
-      baseFile: "93_hiphop_75_beat_4-4_heavy"
-    },
-    {
-      id: "18",
-      title: "18_rock_118_fill_4-4.wav, drum kit: east bay",
-      baseFile: "18_rock_118_fill_4-4_east_bay"
-    }
-    ,
-    {
-      id: "73",
-      title: "73_neworleans-funk_93_fill_4-4.wav, drum kit: heavy",
-      baseFile: "73_neworleans-funk_93_fill_4-4_heavy"
-    }
-    ,
-    {
-      id: "114",
-      title: "114_jazz-fusion_96_beat_4-4.wav, drum kit: heavy",
-      baseFile: "114_jazz-fusion_96_beat_4-4_heavy"
-    }
-  ];
+  {
+    id: "43",
+    title: "43_rock_120_beat_4-4.wav, drum kit: portland",
+    baseFile: "43_rock_120_beat_4-4_portland",
+    crop: 5 // 5 seconds playback (remove this line to play the full track)
+  },
+  {
+    id: "93",
+    title: "93_hiphop_75_beat_4-4.wav, drum kit: heavy",
+    baseFile: "93_hiphop_75_beat_4-4_heavy",
+  },
+  {
+    id: "18",
+    title: "18_rock_118_fill_4-4.wav, drum kit: east bay",
+    baseFile: "18_rock_118_fill_4-4_east_bay",
+    // No crop specified, will play the full track
+  },
+  {
+    id: "73",
+    title: "73_neworleans-funk_93_fill_4-4.wav, drum kit: heavy",
+    baseFile: "73_neworleans-funk_93_fill_4-4_heavy",
+  },
+  {
+    id: "114",
+    title: "114_jazz-fusion_96_beat_4-4.wav, drum kit: heavy",
+    baseFile: "114_jazz-fusion_96_beat_4-4_heavy"
+    // No crop specified, will play the full track
+  }
+];
   
   // Models configuration
   const models = [
@@ -562,24 +561,60 @@ async function initializeStemWaveform(track, model, instrument) {
     responsive: true,
     barWidth: 2,
     cursorWidth: 1,
-    interact: true,
-    normalize: true,  // Normalize waveform for better visualization
-    backend: 'MediaElement',  // Use MediaElement backend for better compatibility
-    // Additional visualization enhancements
-    barGap: 1,  // Add slight gap between bars
-    barRadius: 1  // Round the bars slightly
+    interact: true, // Make sure interaction is enabled
+    normalize: true,
+    backend: 'MediaElement',
+    barGap: 1,
+    barRadius: 1
   });
   
   // Apply extra amplitude boost for hi-hats and similar instruments
   if (instrumentId === 'HH' || instrumentId === 'CY') {
-    // These are typically lower amplitude
-    stemWs.params.amplitude = 2;  // Boost amplitude for visualization
+    stemWs.params.amplitude = 2;
   }
   
   // Configure events
   stemWs.on('ready', () => {
     stemWs.setMute(true);
   });
+
+  // Add seek event handling to make stem waveform interactive
+ // Improved seek handler in initializeStemWaveform
+stemWs.on('seek', position => {
+  if (isUpdatingWaveform) return;
+  if (currentTrackId !== track.id) return;
+  
+  // Prevent multiple rapid updates
+  isUpdatingWaveform = true;
+  
+  try {
+    // Get the exact time position
+    const t = stemWs.getDuration() * position;
+    
+    // Update all related audio elements to this precise position
+    Object.keys(audioObjects)
+      .filter(id => id.startsWith(track.id))
+      .forEach(id => {
+        const audio = audioObjects[id];
+        if (audio) {
+          audio.currentTime = t;
+        }
+      });
+    
+    // Update main waveform position using requestAnimationFrame for smoother visual update
+    const mainWs = waveSurfers[track.id];
+    if (mainWs && mainWs.isReady) {
+      requestAnimationFrame(() => {
+        mainWs.seekTo(position);
+      });
+    }
+  } catch (e) {
+    console.warn('Error during stem seek synchronization:', e);
+  } finally {
+    // Release the lock after a small delay
+    setTimeout(() => { isUpdatingWaveform = false; }, 20);
+  }
+});
   
   // Load the audio
   stemWs.load(audioPath);
@@ -755,9 +790,15 @@ async function initializeStemWaveform(track, model, instrument) {
     
     // Configure WaveSurfer events
     ws.on('ready', () => {
-      console.log(`WaveSurfer ready for track ${track.id}`);
-      ws.setMute(true); // Mute wavesurfer, we'll use our own audio elements
-    });
+  console.log(`WaveSurfer ready for track ${track.id}`);
+  ws.setMute(true); // Mute wavesurfer, we'll use our own audio elements
+  
+  // No visual indicator, just implement the cropping functionality
+  if (track.crop) {
+    const fullDuration = ws.getDuration();
+    console.log(`Crop set for track ${track.id}: ${track.crop}s out of ${fullDuration}s`);
+  }
+});
     
     ws.on('seek', position => {
       if (isUpdatingWaveform) return;
@@ -825,82 +866,9 @@ async function initializeStemWaveform(track, model, instrument) {
       prog.style.width = `${(audio.currentTime / audio.duration) * 100}%`;
     }
   }
-  
-  // Handle play/stop with waveform sync
-  async function handlePlayClick(audioId, audioPath, trackId, modelId, instrumentId) {
-    // If same clip, just toggle stop
-    if (currentlyPlaying === audioId) {
-      stopAudio();
-      return;
-    }
-    
-    const ws = waveSurfers[trackId];
-    const isSameTrack = trackId === currentTrackId;
-    let startPos = 0;
-    
-    if (isSameTrack && syncCheckbox.checked && currentlyPlaying) {
-      startPos = audioObjects[currentlyPlaying]?.currentTime || 0;
-    }
-    
-    if (currentlyPlaying) {
-      stopAudio(false);
-    }
-    
-    // Initialize stem waveform if not original mix
-    if (modelId !== "original" && instrumentId !== "full") {
-      console.log(`Preparing stem waveform for ${modelId}/${instrumentId}`);
-      
-      // Make sure stem container is visible for debugging
-      const stemWaveformContainer = document.getElementById(`stem-waveform-${trackId}`);
-      if (stemWaveformContainer) {
-        stemWaveformContainer.style.display = 'block';
-      }
-      
-      const stemLabel = document.getElementById(`stem-label-${trackId}`);
-      if (stemLabel) {
-        stemLabel.textContent = `Loading ${modelId} - ${instrumentId}...`;
-        stemLabel.style.color = getInstrumentColor(instrumentId);
-      }
-      
-      try {
-        const track = tracks.find(t => t.id === trackId);
-        const model = models.find(m => m.id === modelId);
-        
-        if (!track || !model) {
-          console.error(`Could not find track or model: ${trackId}/${modelId}`);
-          hideStemWaveform(trackId);
-        } else {
-          await initializeStemWaveform(track, model, instrumentId);
-        }
-      } catch (error) {
-        console.error(`Error initializing stem waveform:`, error);
-        hideStemWaveform(trackId);
-      }
-    } else {
-      // Hide stem waveform for original mix
-      hideStemWaveform(trackId);
-    }
-    
-    // Create or reuse audio element
-    if (!audioObjects[audioId]) {
-      const audio = new Audio(audioPath);
-      audio.preload = 'auto';
-      audio.dataset.track = trackId;
-      
-      audio.addEventListener('error', (e) => {
-        console.warn(`Audio error for ${audioId}:`, e);
-        const btn = document.querySelector(`button[data-id="${audioId}"]`);
-        if (btn) { 
-          btn.classList.add('unavailable'); 
-          btn.textContent = 'N/A'; 
-        }
-        
-        // Hide stem waveform if audio fails
-        hideStemWaveform(trackId);
-      });
-      
-      // Update progress on timeupdate
-      audio.addEventListener('timeupdate', () => {
+
+  // Improved audio sync system - replace the existing timeupdate event handler code
+audio.addEventListener('timeupdate', () => {
   if (currentlyPlaying !== audioId) return;
   
   // Update button progress
@@ -910,161 +878,383 @@ async function initializeStemWaveform(track, model, instrument) {
   const currentPos = audio.currentTime / (audio.duration || 1);
   if (isNaN(currentPos)) return;
   
-  // Always update main waveform position
-  if (ws && ws.isReady && currentTrackId === trackId) {
+  // Only update waveforms every 100ms to prevent excessive rendering
+  if (!audio._lastUpdate || Date.now() - audio._lastUpdate >= 100) {
+    audio._lastUpdate = Date.now();
+    
+    // Use a stricter synchronization approach
     if (!isUpdatingWaveform) {
       isUpdatingWaveform = true;
+      
       try {
-        // Update main waveform
-        ws.seekTo(currentPos);
-        
-        // Immediately update stem waveform with the EXACT same position
-        const stemWavesurferId = `wavesurfer-stem-${trackId}`;
-        if (waveSurfers[stemWavesurferId] && waveSurfers[stemWavesurferId].isReady) {
-          // Force exact position match
-          waveSurfers[stemWavesurferId].seekTo(currentPos);
+        // Update main waveform with precise position
+        if (ws && ws.isReady && currentTrackId === trackId) {
+          // Use requestAnimationFrame for smoother visual updates
+          requestAnimationFrame(() => {
+            ws.seekTo(currentPos);
+          });
         }
         
-        setTimeout(() => { isUpdatingWaveform = false; }, 5);
+        // Update stem waveform with the same precise position
+        const stemWavesurferId = `wavesurfer-stem-${trackId}`;
+        if (waveSurfers[stemWavesurferId] && waveSurfers[stemWavesurferId].isReady) {
+          requestAnimationFrame(() => {
+            waveSurfers[stemWavesurferId].seekTo(currentPos);
+          });
+        }
       } catch (e) {
-        isUpdatingWaveform = false;
-        console.warn('Error updating waveform position:', e);
+        console.warn('Error updating waveform positions:', e);
       }
+      
+      // Release the synchronization lock after a minimal delay
+      setTimeout(() => { isUpdatingWaveform = false; }, 5);
     }
   }
 });
-      
-      audio.addEventListener('ended', () => {
-        if (!audio.loop) {
-          resetPlayButton(audioId);
-          currentlyPlaying = null;
-          currentTrackId = null;
-        }
-      });
-      
-      audioObjects[audioId] = audio;
+  
+  // Handle play/stop with waveform sync
+  // Improved handlePlayClick function to ensure better synchronization
+// Update the handlePlayClick function to properly maintain position when changing stems
+// Modify the handlePlayClick function to handle cropping
+async function handlePlayClick(audioId, audioPath, trackId, modelId, instrumentId) {
+  // If same clip, just toggle stop
+  if (currentlyPlaying === audioId) {
+    stopAudio();
+    return;
+  }
+  
+  const ws = waveSurfers[trackId];
+  const isSameTrack = trackId === currentTrackId;
+  let startPos = 0;
+  
+  // Get the playback position from the current audio if we're on the same track
+  if (isSameTrack && syncCheckbox.checked && currentlyPlaying) {
+    const currentAudio = audioObjects[currentlyPlaying];
+    if (currentAudio) {
+      startPos = currentAudio.currentTime || 0;
+      console.log(`Continuing from position: ${startPos}`);
+    }
+  }
+  
+  // Stop current playback but keep track context if we're on the same track
+  if (currentlyPlaying) {
+    stopAudio(false); // The false prevents resetting currentTrackId
+  }
+  
+  // Initialize stem waveform if needed
+  if (modelId !== "original" && instrumentId !== "full") {
+    console.log(`Preparing stem waveform for ${modelId}/${instrumentId}`);
+    
+    const stemLabel = document.getElementById(`stem-label-${trackId}`);
+    if (stemLabel) {
+      stemLabel.textContent = `Loading ${modelId} - ${instrumentId}...`;
+      stemLabel.style.color = getInstrumentColor(instrumentId);
     }
     
-    const audio = audioObjects[audioId];
-    audio.volume = parseFloat(volumeSlider.value);
-    audio.loop = loopCheckbox.checked;
-    
-    // Set starting position if needed
-    if (ws && ws.isReady && isSameTrack && syncCheckbox.checked && startPos > 0) {
-      try {
-        audio.currentTime = startPos;
-        isUpdatingWaveform = true;
-        ws.seekTo(startPos / (ws.getDuration() || 1));
-        
-        // Also set stem waveform position
-        const stemWavesurferId = `wavesurfer-stem-${trackId}`;
-        if (waveSurfers[stemWavesurferId] && waveSurfers[stemWavesurferId].isReady) {
-          waveSurfers[stemWavesurferId].seekTo(startPos / (waveSurfers[stemWavesurferId].getDuration() || 1));
-        }
-        
-        setTimeout(() => { isUpdatingWaveform = false; }, 5);
-      } catch (e) {
-        isUpdatingWaveform = false;
-        console.warn('Error setting start position:', e);
+    try {
+      const track = tracks.find(t => t.id === trackId);
+      const model = models.find(m => m.id === modelId);
+      
+      if (!track || !model) {
+        console.error(`Could not find track or model: ${trackId}/${modelId}`);
+        hideStemWaveform(trackId);
+      } else {
+        await initializeStemWaveform(track, model, instrumentId);
       }
+    } catch (error) {
+      console.error(`Error initializing stem waveform:`, error);
+      hideStemWaveform(trackId);
     }
+  } else {
+    hideStemWaveform(trackId);
+  }
+  
+  // Create or get audio element
+  if (!audioObjects[audioId]) {
+    const audio = new Audio();
+    audio.src = audioPath;
+    audio.preload = 'auto';
+    audio.dataset.track = trackId;
     
-    // Play audio with error handling
-    const playPromise = audio.play();
-    if (playPromise !== undefined) {
-      playPromise
-        .then(() => {
-          const btn = document.querySelector(`button[data-id="${audioId}"]`);
-          if (btn) { 
-            btn.textContent = 'Stop'; 
-            btn.classList.add('playing'); 
+    // Add precise timing tracking
+    audio._lastUpdate = 0;
+    
+    // Handle audio errors
+    audio.onerror = (e) => {
+      console.error(`Error with audio ${audioId}:`, e);
+      resetPlayButton(audioId);
+      
+      const btn = document.querySelector(`button[data-id="${audioId}"]`);
+      if (btn) {
+        btn.classList.add('unavailable');
+        btn.textContent = 'Unavailable';
+        btn.disabled = true;
+      }
+    };
+    
+    // Add timeupdate handler to keep waveforms in sync
+    audio.addEventListener('timeupdate', function() {
+      if (currentlyPlaying !== audioId) return;
+      
+      // Update button progress
+      updateProgress(audioId);
+      
+      // Check if we need to loop due to crop value
+      const track = tracks.find(t => t.id === trackId);
+      if (track && track.crop && this.currentTime >= track.crop) {
+        // If loop is enabled, jump back to start, otherwise stop
+        if (loopCheckbox.checked) {
+          this.currentTime = 0;
+          
+          // Update both waveforms to beginning
+          requestAnimationFrame(() => {
+            const mainWs = waveSurfers[trackId];
+            const stemWs = waveSurfers[`wavesurfer-stem-${trackId}`];
+            
+            if (mainWs && mainWs.isReady) {
+              mainWs.seekTo(0);
+            }
+            
+            if (stemWs && stemWs.isReady) {
+              stemWs.seekTo(0);
+            }
+          });
+        } else {
+          stopAudio();
+          return;
+        }
+      }
+      
+      // Get current position ratio
+      const currentPos = this.currentTime / (this.duration || 1);
+      if (isNaN(currentPos)) return;
+      
+      // Throttle updates to prevent excessive rendering
+      if (!this._lastUpdate || Date.now() - this._lastUpdate >= 50) {
+        this._lastUpdate = Date.now();
+        
+        if (!isUpdatingWaveform) {
+          isUpdatingWaveform = true;
+          
+          try {
+            // Update both waveforms simultaneously
+            const mainWs = waveSurfers[trackId];
+            const stemWs = waveSurfers[`wavesurfer-stem-${trackId}`];
+            
+            requestAnimationFrame(() => {
+              if (mainWs && mainWs.isReady) {
+                mainWs.seekTo(currentPos);
+              }
+              
+              if (stemWs && stemWs.isReady) {
+                stemWs.seekTo(currentPos);
+              }
+            });
+          } catch (e) {
+            console.warn('Error updating waveforms:', e);
           }
           
-          currentlyPlaying = audioId;
-          currentTrackId = trackId;
-          
-          // Start waveform animation
+          // Clear the lock after a short delay
+          setTimeout(() => { isUpdatingWaveform = false; }, 10);
+        }
+      }
+    });
+    
+    audioObjects[audioId] = audio;
+  }
+  
+  const audio = audioObjects[audioId];
+  audio.volume = parseFloat(volumeSlider.value);
+  audio.loop = loopCheckbox.checked;
+  
+  // Set the exact starting position
+  if (isSameTrack && syncCheckbox.checked && startPos > 0) {
+    try {
+      // Set audio position before playing
+      audio.currentTime = startPos;
+    } catch (e) {
+      console.warn('Error setting starting position:', e);
+    }
+  } else {
+    // For different tracks or sync disabled, start from beginning
+    audio.currentTime = 0;
+  }
+  
+  // Play audio and update UI
+  try {
+    const playPromise = audio.play();
+    if (playPromise !== undefined) {
+      playPromise.then(() => {
+        // Update UI state
+        const btn = document.querySelector(`button[data-id="${audioId}"]`);
+        if (btn) {
+          btn.textContent = 'Stop';
+          btn.classList.add('playing');
+        }
+        
+        // Set current state
+        currentlyPlaying = audioId;
+        currentTrackId = trackId;
+        
+        // After audio starts playing, sync both waveforms exactly
+        const exactPos = audio.currentTime / (audio.duration || 1);
+        
+        requestAnimationFrame(() => {
+          // Sync main waveform
           if (ws && ws.isReady) {
             ws.play();
             ws.setMute(true);
+            ws.seekTo(exactPos);
           }
           
-          // Also play stem waveform if visible
+          // Sync stem waveform
           const stemWavesurferId = `wavesurfer-stem-${trackId}`;
-          if (waveSurfers[stemWavesurferId] && waveSurfers[stemWavesurferId].isReady) {
-            try {
-              waveSurfers[stemWavesurferId].play();
-              waveSurfers[stemWavesurferId].setMute(true);
-            } catch (e) {
-              console.warn(`Error playing stem waveform:`, e);
-            }
-          }
-        })
-        .catch(err => {
-          console.error('Error playing audio:', err);
-          const btn = document.querySelector(`button[data-id="${audioId}"]`);
-          if (btn) { 
-            btn.classList.add('unavailable'); 
-            btn.textContent = 'Error'; 
+          const stemWs = waveSurfers[stemWavesurferId];
+          if (stemWs && stemWs.isReady) {
+            stemWs.play();
+            stemWs.setMute(true);
+            stemWs.seekTo(exactPos);
           }
         });
+      }).catch(err => {
+        console.error('Error playing audio:', err);
+        resetPlayButton(audioId);
+        markButtonUnavailable(audioId);
+      });
     } else {
-      // Fallback for browsers without promise support
+      // Fallback for older browsers
       const btn = document.querySelector(`button[data-id="${audioId}"]`);
-      if (btn) { 
-        btn.textContent = 'Stop'; 
-        btn.classList.add('playing'); 
+      if (btn) {
+        btn.textContent = 'Stop';
+        btn.classList.add('playing');
       }
       
       currentlyPlaying = audioId;
       currentTrackId = trackId;
       
-      // Start waveform animation
+      // Sync waveforms
       if (ws && ws.isReady) {
         ws.play();
         ws.setMute(true);
       }
     }
+  } catch (err) {
+    console.error('Error playing audio:', err);
+    resetPlayButton(audioId);
+    markButtonUnavailable(audioId);
+  }
+}
+
+// Improved function to mark buttons as unavailable
+function markButtonUnavailable(audioId) {
+  const btn = document.querySelector(`button[data-id="${audioId}"]`);
+  if (btn) {
+    console.log(`Marking button as unavailable: ${audioId}`);
+    btn.classList.add('unavailable');
+    btn.textContent = 'N/A';
+    btn.disabled = true;
+    btn.title = 'This stem is not available';
+  }
+}
+
+// Add a function to proactively check stem availability
+// Modified stem availability checker - more reliable
+// More reliable stem availability checker
+// A more reliable stem availability checker using Audio elements instead of fetch
+// Replace your current checkStemAvailability function with this simpler one
+async function checkStemAvailability() {
+  console.log("Starting stem availability check...");
+  
+  // Make sure to run this after all buttons are definitely created
+  setTimeout(() => {
+    // For each track
+    tracks.forEach(track => {
+      // For each model (except original which always has full mix)
+      models.forEach(model => {
+        if (model.id === "original") return;
+        
+        // For each instrument
+        instruments.forEach(instrument => {
+          // Skip full mix for non-GT models
+          if (instrument.id === "full" && model.id !== "GT") return;
+          
+          const audioId = `${track.id}_${model.id}_${instrument.id}`;
+          const audioPath = `/assets/audio/inverse-drum-machine/${model.id}/${track.baseFile}_${instrument.id}.wav`;
+          
+          // Find the button
+          const btn = document.querySelector(`button[data-id="${audioId}"]`);
+          if (!btn) return;
+          
+          console.log(`Testing: ${audioId}`);
+          
+          // Set button to "checking" state
+          btn.textContent = "Checking...";
+          
+          // Simple fetch test with error handling
+          fetch(audioPath, { method: 'HEAD' })
+            .then(response => {
+              if (!response.ok) {
+                console.log(`Marking unavailable: ${audioPath}`);
+                markButtonUnavailable(audioId);
+              } else {
+                console.log(`Available: ${audioPath}`);
+                btn.textContent = "Play";
+              }
+            })
+            .catch(() => {
+              console.log(`Error fetching ${audioPath}, marking unavailable`);
+              markButtonUnavailable(audioId);
+            });
+        });
+      });
+    });
+  }, 1000); // 1 second should be enough if this runs at end of document load
+}
+  // Improved stop audio function
+function stopAudio(resetTrackInfo = true) {
+  if (!currentlyPlaying) return;
+  
+  // Get references before clearing state
+  const audioId = currentlyPlaying;
+  const trackId = currentTrackId;
+  
+  // Reset state first
+  const btn = document.querySelector(`button[data-id="${audioId}"]`);
+  if (btn) { 
+    btn.textContent = 'Play'; 
+    btn.classList.remove('playing'); 
   }
   
-  // Stop audio + waveform
-  function stopAudio(resetTrackInfo = true) {
-    if (!currentlyPlaying) return;
-    
+  currentlyPlaying = null;
+  if (resetTrackInfo) currentTrackId = null;
+  
+  // Then stop everything with clean state
+  requestAnimationFrame(() => {
     // Stop audio
-    const audio = audioObjects[currentlyPlaying];
+    const audio = audioObjects[audioId];
     if (audio) {
       try {
         audio.pause();
-      } catch (e) {
-        console.warn('Error pausing audio:', e);
-      }
+      } catch (e) {}
     }
     
     // Stop main waveform
-    const ws = waveSurfers[currentTrackId];
+    const ws = waveSurfers[trackId];
     if (ws && ws.isReady) {
       try {
         ws.pause();
-      } catch (e) {
-        console.warn('Error pausing wavesurfer:', e);
-      }
+      } catch (e) {}
     }
     
     // Pause stem waveform
-    const stemWavesurferId = `wavesurfer-stem-${currentTrackId}`;
+    const stemWavesurferId = `wavesurfer-stem-${trackId}`;
     if (waveSurfers[stemWavesurferId] && waveSurfers[stemWavesurferId].isReady) {
       try {
         waveSurfers[stemWavesurferId].pause();
-      } catch (e) {
-        console.warn(`Error pausing stem waveform:`, e);
-      }
+      } catch (e) {}
     }
-    
-    resetPlayButton(currentlyPlaying);
-    currentlyPlaying = null;
-    if (resetTrackInfo) currentTrackId = null;
-  }
+  });
+}
   
   function resetPlayButton(audioId) {
     const btn = document.querySelector(`button[data-id="${audioId}"]`);
@@ -1127,14 +1317,16 @@ async function initializeStemWaveform(track, model, instrument) {
       }
     });
   });
+    console.log("DOM loaded, checking stem availability soon...");
+  checkStemAvailability();
 });
 </script>
 
 ## TODO
 
 - Add volume control for samples, too loud now
-- Add synth model and baselines
-- Add waveform control from stems not only mix
+- Add NMFD
+- Block player if no stem available
 
 
 ## Citation
