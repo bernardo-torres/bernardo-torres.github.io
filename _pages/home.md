@@ -4,6 +4,15 @@ permalink: /
 author_profile: false
 classes: wide
 ---
+<style>
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    color: var(--gray-700);
+    line-height: 1.6;
+  }
+
+</style>
+
 
 <script language="JavaScript" type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
 <script>
@@ -25,7 +34,7 @@ $(document).ready(function(){
 <div class="intro-wrapper">
  <div class="intro-content" style="text-align: justify;">
    <p>
-    Hello! I am a third-year PhD student at <a href="https://www.telecom-paris.fr/">Telecom Paris</a>, working on machine learning for audio and music processing under the supervision of prof. <a href="https://www.telecom-paris.fr/gael-richard">Gaël Richard</a> and prof. <a href="https://perso.telecom-paristech.fr/gpeeters/">Geoffroy Peeters</a>. I am part of the <a href="https://adasp.telecom-paris.fr/">ADASP</a> group and the <a href="https://hi-audio.imt.fr/">HI-Audio</a> project. I am currently working as a research scientist intern at <a href="https://research.deezer.com/about/">Deezer research</a>. Previously, I was an intern at <a href="https://cslmusicteam.sony.fr/">Sony CSL (Music Team)</a>.
+    Hello! I am a third-year PhD student at <a href="https://www.telecom-paris.fr/">Telecom Paris</a>, working on machine learning for audio and music processing under the supervision of prof. <a href="https://www.telecom-paris.fr/gael-richard">Gaël Richard</a> and prof. <a href="https://perso.telecom-paristech.fr/gpeeters/">Geoffroy Peeters</a>. I am part of the <a href="https://adasp.telecom-paris.fr/">ADASP</a> group and the <a href="https://hi-audio.imt.fr/">HI-Audio</a> project. I am currently working as a research scientist intern at <a href="https://research.deezer.com/about/">Deezer Research</a>. Previously, I was an intern at <a href="https://cslmusicteam.sony.fr/">Sony CSL (Music Team)</a>.
     </p>
 
 <p>
@@ -98,6 +107,29 @@ I am currently working on topics related to music source separation using synthe
         height: auto;
     }
 </style>
+
+
+
+<div class="publication-item">
+    <div class="pub-details">
+        <p style="margin: 0; padding: 0;">
+            <strong>The Inverse Drum Machine: Source Separation Through Joint Transcription and Analysis-by-Synthesis</strong>
+        </p>
+        <p style="margin-left: 0px; margin-top: 5px;">
+            Bernardo Torres, Geoffroy Peeters, Gaël Richard  
+            <br>
+            Under review.  
+            <br>
+            <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('idm')">ABS</a>
+            <a class="pdf-box">Preprint (soon)</a>
+            <a href="https://github.com/bernardo-torres/inverse-drum-machine" class="pdf-box"><i class="fab fa-fw fa-github"></i> code</a>
+            <a href="https://bernardo-torres.github.io/projects/inverse-drum-machine/" class="pdf-box">blog/demos</a>
+            <div id="idm" class="abstract-content" style="display: none;">
+                We present the Inverse Drum Machine (IDM), a novel approach to drum source separation that leverages an analysis-by-synthesis framework combined with deep learning. Unlike recent supervised methods that require isolated stem recordings, our approach operates on drum mixtures with only transcription annotations. IDM integrates Automatic Drum Transcription and One-shot Drum Sample Synthesis, jointly optimizing these tasks in an end-to-end manner. By convolving synthesized one-shot samples with estimated onsets—akin to a drum machine—we reconstruct the individual drum stems and train a deep neural network on the reconstruction of the mixture. Experiments on the StemGMD dataset demonstrate that IDM achieves separation quality comparable to state-of-the-art supervised methods that require isolated stems, while significantly outperforming matrix decomposition baselines.
+            </div>
+        </p>
+    </div>
+</div>
 
 
 <div class="publication-item">
