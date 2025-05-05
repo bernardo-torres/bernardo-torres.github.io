@@ -13,7 +13,402 @@ author_profile: false
 
 <style>
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap');
+  
+  /* Color scheme variables */
+  :root {
+    --primary: #2563eb;      /* Deeper blue */
+    --primary-dark: #1d4ed8; /* Darker blue for hover states */
+    --primary-light: #dbeafe; /* Light blue for backgrounds */
+    --accent: #8b5cf6;       /* Purple accent */
+    --success: #10b981;      /* Green for success states */
+    --danger: #ef4444;       /* Red for danger/stop */
+    --danger-dark: #dc2626;  /* Darker red for hover */
+    --gray-50: #f9fafb;      /* Lightest gray with warm tone */
+    --gray-100: #f3f4f6;     /* Very light gray */
+    --gray-200: #e5e7eb;     /* Light gray for borders */
+    --gray-700: #374151;     /* Dark gray for text */
+    --gray-900: #1f2937;     /* Very dark gray for headings */
+  }
+  
+  /* Typography */
+  body {
+    font-family: 'Source Sans Pro', sans-serif;
+    color: var(--gray-700);
+    line-height: 1.6;
+  }
+  
+  h1, h2, h3, h4, h5, h6,
+  .track-title {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--gray-900);
+    font-weight: 600;
+    margin-top: 1.5em;
+    margin-bottom: 0.75em;
+    line-height: 1.3;
+  }
+  
+  h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-top: 0.5em;
+    position: relative;
+    padding-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+  }
+  
+  h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background-color: var(--primary);
+    border-radius: 2px;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+    color: var(--gray-900);
+    margin-top: 2rem;
+    border-bottom: 1px solid var(--gray-200);
+    padding-bottom: 0.5rem;
+  }
+  
+  h3 {
+    font-size: 1.35rem;
+    color: var(--gray-900);
+  }
+  
+  /* Improved UI elements */
+  .player-button {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    width: 100%;
+    position: relative;
+    transition: all 0.2s ease;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+  }
+  
+  .player-button:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .player-button.playing {
+    background-color: var(--danger);
+  }
+  
+  .player-button.playing:hover {
+    background-color: var(--danger-dark);
+  }
+  
+  .stop-all-button {
+    background-color: var(--danger);
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+  
+  .stop-all-button:hover {
+    background-color: var(--danger-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Toggle button styling */
+  .toggle-button {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .toggle-button:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Improved table styling */
+  .comparison-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 1.5rem;
+    overflow-x: auto;
+    display: block;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07);
+  }
+  .comparison-table td:last-child {
+    font-size: 1.15rem;
+    /* font-weight: 500; */
+  }
 
+  .comparison-table th {
+  background-color: var(--gray-50);
+  text-align: center !important;
+  vertical-align: middle !important;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.01em;
+}
+  
+  .comparison-table th, .comparison-table td {
+    padding: 0.75rem;
+    border: 1px solid var(--gray-200);
+  }
+  
+  
+  .comparison-table td {
+    background-color: white;
+  }
+  
+  .comparison-table tr:hover td {
+    background-color: var(--gray-50);
+  }
+  
+  /* Track section refinements */
+  .track-section {
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--gray-200);
+    padding-bottom: 2rem;
+  }
+  
+  .track-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--primary);
+    padding-left: 0.5rem;
+    border-left: 4px solid var(--primary);
+  }
+  
+  /* Improved waveform containers */
+  .waveform-container {
+    margin-bottom: 1.5rem;
+    padding: 1.25rem;
+    background-color: var(--gray-50);
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+  
+  .waveform {
+    height: 80px;
+    margin-bottom: 0.5rem;
+    background-color: white;
+    border: 1px solid var(--gray-200);
+    border-radius: 4px;
+  }
+  
+  .stem-waveform {
+    height: 60px;
+    margin-bottom: 0.75rem;
+    background-color: white;
+    border: 1px solid var(--gray-200);
+    border-radius: 4px;
+    display: none; /* Hidden by default */
+  }
+  
+  .waveform-label {
+    font-size: 0.85rem;
+    color: var(--gray-700);
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  /* Global controls styling */
+  .global-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding: 1.25rem;
+    background-color: var(--primary-light);
+    border-radius: 0.5rem;
+    align-items: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Better checkbox styling */
+  .control-group input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 1.2rem;
+    height: 1.2rem;
+    border: 2px solid var(--primary);
+    border-radius: 0.25rem;
+    margin-right: 0.5rem;
+    position: relative;
+    cursor: pointer;
+    vertical-align: middle;
+  }
+  
+  .control-group input[type="checkbox"]:checked {
+    background-color: var(--primary);
+  }
+  
+  .control-group input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    color: white;
+    font-size: 0.8rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  /* Improve range slider */
+  .volume-slider {
+    width: 120px;
+    appearance: none;
+    height: 6px;
+    background: var(--gray-200);
+    border-radius: 3px;
+    outline: none;
+  }
+  
+  .volume-slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: var(--primary);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .volume-slider::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background: var(--primary);
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+  }
+  
+  .volume-slider::-webkit-slider-thumb:hover,
+  .volume-slider::-moz-range-thumb:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+  }
+  
+  /* Improved iframe placeholder */
+  .iframe-placeholder {
+    border: 1px dashed var(--gray-200);
+    border-radius: 0.5rem;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: white;
+    transition: all 0.2s;
+  }
+  
+  .iframe-placeholder:hover {
+    background-color: var(--primary-light);
+    border-color: var(--primary);
+  }
+  
+  .placeholder-content {
+    color: var(--gray-700);
+    font-size: 0.95rem;
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  /* Better baseline model highlighting */
+  .baseline-model {
+    background-color: var(--gray-50) !important;
+  }
+  
+  .our-model {
+    background-color: var(--primary-light) !important;
+    border-left: 3px solid var(--primary);
+  }
+  
+  .our-model td {
+    background-color: var(--primary-light) !important;
+  }
+  
+  /* Code block styling */
+  pre {
+    background-color: var(--gray-900);
+    color: #f8f8f2;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    margin: 1.5rem 0;
+  }
+  
+  code {
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+  }
+  
+  /* Additional content controls */
+  .additional-content-controls {
+    background-color: var(--primary-light);
+    border-radius: 0.5rem;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(37, 99, 235, 0.2);
+  }
+  
+  .content-notice {
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--gray-700);
+    line-height: 1.5;
+  }
+  
+  /* Add some responsive refinements */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 1.75rem;
+    }
+    
+    h2 {
+      font-size: 1.5rem;
+    }
+    
+    .comparison-table td, .comparison-table th {
+      padding: 0.5rem;
+    }
+    
+    .player-button {
+      padding: 0.4rem;
+      font-size: 0.8rem;
+    }
+  }
+# --------------------------
  .page {
     margin-left: 0 !important;
     margin-right: 0 !important;
@@ -90,11 +485,13 @@ author_profile: false
 }
 
 .comparison-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 1.5rem;
+  max-width: 600px; /* or whatever looks good */
+  margin: 0 auto 1.5rem auto;
+  border-collapse: separate;
+  border-spacing: 0;
   overflow-x: auto;
-  display: block;
+  display: table;
+  width: 100%;
 }
 
 .comparison-table th, .comparison-table td {
@@ -258,8 +655,6 @@ author_profile: false
 
 This is the accompanying page for the paper "The Inverse Drum Machine: Source Separation Through Joint Transcription and Analysis-by-Synthesis", currently under review. The Inverse Drum Machine system uses joint transcription and analysis-by-synthesis to separate drum components from mixed audio without needing isolated sources for training.
 
-## Paper and Code
-
 - [Paper (PDF)](/documents/inverse_drum_machine.pdf) <!-- Add your paper link when available -->
 - [GitHub Repository](https://github.com/bernardo-torres/inverse-drum-machine) <!-- Add your GitHub repo link -->
 
@@ -278,6 +673,9 @@ This is the accompanying page for the paper "The Inverse Drum Machine: Source Se
   <div class="iframe-container" style="display: flex; flex-wrap: wrap; gap: 1rem;">
     <div style="flex: 1 1 100%; min-width: 300px;">
       <h3>Drum Samples</h3>
+      <p style="color: #e53e3e; font-weight: bold; margin-bottom: 0.5rem;">
+        <strong>Warning:</strong> Some drum samples can be loud! Please lower your volume before clicking.
+      </p>
       <div class="iframe-placeholder" data-src="/assets/html/inverse-drum-machine/IDM/test_drum_samples.html">
         <div class="placeholder-content">Click to load Drum Samples visualization</div>
       </div>
@@ -346,12 +744,12 @@ This is the accompanying page for the paper "The Inverse Drum Machine: Source Se
 <div class="audio-demos-section">
   <h2>Audio Demos</h2>
 <p>
-  We present some uncurated audio demos showcasing the performance of our model and our baselines. As the individual stems for drums are often very sparse, listening can be tricky. We therefore present an interactive demo where the tracks are played on loop and you can choose the model and stem you want to "solo" out. You can click on the waveform to come back to parts of the audio of interest.
+  We present some uncurated audio demos from the StemGMD test set showcasing the performance of our model and our baselines. As the individual stems for drums are often very sparse, listening can be tricky. We therefore present an interactive demo where the tracks are played on loop and you can choose the model and stem you want to "solo" out. You can click on the waveform to come back to parts of the audio of interest.
 </p>
 
 
 <div style="text-align: center; margin: 1.5rem 0;">
-  <table class="comparison-table" style="margin: 0 auto; max-width: 550px;">
+  <table class="comparison-table" style="margin: 0 auto; max-width: 650px;">
     <caption style="caption-side: top; margin-bottom: 0.5rem; font-weight: 600; color: #2d3748;">
       Method Comparison for the Audio Demos
     </caption>
@@ -360,6 +758,7 @@ This is the accompanying page for the paper "The Inverse Drum Machine: Source Se
         <th>Method</th>
         <th>Training</th>
         <th>Inference</th>
+        <th>STFT masking</th>
       </tr>
     </thead>
     <tbody>
@@ -367,26 +766,36 @@ This is the accompanying page for the paper "The Inverse Drum Machine: Source Se
         <td class="model-name">Oracle <sup>†</sup></td>
         <td>--</td>
         <td>Isolated stems</td>
+        <td>✓</td>
       </tr>
       <tr class="baseline-model">
         <td class="model-name">NMFD <sup>†</sup></td>
         <td>--</td>
         <td>Transcription + one-shots</td>
+        <td>✓</td>
       </tr>
       <tr class="baseline-model">
         <td class="model-name">LarsNet <sup>†</sup></td>
         <td>Isolated stems</td>
         <td>--</td>
+        <td>✓</td>
       </tr>
       <tr class="our-model">
-        <td class="model-name"><strong>IDM (ours)</strong></td>
+        <td class="model-name"><strong>IDM masked (ours)</strong></td>
         <td>Transcription</td>
         <td>--</td>
+        <td>✓</td>
+      </tr>
+      <tr class="our-model">
+        <td class="model-name"><strong>IDM synth (ours)</strong></td>
+        <td>Transcription</td>
+        <td>--</td>
+        <td>-</td>
       </tr>
     </tbody>
   </table>
   <div style="font-size: 0.85rem; color: #4a5568; margin-top: 0.5rem; font-style: italic;">
-    <sup>†</sup> Baseline methods
+    <sup>†</sup> Baseline methods. Please refer to the paper for the complete details of the methods.
   </div>
 </div>
 
@@ -1450,11 +1859,6 @@ function stopAudio(resetTrackInfo = true) {
 });
 </script>
 
-## TODO
-
-- Add volume control for samples, too loud now
-- Block player if no stem available
-
 
 ## Citation
 
@@ -1467,3 +1871,9 @@ If you use our work in your research, please cite our paper:
   year={2024},
 }
 ```
+
+## TODO
+
+- Add link to preprint
+- Update citation block
+
