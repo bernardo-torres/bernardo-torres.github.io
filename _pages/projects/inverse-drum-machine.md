@@ -3,10 +3,79 @@ layout: single
 permalink: /projects/inverse-drum-machine/
 # title: "Inverse Drum Machine"
 author_profile: false
-classes: wide
+# classes: wide
+# title: "Inverse Drum Machine"
+# masthead_title: " "
+# header:
+#   overlay: false
+#   show_overlay_excerpt: false
 ---
 
 <style>
+
+
+ .page {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    float: none !important;
+    position: static !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
+    display: block !important;
+    width: 100% !important;
+  }
+  
+  /* Kill sidebar completely */
+  .sidebar {
+    display: none !important;
+    width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  /* Force grid layout to single column */
+  .grid__item {
+    position: static !important;
+    width: 100% !important;
+    float: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  
+  /* Center main container */
+  #main {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    float: none !important;
+    padding: 0 !important;
+  }
+  
+  /* Center content container with explicit margin auto */
+  .page__inner-wrap {
+    float: none !important;
+    width: 94% !important;
+    max-width: 1400px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block !important;
+    position: relative !important;
+    left: 0 !important;
+  }
+
+  /* Make sure the masthead (if it exists) is also centered */
+  .masthead__inner-wrap {
+    margin: 0 auto !important;
+  }
+  /* Hide masthead for this page only */
+  .masthead {
+    display: none !important;
+  }
+
 .track-section {
   margin-bottom: 2.5rem;
   border-bottom: 1px solid #eaeaea;
@@ -412,16 +481,17 @@ This is the accompanying page for the paper "The Inverse Drum Machine: Source Se
 
 
   const tracks = [
+  
+  {
+    id: "93",
+    title: "93_hiphop_75_beat_4-4.wav, drum kit: heavy",
+    baseFile: "93_hiphop_75_beat_4-4_heavy",
+  },
   {
     id: "43",
     title: "43_rock_120_beat_4-4.wav, drum kit: portland",
     baseFile: "43_rock_120_beat_4-4_portland",
     crop: 5 // 5 seconds playback (remove this line to play the full track)
-  },
-  {
-    id: "93",
-    title: "93_hiphop_75_beat_4-4.wav, drum kit: heavy",
-    baseFile: "93_hiphop_75_beat_4-4_heavy",
   },
   {
     id: "18",
@@ -1383,7 +1453,6 @@ function stopAudio(resetTrackInfo = true) {
 ## TODO
 
 - Add volume control for samples, too loud now
-- Add NMFD
 - Block player if no stem available
 
 
