@@ -121,9 +121,9 @@ I am currently working on topics related to music source separation using synthe
             Under review.  
             <br>
             <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('idm')">ABS</a>
-            <a href="https://arxiv.org/pdf/2505.03337" class="pdf-box"> Preprint (arXiv)</a>
+            <a href="https://arxiv.org/pdf/2505.03337" class="pdf-box"> 📄 Preprint (arXiv)</a>
             <a href="https://github.com/bernardo-torres/inverse-drum-machine" class="pdf-box"><i class="fab fa-fw fa-github"></i> code</a>
-            <a href="https://bernardo-torres.github.io/projects/inverse-drum-machine/" class="pdf-box">blog/demos</a>
+            <a href="https://bernardo-torres.github.io/projects/inverse-drum-machine/" class="pdf-box"><i class="fas fa-fw fa-link"></i> blog/demos</a>
             <div id="idm" class="abstract-content" style="display: none;">
                 We present the Inverse Drum Machine (IDM), a novel approach to drum source separation that leverages an analysis-by-synthesis framework combined with deep learning. Unlike recent supervised methods that require isolated stem recordings, our approach operates on drum mixtures with only transcription annotations. IDM integrates Automatic Drum Transcription and One-shot Drum Sample Synthesis, jointly optimizing these tasks in an end-to-end manner. By convolving synthesized one-shot samples with estimated onsets—akin to a drum machine—we reconstruct the individual drum stems and train a deep neural network on the reconstruction of the mixture. Experiments on the StemGMD dataset demonstrate that IDM achieves separation quality comparable to state-of-the-art supervised methods that require isolated stems, while significantly outperforming matrix decomposition baselines.
             </div>
@@ -147,7 +147,7 @@ I am currently working on topics related to music source separation using synthe
             Submitted to <em>Transactions of the International Society of Music Information Retrieval (TISMIR)</em>.
             <br>
             <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('sot')">ABS</a>
-            <a class="pdf-box">Preprint (soon)</a>
+            <a class="pdf-box">📄 Preprint (soon)</a>
             <a href="https://github.com/SonyCSLParis/pesto" class="pdf-box"><i class="fab fa-fw fa-github"></i> code</a>
             <div id="sot" class="abstract-content" style="display: none;">
                 In this paper, we introduce PESTO, a self-supervised learning approach for single-pitch estimation using a Siamese architecture. Our model processes individual frames of a Variable-$Q$ Transform (VQT) and predicts pitch distributions. The neural network is designed to be equivariant to translations, notably by introducing a Toeplitz fully-connected layer. In addition, we construct pitch-shifted pairs by translating and cropping the VQT frames and train our model with a novel class-based transposition-equivariant objective, eliminating the need for annotated data. Thanks to this architecture and training objective, our model achieves remarkable performances while being very lightweight (130k parameters).
@@ -174,7 +174,7 @@ Evaluations on music and speech datasets (MIR-1K, MDB-stem-synth, and PTDB) demo
             In <em>IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP 2024)</em>.
             <br>
             <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('sot')">ABS</a>
-            <a href="https://arxiv.org/pdf/2312.14507.pdf" class="pdf-box">PDF (arXiv)</a>
+            <a href="https://arxiv.org/pdf/2312.14507.pdf" class="pdf-box">📄 PDF (arXiv)</a>
             <a href="https://github.com/bernardo-torres/1d-spectral-optimal-transport" class="pdf-box"><i class="fab fa-fw fa-github"></i> code</a>
             <a href="/documents/Torres_ICASSP_2024_poster.pdf" class="pdf-box"> poster 
             </a>
@@ -198,7 +198,7 @@ Evaluations on music and speech datasets (MIR-1K, MDB-stem-synth, and PTDB) demo
             In <em>IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP 2024)</em>.
             <br>
             <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('fully-dif')">ABS</a>
-            <a href="https://arxiv.org/pdf/2401.16837" class="pdf-box"> PDF (arXiv)
+            <a href="https://arxiv.org/pdf/2401.16837" class="pdf-box"> 📄 PDF (arXiv)
             </a>
             <!-- <a href="https://github.com/PierreChouteau/umss" class="pdf-box"> <i class="fab fa-fw fa-github"></i> code 
             </a> -->
@@ -224,7 +224,7 @@ Evaluations on music and speech datasets (MIR-1K, MDB-stem-synth, and PTDB) demo
             In <em>International Society for Music Information Retrieval Conference (ISMIR 2023)</em>.
             <br>
             <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('ssl_sing_id')">ABS</a>
-            <a href="https://arxiv.org/pdf/2401.05064" class="pdf-box"> PDF (arXiv)
+            <a href="https://arxiv.org/pdf/2401.05064" class="pdf-box"> 📄 PDF (arXiv)
             </a>
             <a href="https://github.com/SonyCSLParis/ssl-singer-identity" class="pdf-box"> <i class="fab fa-fw fa-github"></i> code 
             </a>

@@ -653,13 +653,28 @@ author_profile: false
 
 # Inverse Drum Machine: Source Separation Through Joint Transcription and Analysis-by-Synthesis
 
-This is the accompanying page for the paper "The Inverse Drum Machine: Source Separation Through Joint Transcription and Analysis-by-Synthesis", currently under review. The Inverse Drum Machine system uses joint transcription and analysis-by-synthesis to separate drum components from mixed audio without needing isolated sources for training.
+<p align="center">
+  <a href="https://arxiv.org/pdf/2505.03337" style="margin-right: 20px;">
+    📄 <strong>Paper (arXiv)</strong>
+  </a>
+  |
+  <a href="https://github.com/bernardo-torres/inverse-drum-machine" style="margin-left: 20px;">
+    <i class="fab fa-fw fa-github"></i> <strong>GitHub</strong>
+  </a>
+</p>
 
-- [Paper (PDF)](/documents/inverse_drum_machine.pdf) <!-- Add your paper link when available -->
-- [GitHub Repository](https://github.com/bernardo-torres/inverse-drum-machine) <!-- Add your GitHub repo link -->
+This is the accompanying page for the paper "The Inverse Drum Machine: Source Separation Through Joint Transcription and Analysis-by-Synthesis", currently under review. The Inverse Drum Machine (IDM) uses joint transcription and analysis-by-synthesis to separate drum components from mixed audio without needing isolated sources for training.
 
+
+
+<p align="center">
+  <img src="/assets/images/inverse-drum-machine/overview.png" alt="Inverse Drum Machine Overview" style="max-width: 35%; height: auto; border-radius: 0.5rem;">
+</p>
 
 <h2>Drum Samples and Envelopes</h2>
+
+One of the components of our model is a One-Shot Drum Synthesizer which is trained without ever being exposed to isolated drum samples. The One-Shot synth is conditioned on drum class and a one-hot vector of the drum kit.
+Here we provide the drum samples and envelopes of the model reported in the paper. 
 
 <div class="additional-content-controls">
   <p class="content-notice">
@@ -744,7 +759,7 @@ This is the accompanying page for the paper "The Inverse Drum Machine: Source Se
 <div class="audio-demos-section">
   <h2>Audio Demos</h2>
 <p>
-  We present some uncurated audio demos from the StemGMD test set showcasing the performance of our model and our baselines. As the individual stems for drums are often very sparse, listening can be tricky. We therefore present an interactive demo where the tracks are played on loop and you can choose the model and stem you want to "solo" out. You can click on the waveform to come back to parts of the audio of interest.
+  We present some uncurated audio demos from the StemGMD test set showcasing the performance of our model and our baselines. As the individual stems for drums are often very sparse, listening can be tricky (and very boring). We therefore present an interactive demo where the tracks are played on loop and you can choose the model and stem you want to "solo" out. You can click on the waveform to come back to parts of the audio of interest.
 </p>
 
 
@@ -1865,15 +1880,10 @@ function stopAudio(resetTrackInfo = true) {
 If you use our work in your research, please cite our paper:
 
 ```
-@inproceedings{torres2024inverse,
+@article{torres2025InverseDrumMachine,
   title={The Inverse Drum Machine: Source Separation Through Joint Transcription and Analysis-by-Synthesis},
   author={Torres, Bernardo and Peeters, Geoffroy and Richard, Gaël},
-  year={2024},
+  year={2025},
+  journal={arXiv preprint arXiv:2505.03337}
 }
 ```
-
-## TODO
-
-- Add link to preprint
-- Update citation block
-
