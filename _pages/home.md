@@ -121,7 +121,7 @@ I am currently working on topics related to music source separation using synthe
             Under review.  
             <br>
             <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('idm')">ABS</a>
-            <a href="https://arxiv.org/pdf/2505.03337" class="pdf-box"> Preprint PDF (arXiv)</a>
+            <a href="https://arxiv.org/pdf/2505.03337" class="pdf-box"> Preprint (arXiv)</a>
             <a href="https://github.com/bernardo-torres/inverse-drum-machine" class="pdf-box"><i class="fab fa-fw fa-github"></i> code</a>
             <a href="https://bernardo-torres.github.io/projects/inverse-drum-machine/" class="pdf-box">blog/demos</a>
             <div id="idm" class="abstract-content" style="display: none;">
