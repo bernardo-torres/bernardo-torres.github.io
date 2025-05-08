@@ -673,7 +673,7 @@ This is the accompanying page for the paper "The Inverse Drum Machine: Source Se
 
 <h2>Drum Samples and Envelopes</h2>
 
-One of the components of our model is a One-Shot Drum Synthesizer which is trained without ever being exposed to isolated drum samples. The One-Shot synth is conditioned on drum class and a one-hot vector of the drum kit.
+One of the components of our model is a One-Shot Drum Synthesizer which is trained without ever being exposed to isolated drum samples. The One-Shot synth is conditioned on drum class and timbre (we use a one-hot vector of the drum kit to represent timbre).
 Here we provide the drum samples and envelopes of the model reported in the paper. 
 
 <div class="additional-content-controls">
