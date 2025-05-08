@@ -121,7 +121,7 @@ I am currently working on topics related to music source separation using synthe
             Under review.  
             <br>
             <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('idm')">ABS</a>
-            <a href="/documents/inverse_drum_machine.pdf" class="pdf-box">Preprint (PDF)</a>
+            <a href="https://arxiv.org/pdf/2505.03337" class="pdf-box"> Preprint PDF (arXiv)</a>
             <a href="https://github.com/bernardo-torres/inverse-drum-machine" class="pdf-box"><i class="fab fa-fw fa-github"></i> code</a>
             <a href="https://bernardo-torres.github.io/projects/inverse-drum-machine/" class="pdf-box">blog/demos</a>
             <div id="idm" class="abstract-content" style="display: none;">
@@ -198,7 +198,7 @@ Evaluations on music and speech datasets (MIR-1K, MDB-stem-synth, and PTDB) demo
             In <em>IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP 2024)</em>.
             <br>
             <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('fully-dif')">ABS</a>
-            <a href="https://telecom-paris.hal.science/hal-04356813/document" class="pdf-box"> PDF (hal)
+            <a href="https://arxiv.org/pdf/2401.16837" class="pdf-box"> PDF (arXiv)
             </a>
             <!-- <a href="https://github.com/PierreChouteau/umss" class="pdf-box"> <i class="fab fa-fw fa-github"></i> code 
             </a> -->
@@ -224,7 +224,7 @@ Evaluations on music and speech datasets (MIR-1K, MDB-stem-synth, and PTDB) demo
             In <em>International Society for Music Information Retrieval Conference (ISMIR 2023)</em>.
             <br>
             <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('ssl_sing_id')">ABS</a>
-            <a href="https://telecom-paris.hal.science/hal-04186048v1/document" class="pdf-box"> PDF (hal)
+            <a href="https://arxiv.org/pdf/2401.05064" class="pdf-box"> PDF (arXiv)
             </a>
             <a href="https://github.com/SonyCSLParis/ssl-singer-identity" class="pdf-box"> <i class="fab fa-fw fa-github"></i> code 
             </a>
