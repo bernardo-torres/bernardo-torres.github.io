@@ -173,7 +173,7 @@ I am currently working on topics related to music source separation using synthe
             <br>
             <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('sot')">ABS</a>
             <a href="https://arxiv.org/abs/2508.01493" class="pdf-box">📄 Preprint</a>
-            <!-- <a href="https://github.com/SonyCSLParis/pesto" class="pdf-box"><i class="fab fa-fw fa-github"></i> code</a> -->
+            <a href="https://github.com/SonyCSLParis/pesto" class="pdf-box"><i class="fab fa-fw fa-github"></i> code</a>
             <div id="sot" class="abstract-content" style="display: none;">
                 In this paper, we propose an Optimal Transport objective for learning one-dimensional translation-equivariant systems and demonstrate its applicability to single pitch estimation. Our method provides a theoretically grounded, more numerically stable, and simpler alternative for training state-of-the-art self-supervised pitch estimators.
             </div>

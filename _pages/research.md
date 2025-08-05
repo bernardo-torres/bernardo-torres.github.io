@@ -44,10 +44,20 @@ I am currently working on topics related to music source separation using synthe
         margin-top: 0; /* Adjust or reset margins as needed */
         padding-top: 0; /* Adjust or reset paddings as needed */
     }
+    .pub-thumbnail {
+        margin-right: 20px;
+    }
+    .pub-thumbnail img {
+        max-width: 120px; /* Adjust the size as needed */
+        height: auto;
+    }
 </style>
 
 <div class="publication-item">
-    <div class="pub-year">2024</div>
+    <!-- <div class="pub-year">2024</div> -->
+    <div class="pub-thumbnail">
+        <img src="/assets/images/poster_spectra_horizontal_transport_lines.png" alt="Thumbnail">
+    </div>
     <div class="pub-details">
         <p style="margin: 0; padding: 0;">
             <strong>Unsupervised Harmonic Parameter Estimation Using Differentiable DSP and Spectral Optimal Transport</strong>
@@ -71,7 +81,7 @@ I am currently working on topics related to music source separation using synthe
 
 
 <div class="publication-item">
-    <div class="pub-year">2024</div>
+    <!-- <div class="pub-year">2024</div> -->
     <div class="pub-details">
         <p style="margin: 0; padding: 0;">
             <strong> A Fully Differentiable Model for Unsupervised Singing Voice Separation</strong>
@@ -97,7 +107,7 @@ I am currently working on topics related to music source separation using synthe
 
 
 <div class="publication-item">
-    <div class="pub-year">2023</div>
+    <!-- <div class="pub-year">2023</div> -->
     <div class="pub-details">
         <p style="margin: 0; padding: 0;">
             <strong> Singer Identity Representation Learning using Self-Supervised Techniques</strong>

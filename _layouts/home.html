@@ -1,6 +1,60 @@
----
+<!-- _layouts/home.html or index.html -->
+
+
+<div class="intro-wrapper">
+  <div class="profile-photo">
+    <img src="/assets/images/bernardo_torres.png" alt="Bernardo Torres">
+  </div>
+  <div class="intro-content">
+    Hello! I am a PhD student at <a href="https://www.telecom-paris.fr/">Telecom Paris</a>,  working under the supervision of prof. <a href="https://www.telecom-paris.fr/gael-richard">Gaël Richard</a> and prof. <a href="https://perso.telecom-paristech.fr/gpeeters/">Geoffroy Peeters</a>, part of the <a href="https://adasp.telecom-paris.fr/">ADASP</a> group and the <a href="https://hi-audio.imt.fr/">HI-Audio</a> project.
+
+    Previously, I was an intern at <a href="https://cslmusicteam.sony.fr/">Sony CSL Paris</a>.
+
+    <ul>
+      <li><a href="/research/">Research</a></li>
+      <li><a href="/bio_cv/">Bio and CV</a></li>
+    </ul>
+
+    <div class="contact-section">
+      <h2>Contact</h2>
+      bernardo [dot] torres AT telecom-paris [dot] fr <br><br>
+      <i class="fab fa-fw fa-github"></i> <a href="https://github.com/bernardo-torres">Github</a>
+      <i class="fab fa-fw fa-twitter"></i> <a href="https://twitter.com/torres_be_">Twitter</a>
+      <i class="fab fa-fw fa-linkedin"></i> <a href="https://www.linkedin.com/in/bernardo-ferreira-torres/">LinkedIn</a>
+      <i class="fa fa-graduation-cap"></i> <a href="https://scholar.google.com/citations?user=S5h1fHIAAAAJ&hl=en">Google Scholar</a>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="bio-wrapper">
+  <div class="bio-container">
+    <div class="author-avatar">
+      <img src="{{ site.author.avatar | relative_url }}" alt="{{ site.author.name }}" class="author-photo">
+    </div>
+    <div class="author-bio">
+      {{ site.author.bio }}
+      {% if site.author.location %}
+        <div class="author-location">
+          <i class="fas fa-fw fa-map-marker-alt"></i> {{ site.author.location }}
+        </div>
+      {% endif %}
+      {% if site.author.links %}
+        {% include author-links.html %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<div class="main-content">
+  <!-- Your existing homepage content here -->
+  {{ content }}
+</div>
+
+<!-- ---
 layout: archive
----
+--- -->
 
 {{ content }}
 
