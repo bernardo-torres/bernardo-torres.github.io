@@ -34,11 +34,11 @@ $(document).ready(function(){
 <div class="intro-wrapper">
  <div class="intro-content" style="text-align: justify;">
    <p>
-    Hello! I am a third-year PhD student at <a href="https://www.telecom-paris.fr/">Telecom Paris</a>, working on machine learning for audio and music processing under the supervision of prof. <a href="https://www.telecom-paris.fr/gael-richard">Gaël Richard</a> and prof. <a href="https://perso.telecom-paristech.fr/gpeeters/">Geoffroy Peeters</a>. I am part of the <a href="https://adasp.telecom-paris.fr/">ADASP</a> group and the <a href="https://hi-audio.imt.fr/">HI-Audio</a> project. I am currently working as a research scientist intern at <a href="https://research.deezer.com/about/">Deezer Research</a>. Previously, I was an intern at <a href="https://cslmusicteam.sony.fr/">Sony CSL (Music Team)</a>.
+    Hello! I am a third-year PhD student at <a href="https://www.telecom-paris.fr/">Telecom Paris</a>, working on machine learning for audio and music processing under the supervision of prof. <a href="https://www.telecom-paris.fr/gael-richard">Gaël Richard</a> and prof. <a href="https://perso.telecom-paristech.fr/gpeeters/">Geoffroy Peeters</a>. I am part of the <a href="https://adasp.telecom-paris.fr/">ADASP</a> group and the <a href="https://hi-audio.imt.fr/">HI-Audio</a> project. Previously, I worked as a research scientist intern at <a href="https://research.deezer.com/about/">Deezer Research</a> and  <a href="https://cslmusicteam.sony.fr/">Sony CSL (Music Team)</a>.
     </p>
 
 <p>
-My research focuses on developing novel approaches at the intersection of signal processing and deep learning for Music Information Retrieval (MIR), Music Source Separation and audio synthesis. I am particularly interested in unsupervised and self-supervised learning for training smart and efficient models.
+My research focuses on developing novel approaches at the intersection of signal processing and deep learning for Music Information Retrieval (MIR). I have been working closely with Music Source Separation and Audio Synthesis. I am particularly interested in unsupervised and self-supervised learning for training smart and efficient models.
 </p>
 
    <p>
