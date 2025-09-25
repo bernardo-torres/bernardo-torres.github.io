@@ -146,10 +146,10 @@ I am currently working on topics related to music source separation using synthe
             <br>
             In <em>Transactions of the International Society of Music Information Retrieval (TISMIR)</em>.
             <br>
-            <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('sot')">ABS</a>
+            <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('pesto_journal')">ABS</a>
             <a href="https://transactions.ismir.net/articles/251/files/68c0346a4b785.pdf" class="pdf-box">📄 PDF (TISMIR)</a>
             <a href="https://github.com/SonyCSLParis/pesto" class="pdf-box"><i class="fab fa-fw fa-github"></i> code</a>
-            <div id="pesto" class="abstract-content" style="display: none;">
+            <div id="pesto_journal" class="abstract-content" style="display: none;">
                 In this paper, we introduce PESTO, a self-supervised learning approach for single-pitch estimation using a Siamese architecture. Our model processes individual frames of a Variable-Q Transform (VQT) and predicts pitch distributions. The neural network is designed to be equivariant to translations, notably thanks to a Toeplitz fully-connected layer. In addition, we construct pitch-shifted pairs by translating and cropping the VQT frames and train our model with a novel class-based transposition-equivariant objective, eliminating the need for annotated data. Thanks to this architecture and training objective, our model achieves remarkable performances while being very lightweight (130k parameters). Evaluations on music and speech datasets (MIR-1K, MDB-stem-synth, and PTDB) demonstrate that PESTO not only outperforms self-supervised baselines but also competes with supervised methods, exhibiting superior cross-dataset generalization. Finally, we enhance PESTO's practical utility by developing a streamable VQT implementation using cached convolutions. Combined with our model's low latency (less than 10 ms) and minimal parameter count, this makes PESTO particularly suitable for real-time applications.
             </div>
         </p>
@@ -167,9 +167,11 @@ I am currently working on topics related to music source separation using synthe
             <br>
             Accepted for the <em>  Late-Breaking Demo (LBD) session at ISMIR 2025</em>.
             <br>
-            <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('sot')">ABS</a>
+            <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('pesto_ot')">ABS</a>
             <a href="https://arxiv.org/abs/2508.01493" class="pdf-box">📄 Preprint</a>
             <a href="https://github.com/SonyCSLParis/pesto" class="pdf-box"><i class="fab fa-fw fa-github"></i> code</a>
+            <a href="/documents/ISMIR25_LDB_poster.pdf" class="pdf-box"> poster 
+            </a>
             <div id="pesto_ot" class="abstract-content" style="display: none;">
                 In this paper, we propose an Optimal Transport objective for learning one-dimensional translation-equivariant systems and demonstrate its applicability to single pitch estimation. Our method provides a theoretically grounded, more numerically stable, and simpler alternative for training state-of-the-art self-supervised pitch estimators.
             </div>
