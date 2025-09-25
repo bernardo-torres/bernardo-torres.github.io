@@ -648,6 +648,47 @@ author_profile: false
   .volume-slider {
     width: 100%;
   }
+  /* Make the track title look clickable */
+  .track-title {
+    cursor: pointer;
+    position: relative; /* Needed for the +/- icon */
+    padding-right: 25px; /* Make space for the icon */
+    -webkit-user-select: none; /* Prevent text selection on click */
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  /* Style for the +/- icon */
+  .track-title::after {
+    content: '+'; /* Show '+' by default */
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: var(--primary);
+  }
+
+  /* When a section is OPEN (not collapsed), change the icon to '-' */
+  .track-section:not(.is-collapsed) .track-title::after {
+    content: '−'; /* Use a proper minus sign */
+  }
+
+  /* The container for the content we want to show/hide */
+  .collapsible-content {
+    /* Smooth transition for opening/closing */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+  }
+
+  /* When a section is OPEN, set max-height to a large value to reveal it */
+  .track-section:not(.is-collapsed) .collapsible-content {
+    max-height: 2000px; /* A value larger than any possible content height */
+    transition: max-height 0.5s ease-in;
+  }
 }
 </style>
 
@@ -815,7 +856,7 @@ Here we provide the drum samples and envelopes of the model reported in the pape
 </div>
 
 <p>
-  We recommend using headphones for the best experience. If you encounter any issues, please let us know!
+  We recommend using headphones for the best experience. If you encounter any issues,try refreshing the page and please let us know!
 </p>
 
 <p>
@@ -908,43 +949,46 @@ Here we provide the drum samples and envelopes of the model reported in the pape
   
   {
     id: "93",
-    title: "93_hiphop_75_beat_4-4.wav, drum kit: heavy",
-    baseFile: "93_hiphop_75_beat_4-4_heavy",
+    title: "93_hiphop_75_beat_4-4.wav, drum kit: brooklyn (train)",
+    baseFile: "93_hiphop_75_beat_4-4_brooklyn",
+    crop: 10 // 5 seconds playback (remove this line to play the full track)
   },
   {
-    id: "43",
-    title: "43_rock_120_beat_4-4.wav, drum kit: portland",
-    baseFile: "43_rock_120_beat_4-4_portland",
-    crop: 5 // 5 seconds playback (remove this line to play the full track)
-  },
-  {
-    id: "18",
-    title: "18_rock_118_fill_4-4.wav, drum kit: east bay",
-    baseFile: "18_rock_118_fill_4-4_east_bay",
-    // No crop specified, will play the full track
+    id: "166",
+    title: "166_latin-brazilian-baiao_95_fill_4-4.wav, drum kit: heavy",
+    baseFile: "166_latin-brazilian-baiao_95_fill_4-4_heavy",
+    crop: 2
   },
   {
     id: "73",
-    title: "73_neworleans-funk_93_fill_4-4.wav, drum kit: heavy",
-    baseFile: "73_neworleans-funk_93_fill_4-4_heavy",
+    title: "73_neworleans-funk_93_fill_4-4.wav, drum kit: brooklyn",
+    baseFile: "73_neworleans-funk_93_fill_4-4_brooklyn",
   },
   {
-    id: "114",
-    title: "114_jazz-fusion_96_beat_4-4.wav, drum kit: heavy",
-    baseFile: "114_jazz-fusion_96_beat_4-4_heavy"
+    id: "11",
+    title: "11_rock_120_beat_4-4.wav, drum kit: portland",
+    baseFile: "11_rock_120_beat_4-4_portland",
+  },
+  {
+    id: "7",
+    title: "7_pop-groove7_138_beat_4-4.wav, drum kit: retro rock",
+    baseFile: "7_pop-groove7_138_beat_4-4_retro_rock"
     // No crop specified, will play the full track
   }
 ];
   
+
+  const experimentName = 'test_train_kits';
   // Models configuration
   const models = [
     { id: "original", name: "Original Mix", instruments: ["full"] },
-    { id: "GT", name: "Ground Truth" },
-    { id: "Oracle", name: "Oracle" },
-    { id: "IDM_masked", name: "IDM masked (Ours)" },
-    { id: "IDM_synth", name: "IDM synth (Ours)" },
-    { id: "LarsNet", name: "LarsNet" },
-    { id: "NMFD", name: "NMFD" }
+    { id: "GT", name: "Ground Truth", dirName: "gt", suffix: "synth" },
+    { id: "Oracle", name: "Oracle", dirName: "oracle", suffix: "masked" },
+    { id: "IDM_masked", name: "IDM masked (Ours)", dirName: "9cf252ba", suffix: "masked" },
+    { id: "IDM_synth", name: "IDM synth (Ours)", dirName: "9cf252ba", suffix: "synth" },
+    { id: "LarsNet", name: "LarsNet", dirName: "larsnet_stereo", suffix: "synth" },
+    { id: "LarsNet Mono", name: "LarsNet Mono", dirName: "larsnet_mono", suffix: "synth" },
+    { id: "NMFD", name: "NMFD", dirName: "nmfd_case1a", suffix: "masked" } // Assuming 'nmfd' is the directory name
   ];
   
   // Instrument configuration
@@ -1096,7 +1140,7 @@ async function initializeStemWaveform(track, model, instrument) {
   stemWaveformContainer.style.display = 'block';
   
   // Determine audio path
-  const audioPath = `/assets/audio/inverse-drum-machine/${model.id}/${track.baseFile}_${instrumentId}.wav`;
+  const audioPath = `/assets/audio/inverse-drum-machine/separation_outputs/${experimentName}/${track.baseFile}/${model.dirName}/${instrumentId}_${model.suffix}.wav`;
   
   // Cleanup existing waveform
   if (waveSurfers[stemWavesurferId]) {
@@ -1208,72 +1252,62 @@ stemWs.on('seek', position => {
   
   // Build the track sections
   tracks.forEach(track => {
-    // Create track section
+    // Create the main container for this track
     const trackSection = document.createElement('div');
     trackSection.className = 'track-section';
     trackSection.id = `track-${track.id}`;
     
-    // Add track title
+    // Create the clickable title
     const trackTitle = document.createElement('h3');
     trackTitle.className = 'track-title';
     trackTitle.textContent = track.title;
     trackSection.appendChild(trackTitle);
     
-    // Create waveform container
+    // --- Create the wrapper for collapsible content ---
+    const collapsibleContent = document.createElement('div');
+    collapsibleContent.className = 'collapsible-content';
+
+    // --- Create and build the waveform container ---
     const waveformContainer = document.createElement('div');
     waveformContainer.className = 'waveform-container';
     
-    // Add mixture waveform label
     const mixLabel = document.createElement('div');
     mixLabel.className = 'waveform-label';
     mixLabel.textContent = 'Original Mix';
     waveformContainer.appendChild(mixLabel);
     
-    // Add main waveform container
     const wfDiv = document.createElement('div');
     wfDiv.className = 'waveform';
     wfDiv.id = `waveform-${track.id}`;
     waveformContainer.appendChild(wfDiv);
     
-    // Add stem waveform label
     const stemLabel = document.createElement('div');
     stemLabel.className = 'waveform-label';
     stemLabel.id = `stem-label-${track.id}`;
     stemLabel.textContent = 'Selected Stem';
     waveformContainer.appendChild(stemLabel);
     
-    // Add stem waveform container
     const stemWfDiv = document.createElement('div');
     stemWfDiv.className = 'stem-waveform';
     stemWfDiv.id = `stem-waveform-${track.id}`;
     waveformContainer.appendChild(stemWfDiv);
     
-    trackSection.appendChild(waveformContainer);
-    
-    // Create table
+    // --- Create and build the comparison table ---
     const table = document.createElement('table');
     table.className = 'comparison-table';
-    
-    // Create table header
     const thead = document.createElement('thead');
     const headerRow = document.createElement('tr');
     
-    // Empty cell for model names
     const emptyHeader = document.createElement('th');
     emptyHeader.textContent = 'Model / Instrument';
     headerRow.appendChild(emptyHeader);
     
-    // Filter instruments based on model
-    const displayInstruments = instruments.filter(instr => 
-      instr.id !== "full" || (instr.id === "full" && models.some(m => m.instruments && m.instruments.includes("full")))
-    );
+    const displayInstruments = instruments.filter(instr => instr.id !== "full" || (instr.id === "full" && models.some(m => m.instruments && m.instruments.includes("full"))));
     
-    // Add instrument headers
     displayInstruments.forEach(instrument => {
       if (instrument.id !== "full") {
         const th = document.createElement('th');
         th.textContent = instrument.name;
-        th.dataset.instrument = instrument.id;
         th.style.color = getInstrumentColor(instrument.id);
         headerRow.appendChild(th);
       }
@@ -1282,14 +1316,9 @@ stemWs.on('seek', position => {
     thead.appendChild(headerRow);
     table.appendChild(thead);
     
-    // Create table body
     const tbody = document.createElement('tbody');
-    
-    // Add model rows
     models.forEach(model => {
       const row = document.createElement('tr');
-      row.dataset.model = model.id;
-      
       const modelCell = document.createElement('td');
       modelCell.className = 'model-name';
       modelCell.textContent = model.name;
@@ -1298,34 +1327,38 @@ stemWs.on('seek', position => {
       if (model.id === "original") {
         const fullMixCell = document.createElement('td');
         fullMixCell.colSpan = displayInstruments.length - 1;
-        
         const audioId = `${track.id}_${model.id}_full`;
-        const audioPath = `/assets/audio/inverse-drum-machine/GT/${track.baseFile}_mix.wav`;
-        
+        const audioPath = `/assets/audio/inverse-drum-machine/separation_outputs/${experimentName}/${track.baseFile}/mix.wav`;
         const button = createPlayerButton(audioId, audioPath, track.id, model.id, "full");
         fullMixCell.appendChild(button);
         row.appendChild(fullMixCell);
       } else {
         displayInstruments.forEach(instrument => {
           if (instrument.id === "full") return;
-          
           const cell = document.createElement('td');
           const audioId = `${track.id}_${model.id}_${instrument.id}`;
-          const audioPath = `/assets/audio/inverse-drum-machine/${model.id}/${track.baseFile}_${instrument.id}.wav`;
+          const audioPath = `/assets/audio/inverse-drum-machine/separation_outputs/${experimentName}/${track.baseFile}/${model.dirName}/${instrument.id}_${model.suffix}.wav`;
           const button = createPlayerButton(audioId, audioPath, track.id, model.id, instrument.id);
           cell.appendChild(button);
           row.appendChild(cell);
         });
       }
-      
       tbody.appendChild(row);
     });
     
     table.appendChild(tbody);
-    trackSection.appendChild(table);
+    
+    // Append the waveform and table to the collapsible wrapper
+    collapsibleContent.appendChild(waveformContainer);
+    collapsibleContent.appendChild(table);
+    
+    // Append the wrapper to the main track section
+    trackSection.appendChild(collapsibleContent);
+    
+    // Append the entire section for this track to the main demo container
     audioDemosContainer.appendChild(trackSection);
     
-    // Initialize WaveSurfer for this track
+    // --- Initialize the main WaveSurfer instance for this track ---
     const ws = WaveSurfer.create({
       container: `#waveform-${track.id}`,
       waveColor: '#ccd6f6',
@@ -1337,57 +1370,21 @@ stemWs.on('seek', position => {
       interact: true
     });
     
-    // Load the original track mix
-    ws.load(`/assets/audio/inverse-drum-machine/GT/${track.baseFile}_mix.wav`);
-    
-    // Configure WaveSurfer events
-    ws.on('ready', () => {
-  console.log(`WaveSurfer ready for track ${track.id}`);
-  ws.setMute(true); // Mute wavesurfer, we'll use our own audio elements
-  
-  // No visual indicator, just implement the cropping functionality
-  if (track.crop) {
-    const fullDuration = ws.getDuration();
-    console.log(`Crop set for track ${track.id}: ${track.crop}s out of ${fullDuration}s`);
-  }
-});
-    
-    ws.on('seek', position => {
-      if (isUpdatingWaveform) return;
-      if (currentTrackId !== track.id) return;
-      
-      // When user seeks in waveform, sync all audio elements for this track
-      const t = ws.getDuration() * position;
-      Object.keys(audioObjects)
-        .filter(id => id.startsWith(track.id))
-        .forEach(id => {
-          const audio = audioObjects[id];
-          if (Math.abs(audio.currentTime - t) > 0.1) {
-            audio.currentTime = t;
-          }
-        });
-      
-      // Also sync stem waveform if visible
-      const stemWavesurferId = `wavesurfer-stem-${track.id}`;
-      if (waveSurfers[stemWavesurferId] && waveSurfers[stemWavesurferId].isReady) {
-        try {
-          isUpdatingWaveform = true;
-          waveSurfers[stemWavesurferId].seekTo(position);
-          setTimeout(() => { isUpdatingWaveform = false; }, 5);
-        } catch (e) {
-          isUpdatingWaveform = false;
-          console.warn(`Error updating stem waveform position:`, e);
-        }
-      }
-    });
-    
-    // Handle waveform errors
-    ws.on('error', err => {
-      console.warn('WaveSurfer error:', err);
-    });
-    
-    // Store WaveSurfer instance
+    ws.load(`/assets/audio/inverse-drum-machine/separation_outputs/${experimentName}/${track.baseFile}/mix.wav`);
+    ws.on('ready', () => ws.setMute(true));
+    ws.on('error', err => console.warn('WaveSurfer error:', err));
     waveSurfers[track.id] = ws;
+
+    // --- Add the logic for the collapsible section ---
+    
+    // Start all sections in a collapsed state
+    trackSection.classList.add('is-collapsed');
+
+    // Add the click event listener to the title to toggle visibility
+    trackTitle.addEventListener('click', () => {
+      trackSection.classList.toggle('is-collapsed');
+    });
+    
   });
   
   // Create player button helper
@@ -1731,7 +1728,7 @@ async function checkStemAvailability() {
           if (instrument.id === "full" && model.id !== "GT") return;
           
           const audioId = `${track.id}_${model.id}_${instrument.id}`;
-          const audioPath = `/assets/audio/inverse-drum-machine/${model.id}/${track.baseFile}_${instrument.id}.wav`;
+          const audioPath = `/assets/audio/inverse-drum-machine/separation_outputs/${experimentName}/${track.baseFile}/${model.dirName}/${instrument.id}_${model.suffix}.wav`;
           
           // Find the button
           const btn = document.querySelector(`button[data-id="${audioId}"]`);
@@ -1870,7 +1867,7 @@ function stopAudio(resetTrackInfo = true) {
     });
   });
     console.log("DOM loaded, checking stem availability soon...");
-  checkStemAvailability();
+  // checkStemAvailability();
 });
 </script>
 
