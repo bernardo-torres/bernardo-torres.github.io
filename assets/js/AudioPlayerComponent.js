@@ -1,5 +1,3 @@
-// This component has been refactored to implement a more intuitive
-// pause/resume and single-click track switching functionality.
 export class AudioTrackPlayer {
     constructor(trackConfig, models, instruments, globalState) {
         this.track = trackConfig;
@@ -83,11 +81,20 @@ export class AudioTrackPlayer {
     _createTable() {
         const table = document.createElement('table');
         table.className = 'comparison-table';
-        const thead = table.createTHead().insertRow();
+        const thead = table.createTHead();
+        const headerRow = thead.insertRow(); // FIX: Properly define headerRow
+        headerRow.innerHTML = '<th>Model / Instrument</th>';
+        
         const displayInstruments = this.instruments.filter(inst => inst.id !== 'full');
         
-        thead.innerHTML = '<th>Model / Instrument</th>';
-        displayInstruments.forEach(inst => thead.innerHTML += `<th>${inst.name}</th>`);
+        displayInstruments.forEach(inst => {
+            const th = document.createElement('th');
+            th.textContent = inst.name;
+            if (inst.color) {
+                th.style.color = inst.color;
+            }
+            headerRow.appendChild(th);
+        });
 
         const tbody = table.createTBody();
         this.models.filter(model => model.id !== 'original').forEach(model => {
@@ -120,7 +127,6 @@ export class AudioTrackPlayer {
     _handlePlay(button, audioId, audioPath, model, instrument) {
         const audio = this.audioObjects[this.currentlyPlayingAudioId];
 
-        // Case 1: Toggle pause/play on the currently active track
         if (audioId === this.currentlyPlayingAudioId && audio) {
             if (audio.paused) {
                 audio.play();
@@ -128,7 +134,7 @@ export class AudioTrackPlayer {
                 button.classList.add('playing');
                 Object.values(this.waveSurfers).forEach(ws => ws && ws.play());
             } else {
-                audio.pause(); // This is now a PAUSE, not a full stop.
+                audio.pause();
                 button.textContent = 'Play';
                 button.classList.remove('playing');
                 Object.values(this.waveSurfers).forEach(ws => ws && ws.pause());
@@ -136,11 +142,10 @@ export class AudioTrackPlayer {
             return;
         }
 
-        // Case 2: Switch to a new track
         const syncTime = this.globalState.sync ? this._getSyncTime() : 0;
         
         if (this.globalState.activePlayer) {
-            this.globalState.activePlayer._stopCurrent(false); // Stop but preserve time
+            this.globalState.activePlayer._stopCurrent(false);
         }
         
         this._updateStemWaveform(model, instrument, audioPath);
@@ -175,26 +180,26 @@ export class AudioTrackPlayer {
         audio.addEventListener('timeupdate', () => {
             if (this.isUpdatingWaveform || this.currentlyPlayingAudioId !== audioId || !audio.duration) return;
             
-            this.isUpdatingWaveform = true;
-            const progress = audio.currentTime / audio.duration;
-            
-            if (this.waveSurfers.main) this.waveSurfers.main.seekTo(progress);
-            if (this.waveSurfers.stem) this.waveSurfers.stem.seekTo(progress);
+            if (!audio._lastUpdate || Date.now() - audio._lastUpdate > 50) {
+                audio._lastUpdate = Date.now();
+                const progress = audio.currentTime / audio.duration;
+                
+                this.isUpdatingWaveform = true;
+                if (this.waveSurfers.main) this.waveSurfers.main.seekTo(progress);
+                if (this.waveSurfers.stem) this.waveSurfers.stem.seekTo(progress);
+                this.isUpdatingWaveform = false;
 
-            const allButtons = this.dom.section.querySelectorAll(`[data-audio-id="${audioId}"]`);
-            allButtons.forEach(button => {
-                 const progIndicator = button.querySelector('.progress-indicator');
-                 if (progIndicator) progIndicator.style.width = `${progress * 100}%`;
-            });
+                const allButtons = this.dom.section.querySelectorAll(`[data-audio-id="${audioId}"]`);
+                allButtons.forEach(button => {
+                     const progIndicator = button.querySelector('.progress-indicator');
+                     if (progIndicator) progIndicator.style.width = `${progress * 100}%`;
+                });
+            }
             
             if (this.track.crop && audio.currentTime >= this.track.crop) {
-                if (this.globalState.loop) {
-                    audio.currentTime = 0;
-                } else {
-                    this._stopCurrent(true);
-                }
+                if (this.globalState.loop) audio.currentTime = 0;
+                else this._stopCurrent(true);
             }
-            this.isUpdatingWaveform = false;
         });
 
         audio.addEventListener('ended', () => { if (!audio.loop) this._stopCurrent(true); });
@@ -214,10 +219,8 @@ export class AudioTrackPlayer {
         const stemLabel = document.getElementById(`stem-label-${this.track.id}`);
         const stemWaveformEl = document.getElementById(`stem-waveform-${this.track.id}`);
         
-        if (this.waveSurfers.stem) {
-            this.waveSurfers.stem.destroy();
-            delete this.waveSurfers.stem;
-        }
+        if (this.waveSurfers.stem) this.waveSurfers.stem.destroy();
+        delete this.waveSurfers.stem;
 
         if (model.id === 'original') {
             stemLabel.style.display = 'none';
@@ -229,9 +232,12 @@ export class AudioTrackPlayer {
         stemLabel.style.display = 'block';
         stemWaveformEl.style.display = 'block';
         
+        const instrumentColor = this._getInstrumentColor(instrument.id);
+        const progressColor = this._getLighterColor(instrumentColor);
+
         this.waveSurfers.stem = WaveSurfer.create({
             container: stemWaveformEl,
-            waveColor: '#dd6b20', progressColor: '#c53030',
+            waveColor: instrumentColor, progressColor: progressColor,
             height: 60, barWidth: 2, interact: true,
         });
         this.waveSurfers.stem.load(audioPath);
@@ -269,9 +275,7 @@ export class AudioTrackPlayer {
 
         if (audio) {
             audio.pause();
-            if (resetTime) {
-                audio.currentTime = 0;
-            }
+            if (resetTime) audio.currentTime = 0;
         }
 
         Object.values(this.waveSurfers).forEach(ws => ws && ws.pause());
@@ -291,9 +295,25 @@ export class AudioTrackPlayer {
         }
     }
 
-    // Public method for global "Stop All" button - this performs a hard reset.
     stopAudio() {
         this._stopCurrent(true);
     }
-}
 
+    _getInstrumentColor(instrumentId) {
+        const instrument = this.instruments.find(inst => inst.id === instrumentId);
+        return instrument ? instrument.color : '#a0aec0';
+    }
+
+    _getLighterColor(hexColor) {
+        if (!hexColor || hexColor.length < 7) return '#d1d5db';
+        let r = parseInt(hexColor.substr(1, 2), 16);
+        let g = parseInt(hexColor.substr(3, 2), 16);
+        let b = parseInt(hexColor.substr(5, 2), 16);
+        
+        r = Math.min(255, r + 40);
+        g = Math.min(255, g + 40);
+        b = Math.min(255, b + 40);
+        
+        return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
+    }
+}

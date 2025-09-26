@@ -1,0 +1,150 @@
+/* Color Palette & Root Variables */
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --primary-light: #dbeafe;
+    --danger: #ef4444;
+    --danger-dark: #dc2626;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-700: #374151;
+    --gray-900: #1f2937;
+}
+
+/* Layout & Typography */
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    color: var(--gray-700);
+    background-color: var(--gray-50);
+    line-height: 1.6;
+    margin: 0;
+    padding: 2rem;
+}
+#app-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 1.5rem 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+h1, h2, h3, .track-title {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--gray-900);
+    font-weight: 600;
+}
+h1 { font-size: 2.25rem; border-bottom: 3px solid var(--primary); padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
+
+/* Global Controls */
+.global-controls {
+    display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; padding: 1rem;
+    background-color: var(--primary-light); border-radius: 0.5rem; align-items: center;
+    border: 1px solid var(--gray-200);
+}
+.control-group { display: flex; align-items: center; gap: 0.5rem; }
+.control-group label { font-family: 'Montserrat', sans-serif; font-weight: 500; }
+.stop-all-button {
+    background-color: var(--danger); color: white; padding: 0.5rem 1rem; border: none;
+    border-radius: 0.25rem; cursor: pointer; font-family: 'Montserrat', sans-serif;
+    font-weight: 500; transition: all 0.2s ease;
+}
+.stop-all-button:hover { background-color: var(--danger-dark); transform: translateY(-1px); }
+
+/* Track Section */
+.track-section {
+    margin-bottom: 2rem; border: 1px solid var(--gray-200); border-radius: 0.5rem;
+    overflow: hidden; transition: box-shadow 0.3s ease;
+}
+.track-section:hover { box-shadow: 0 4px 10px rgba(0,0,0,0.07); }
+.track-title {
+    font-size: 1.3rem; font-weight: 600; margin: 0; padding: 1rem 1.5rem;
+    cursor: pointer; position: relative; background-color: #fff; user-select: none;
+    border-bottom: 1px solid var(--gray-200);
+}
+.track-title::after {
+    content: '+'; position: absolute; right: 1.5rem; top: 50%;
+    transform: translateY(-50%); font-weight: bold; font-size: 1.75rem; color: var(--primary);
+}
+.track-section:not(.is-collapsed) .track-title::after { content: '−'; }
+
+/* Collapsible Content */
+.collapsible-content {
+    max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out;
+    background-color: var(--gray-50); padding: 0 1.5rem;
+}
+.track-section:not(.is-collapsed) .collapsible-content {
+    max-height: 2000px; padding: 1.5rem; transition: max-height 0.5s ease-in;
+}
+
+/* Table */
+.comparison-table { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 1.5rem; }
+.comparison-table th, .comparison-table td { padding: 0.75rem; border: 1px solid var(--gray-200); text-align: center; vertical-align: middle; }
+.comparison-table th { background-color: var(--gray-100); font-weight: 600; }
+.comparison-table td:first-child { font-weight: 600; text-align: left; }
+.our-model td { background-color: var(--primary-light) !important; }
+
+/* Player Button */
+.player-button {
+    background-color: var(--primary); 
+    color: white; 
+    border: none; 
+    border-radius: 0.25rem;
+    padding: 0.5rem; 
+    cursor: pointer; 
+    width: 100px; 
+    position: relative;
+    transition: all 0.2s ease; 
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: 500; 
+    min-height: 38px;
+    font-size: 0.9rem; /* <-- Add this line */
+}
+.player-button:hover { background-color: var(--primary-dark); transform: translateY(-1px); }
+.player-button.playing { background-color: var(--danger); }
+.player-button.playing:hover { background-color: var(--danger-dark); }
+.player-button.unavailable { background-color: var(--gray-200); color: var(--gray-700); cursor: not-allowed; }
+.player-button.unavailable:hover { background-color: var(--gray-200); transform: none; }
+
+/* Waveforms */
+.waveform-container { padding: 1rem; background-color: white; border-radius: 0.5rem; border: 1px solid var(--gray-200); }
+.waveform-label { font-weight: 600; font-family: 'Montserrat', sans-serif; margin-bottom: 0.5rem; }
+.stem-waveform-wrapper { margin-top: 1rem; min-height: 85px; }
+  /* Make the track title look clickable for collapsible sections */
+.track-title {
+cursor: pointer;
+position: relative;
+padding-right: 25px;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+
+
+.toggle-button {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  .toggle-button:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  }
+
+/* Responsive */
+@media (max-width: 768px) {
+    body { padding: 0.5rem; }
+    #app-container { padding: 1rem; }
+    .global-controls { flex-direction: column; align-items: flex-start; }
+    .player-button { width: 100%; }
+}
