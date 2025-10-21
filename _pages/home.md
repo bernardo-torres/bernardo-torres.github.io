@@ -57,7 +57,7 @@ I hold a Bachelor's in Electrical and Computer Engineering from <a href="https:/
   <i class="fab fa-fw fa-twitter"></i> <a href="https://twitter.com/torres_be_">Twitter</a>
   <i class="fa fa-graduation-cap"></i> <a href="https://scholar.google.com/citations?user=S5h1fHIAAAAJ&hl=en">Google Scholar</a>
 </p>
-You can find my CV <a href="/documents/Bernardo_Torres_CV_2024.pdf">here</a>. 
+You can find my CV <a href="/documents/Bernardo_Torres_CV_2025.pdf">here</a>. 
  </div>
  <div class="profile-photo">
    <img src="/assets/images/bernardo_torres.png" alt="Bernardo Torres">
