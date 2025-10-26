@@ -1,6 +1,6 @@
 // This file tells the player WHAT to load and HOW to find it.
 
-const BASE_AUDIO_URL = '/assets/audio/inverse-drum-machine/separation_outputs/';
+const BASE_AUDIO_URL = '/documents/audio/inverse-drum-machine/separation_outputs/';
 
 const MODELS = [
     { id: "original", name: "Original Mix", dirName: "", suffix: "mix" },

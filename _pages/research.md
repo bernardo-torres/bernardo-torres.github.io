@@ -56,7 +56,7 @@ I am currently working on topics related to music source separation using synthe
 <div class="publication-item">
     <!-- <div class="pub-year">2024</div> -->
     <div class="pub-thumbnail">
-        <img src="/assets/images/poster_spectra_horizontal_transport_lines.png" alt="Thumbnail">
+        <img src="/documents/images/poster_spectra_horizontal_transport_lines.png" alt="Thumbnail">
     </div>
     <div class="pub-details">
         <p style="margin: 0; padding: 0;">

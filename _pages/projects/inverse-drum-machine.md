@@ -153,7 +153,7 @@ This is the accompanying page for the paper "The Inverse Drum Machine: Source Se
 
 
 <p align="center">
-  <img src="/assets/images/inverse-drum-machine/overview.png" alt="Inverse Drum Machine Overview" style="max-width: 35%; height: auto; border-radius: 0.5rem;">
+  <img src="/documents/images/inverse-drum-machine/overview.png" alt="Inverse Drum Machine Overview" style="max-width: 35%; height: auto; border-radius: 0.5rem;">
 </p>
 
 <h2>Drum Samples and Envelopes</h2>
@@ -163,7 +163,7 @@ Here we provide the drum samples and envelopes of the model reported in the pape
 
 <div class="additional-content-controls">
   <p class="content-notice">
-    <i>Note: The interactive drum samples and envelopes visualizations may take some time to load. For best performance, you can toggle them on only when needed, or <a href="/assets/html/inverse-drum-machine/IDM/test_drum_samples.html" target="_blank">open the drum samples</a> and <a href="/assets/html/inverse-drum-machine/IDM/test_envelopes.html" target="_blank">envelopes</a> in separate windows.</i>
+    <i>Note: The interactive drum samples and envelopes visualizations may take some time to load. For best performance, you can toggle them on only when needed, or <a href="/documents/html/inverse-drum-machine/IDM/test_drum_samples.html" target="_blank">open the drum samples</a> and <a href="/documents/html/inverse-drum-machine/IDM/test_envelopes.html" target="_blank">envelopes</a> in separate windows.</i>
   </p>
   
   <button id="toggleVisualizationsBtn" class="toggle-button">Show Visualizations</button>
@@ -176,14 +176,14 @@ Here we provide the drum samples and envelopes of the model reported in the pape
       <p style="color: #e53e3e; font-weight: bold; margin-bottom: 0.5rem;">
         <strong>Warning:</strong> Some drum samples can be loud! Please lower your volume before clicking.
       </p>
-      <div class="iframe-placeholder" data-src="/assets/html/inverse-drum-machine/IDM/test_drum_samples.html">
+      <div class="iframe-placeholder" data-src="/documents/html/inverse-drum-machine/IDM/test_drum_samples.html">
         <div class="placeholder-content">Click to load Drum Samples visualization</div>
       </div>
     </div>
     
     <div style="flex: 1 1 100%; min-width: 300px;">
       <h3>Envelopes</h3>
-      <div class="iframe-placeholder" data-src="/assets/html/inverse-drum-machine/IDM/test_envelopes.html">
+      <div class="iframe-placeholder" data-src="/documents/html/inverse-drum-machine/IDM/test_envelopes.html">
         <div class="placeholder-content">Click to load Envelopes visualization</div>
       </div>
     </div>

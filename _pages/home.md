@@ -60,7 +60,7 @@ I hold a Bachelor's in Electrical and Computer Engineering from <a href="https:/
 You can find my CV <a href="/documents/Bernardo_Torres_CV_2025.pdf">here</a>. 
  </div>
  <div class="profile-photo">
-   <img src="/assets/images/bernardo_torres.png" alt="Bernardo Torres">
+   <img src="/documents/images/bernardo_torres.png" alt="Bernardo Torres">
  </div>
 
  
@@ -135,7 +135,7 @@ I am currently working on topics related to music source separation using synthe
 <div class="publication-item">
     <!-- <div class="pub-year">2024</div> -->
     <!-- <div class="pub-thumbnail">
-        <img src="/assets/images/poster_spectra_horizontal_transport_lines.png" alt="Thumbnail">
+        <img src="/documents/images/poster_spectra_horizontal_transport_lines.png" alt="Thumbnail">
     </div> -->
     <div class="pub-details">
         <p style="margin: 0; padding: 0;">
@@ -182,7 +182,7 @@ I am currently working on topics related to music source separation using synthe
 <div class="publication-item">
     <!-- <div class="pub-year">2024</div> -->
     <!-- <div class="pub-thumbnail">
-        <img src="/assets/images/poster_spectra_horizontal_transport_lines.png" alt="Thumbnail">
+        <img src="/documents/images/poster_spectra_horizontal_transport_lines.png" alt="Thumbnail">
     </div> -->
     <div class="pub-details">
         <p style="margin: 0; padding: 0;">
