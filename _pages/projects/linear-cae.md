@@ -13,4 +13,151 @@ show_author: false
 
 
 
-Coming soon :)
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<style>
+  .masthead {
+    display: none !important;
+  }
+</style>
+
+<link rel="stylesheet" href="{{ '/assets/css/demo_page.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/audioplayerstyle.css' | relative_url }}">
+<script src="https://unpkg.com/wavesurfer.js@6.6.3/dist/wavesurfer.min.js"></script>
+
+
+<div class="page__hero">
+<h1>Learning Linearity in Audio Autoencoders</h1>
+<p align="center" style="margin-top: 1rem; font-size: 1.1rem;">
+<a href="https://arxiv.org/abs/2405.10091" style="margin-right: 20px;">
+📄 <strong>Paper (arXiv)</strong>
+</a>
+|
+<a href="https://github.com/bernardo-torres/linear-consistency-autoencoders" style="margin-left: 20px;">
+<i class="fab fa-fw fa-github"></i> <strong>GitHub</strong>
+</a>
+</p>
+</div>
+
+<!-- Introduction -->
+
+<p>
+Modern audio autoencoders are powerful tools for learning compressed representations of sound, but their internal "latent" spaces are typically complex and non-linear. While in some applications this might be by design to capture high-level representations, it is often desirable to have low-level control over audio manipulations directly in the latent space. For example, adding the representations of two sounds doesn't create the representation of their mixture.
+</p>
+
+<p>
+We introduce <strong>Linear Consistency Autoencoders (Lin-CAE)</strong>, a simple training method that induces <strong>linearity</strong> in the latent space of a high-compression consistency autoencoder. This is done through data augmentation, without changing the model's architecture or loss function. While we apply this method to consistency models, a type of autoencoder where the decoder is a generative diffusion model, the approach is general and can be applied to <strong>any</strong> autoencoder architecture. 
+</p>
+
+<!-- Central Image -->
+
+<p align="center">
+<img src="/documents/images/linear-cae/overview.png" alt="A linear decoder respects latent space scaling (homogeneity) and addition (additivity)." style="max-width: 40%; height: auto; border-radius: 0.5rem; margin: 1rem 0;">
+</p>
+
+
+<h2>Properties of a linear autoencoder</h2>
+<p>
+A linear latent space allows for intuitive and efficient audio manipulation directly in the compressed representation.
+</p>
+<ul>
+<li>
+<strong>Homogeneity (Scaling):</strong> You can control the volume of a sound by simply multiplying its latent vector by a scalar. 
+
+<!-- $\text{Dec}(a \cdot \mathbf{z}) \approx a \cdot \text{Dec}(\mathbf{z})$ -->
+\\text{Dec}(a \cdot \mathbf{z}) \approx a \cdot \text{Dec}(\mathbf{z})\
+</li>
+<li>
+<strong>Additivity (Mixing):</strong> You can mix multiple sounds by adding their latent vectors together.
+
+
+
+
+
+$\text{Dec}(\mathbf{z}_u + \mathbf{z}_v) \approx \text{Dec}(\mathbf{z}_u) + \text{Dec}(\mathbf{z}_v)$
+</li>
+</ul>
+<p>
+We show that combining these properties we can also perform <strong>source separation via subtraction</strong>. This demo page allows you to hear the effects of these properties across different models.
+</p>
+
+<!-- Audio Demos Section -->
+
+<div class="audio-demos-section">
+<h2>Audio Demos</h2>
+
+<!-- Model Comparison Table -->
+
+<p>
+The interactive players below compare our model (Lin-CAE) against two strong baseline autoencoders. Note how the baseline models fail to perform linear operations, while ours produces coherent results.
+</p
+
+<!-- Explanation of Operations -->
+
+<p>
+We recommend using headphones. Each row in the player performs a different operation in the latent space. Listen to the outputs from the baseline models to understand what "failure" sounds like—they often produce distorted, artifact-heavy, or silent audio.
+</p>
+<ul>
+<li>
+<strong>Autoencoded Mix:</strong> The baseline reconstruction of the full mix. 
+</li>
+<li>
+<strong>Latent Addition:</strong> We add the latent vectors of four stems (vocals, drums, bass, other) and decode the result.
+</li>
+<li>
+<strong>Original Vocals:</strong> The ground truth vocal stem, for reference.
+</li>
+<li>
+<strong>Separated Vocals:</strong> We subtract the latent vector of the accompaniment (drums, bass, other) from the latent vector of the full mix and decode the result.
+</li>
+<li>
+<strong>Latent Scaling:</strong> We multiply the vocal latent vector by a scalar and decode the result.
+</li>
+</ul>
+
+
+
+
+<p>
+  The following controls are available:
+</p>
+<ul>
+  <li><strong>Stop All</strong>: Stop all currently playing audio.</li>
+  <li><strong>Sync Playback</strong>: When enabled, switching between models or stems will sync the playback position across all audio elements. When disabled, each audio element will play from the beginning.</li>
+  <li><strong>Loop</strong>: When enabled, the audio will loop continuously.</li>
+</ul>
+
+
+
+<p style="color: #e53e3e; font-weight: bold; border: 1px solid #e53e3e; background-color: #fff5f5; padding: 1rem; border-radius: 0.5rem;">
+<strong>Warning:</strong> Please turn your volume down before playing. The baseline models (M2L, Stable Audio VAE) can produce loud, unpleasant, and intense sounds when attempting linear operations they were not trained for.
+</p>
+
+  <div class="global-controls">
+    <div class="control-group">
+      <button id="stopAllButton" class="stop-all-button">Stop All</button>
+    </div>
+    <div class="control-group">
+      <input type="checkbox" id="syncCheckbox" checked>
+      <label for="syncCheckbox">Sync Playback</label>
+    </div>
+    <div class="control-group">
+      <input type="checkbox" id="loopCheckbox" checked>
+      <label for="loopCheckbox">Loop</label>
+    </div>
+    <div class="control-group">
+      <label for="volumeSlider">Volume:</label>
+      <input type="range" id="volumeSlider" class="volume-slider" min="0" max="1" step="0.01" value="0.8">
+    </div>
+  </div>
+
+  <div id="players-wrapper"></div>
+</div>
+
+<script src="{{ '/assets/js/linear-cae_main.js' | relative_url }}" type="module"></script>
+
+## Citation
+
+If you use our work in your research, please cite our paper:
