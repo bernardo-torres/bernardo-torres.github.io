@@ -1,6 +1,7 @@
 // This file tells the player WHAT to load and HOW to find it.
 
 const BASE_AUDIO_URL = '/documents/audio/inverse-drum-machine/separation_outputs/';
+const TABLE_HEADER = 'Model / Instrument';
 
 const MODELS = [
     { id: "original", name: "Original Mix", dirName: "", suffix: "mix" },
@@ -103,5 +104,5 @@ const buildAudioPath = (track, model, instrument) => {
 };
 
 // Export everything to be used by the main script
-export { BASE_AUDIO_URL, MODELS, INSTRUMENTS, TRACKS, buildAudioPath };
+export { BASE_AUDIO_URL, MODELS, INSTRUMENTS, TRACKS, buildAudioPath, TABLE_HEADER };
 

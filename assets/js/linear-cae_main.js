@@ -1,13 +1,10 @@
 import { AudioTrackPlayer } from './AudioPlayerComponent.js';
-import { MODELS, INSTRUMENTS, TRACKS, buildAudioPath, TABLE_HEADER } from './inverse-drum-machine_config.js';
-import { BASE_AUDIO_URL } from './inverse-drum-machine_config.js';
+import { MODELS, INSTRUMENTS, TRACKS, buildAudioPath, BASE_AUDIO_URL, TABLE_HEADER } from './linear-cae_config.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Find the wrapper on the page. If it doesn't exist, do nothing.
     const playersWrapper = document.getElementById('players-wrapper');
     if (!playersWrapper) return;
 
-    // --- Global State ---
     const globalState = {
         baseAudioUrl: BASE_AUDIO_URL,
         sync: true, loop: true, volume: 0.8, activePlayer: null,
@@ -31,6 +28,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Initialize a player component for each track in the config ---
     TRACKS.forEach(trackConfig => {
+        
+        // **DEBUGGING LINE ADDED HERE**
+        // This will log the path of every audio file as the table is built.
+        console.log(`--- Debug paths for track: ${trackConfig.title} ---`);
+        MODELS.forEach(model => {
+            INSTRUMENTS.forEach(instrument => {
+                const audioPath = buildAudioPath(trackConfig, model, instrument);
+                console.log(`Path for [${model.name}, ${instrument.name}]: ${audioPath}`);
+            });
+        });
+
         const player = new AudioTrackPlayer(trackConfig, MODELS, INSTRUMENTS, globalState);
         player.render(playersWrapper);
     });

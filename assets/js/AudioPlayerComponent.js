@@ -76,6 +76,9 @@ export class AudioTrackPlayer {
         this.waveSurfers.main.on('seek', (position) => this._seekAll(position));
         
         this.isInitialized = true;
+        if (typeof MathJax !== "undefined") {
+            MathJax.typeset();
+        }
     }
     
     _createTable() {
@@ -83,7 +86,8 @@ export class AudioTrackPlayer {
         table.className = 'comparison-table';
         const thead = table.createTHead();
         const headerRow = thead.insertRow(); // FIX: Properly define headerRow
-        headerRow.innerHTML = '<th>Model / Instrument</th>';
+        const headerText = this.globalState.tableHeader || 'Model / Instrument';
+        headerRow.innerHTML = `<th>${headerText}</th>`;
         
         const displayInstruments = this.instruments.filter(inst => inst.id !== 'full');
         
@@ -100,13 +104,14 @@ export class AudioTrackPlayer {
         this.models.filter(model => model.id !== 'original').forEach(model => {
             const row = tbody.insertRow();
             row.className = model.isOurs ? 'our-model' : '';
-            row.insertCell().textContent = model.name;
+            row.insertCell().innerHTML = model.name;
             displayInstruments.forEach(inst => {
                 row.insertCell().appendChild(this._createPlayerButton(model, inst));
             });
         });
         return table;
     }
+    
 
     _createPlayerButton(model, instrument) {
         const audioId = `${this.track.id}_${model.id}_${instrument.id}`;
