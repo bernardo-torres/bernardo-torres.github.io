@@ -70,9 +70,15 @@ We introduce <strong>Linear Consistency Autoencoders (Lin-CAE)</strong>, a simpl
 
 <!-- Central Image -->
 
-<p align="center">
-<img src="/documents/images/linear-cae/overview.png" alt="A linear decoder respects latent space scaling (homogeneity) and addition (additivity)." style="max-width: 40%; height: auto; border-radius: 0.5rem; margin: 1rem 0;">
-</p>
+<figure style="text-align: center; margin: 2rem auto; max-width: 40%;">
+  <img src="/documents/images/linear-cae/overview.png" 
+       alt="Linear autoencoder properties" 
+       style="width: 100%; height: auto; border-radius: 0.5rem; box-shadow: 1px 4px 6px rgba(0,0,0,0.1);">
+  <figcaption style="margin-top: 1rem; padding: 0 1rem; font-size: 0.9rem; color: #555; line-height: 1.5;">
+    <strong></strong> A linear decoder respects latent space scaling (homogeneity) and addition (additivity). 
+    Linear operations in the latent space correspond to linear operations in the audio domain.
+  </figcaption>
+</figure>
 
 
 <h2>Properties of a linear autoencoder</h2>

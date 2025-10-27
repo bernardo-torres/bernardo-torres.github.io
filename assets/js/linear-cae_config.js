@@ -10,6 +10,7 @@ const MODELS = [
   // { id: "additivity", name: `Latent addition: \\(${DEC_STR}(${ENC_STR}(\\text{vocals}) + ${ENC_STR}(\\text{drums}) + ${ENC_STR}(\\text{bass}) + ${ENC_STR}(\\text{other}))\\)` },
   { id: "additivity", name: `Latent addition: \\(${DEC_STR}(\\mathbf{z}_{\\text{vocals}} + \\mathbf{z}_{\\text{drums}} + \\mathbf{z}_{\\text{bass}} + \\mathbf{z}_{\\text{other}})\\)` },
   { id: "gt_vocals", name: "Original Vocals" },
+  { id: "ae_vocals", name: `Autoencoded Vocals: \\(${DEC_STR}(${ENC_STR}(\\text{vocals}))\\)` },
   { id: "sep_vocals", name: `Separated Vocals: \\(${DEC_STR}(\\mathbf{z}_{\\text{mix}} - \\mathbf{z}_{\\text{accomp}})\\)` },
   { id: "scale_0_1", name: `Latent Scaling: \\(${DEC_STR}(0.1 \\times \\mathbf{z}_{\\text{vocals}})\\)` },
   { id: "scale_0_5", name: `Latent Scaling: \\(${DEC_STR}(0.5 \\times \\mathbf{z}_{\\text{vocals}})\\)` },
@@ -27,9 +28,14 @@ const INSTRUMENTS = [
 // 4. List the tracks you want to feature in the demo.
 const TRACKS = [
     {
+      id: "kaathaadi",
+      title: "Track: Sambasevam Shanmugam - Kaathaadi",
+      baseDir: "Sambasevam Shanmugam - Kaathaadi",
+    },
+    {
       id: "aljames",
       title: "Track: Al James - Schoolboy Fascination",
-      baseDir: "Al_James_-_Schoolboy_Facination",
+      baseDir: "Al James - Schoolboy Facination",
     },
     {
       id: "zeno",
