@@ -48,7 +48,7 @@ MathJax = {
 <div class="page__hero">
 <h1>Learning Linearity in Audio Autoencoders</h1>
 <p align="center" style="margin-top: 1rem; font-size: 1.1rem;">
-<a href="https://arxiv.org/abs/2405.10091" style="margin-right: 20px;">
+<a href="https://arxiv.org/abs/" style="margin-right: 20px;">
 📄 <strong>Paper (arXiv)</strong>
 </a>
 <!-- | -->
