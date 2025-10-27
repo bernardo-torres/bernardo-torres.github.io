@@ -14,8 +14,25 @@ show_author: false
 
 
 
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: true,
+    processEnvironments: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  },
+  loader: {
+    load: ['[tex]/color']  // Add this
+  }
+};
+</script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 
 <style>
   .masthead {
@@ -34,7 +51,7 @@ show_author: false
 <a href="https://arxiv.org/abs/2405.10091" style="margin-right: 20px;">
 📄 <strong>Paper (arXiv)</strong>
 </a>
-|
+<!-- | -->
 <a href="https://github.com/bernardo-torres/linear-consistency-autoencoders" style="margin-left: 20px;">
 <i class="fab fa-fw fa-github"></i> <strong>GitHub</strong>
 </a>
@@ -44,7 +61,7 @@ show_author: false
 <!-- Introduction -->
 
 <p>
-Modern audio autoencoders are powerful tools for learning compressed representations of sound, but their internal "latent" spaces are typically complex and non-linear. While in some applications this might be by design to capture high-level representations, it is often desirable to have low-level control over audio manipulations directly in the latent space. For example, adding the representations of two sounds doesn't create the representation of their mixture.
+Autoencoders are powerful tools for learning compressed representations of sound, but their internal "latent" spaces are typically complex and non-linear. While in some applications this might be by design to capture high-level representations, it is often desirable to have low-level control over audio manipulations directly in the latent space. For example, adding the representations of two sounds doesn't create the representation of their mixture.
 </p>
 
 <p>
@@ -60,27 +77,27 @@ We introduce <strong>Linear Consistency Autoencoders (Lin-CAE)</strong>, a simpl
 
 <h2>Properties of a linear autoencoder</h2>
 <p>
-A linear latent space allows for intuitive and efficient audio manipulation directly in the compressed representation.
+A linear latent space allows for intuitive and efficient audio manipulation directly in the compressed representation. Let's denote the encoder as \(\operatorname{Enc}(\cdot)\) and the decoder as \(\operatorname{Dec}(\cdot)\), and a latent tensor as \(\mathbf{z}_x = \operatorname{Enc}(x)\) for an audio signal \(x\).
 </p>
 <ul>
 <li>
-<strong>Homogeneity (Scaling):</strong> You can control the volume of a sound by simply multiplying its latent vector by a scalar. 
-
-<!-- $\text{Dec}(a \cdot \mathbf{z}) \approx a \cdot \text{Dec}(\mathbf{z})$ -->
-\\text{Dec}(a \cdot \mathbf{z}) \approx a \cdot \text{Dec}(\mathbf{z})\
+<strong>Homogeneity (Scaling):</strong> You can control the volume of a sound by simply multiplying its latent tensor by a scalar.
+<div style="text-align: center; margin: 1rem 0;">
+\(\operatorname{Dec}(\textcolor{magenta}{a} \cdot \mathbf{z}_x) \approx \textcolor{magenta}{a} \cdot \operatorname{Dec}(\mathbf{z}_x)\)
+</div>
 </li>
 <li>
-<strong>Additivity (Mixing):</strong> You can mix multiple sounds by adding their latent vectors together.
-
-
-
-
-
-$\text{Dec}(\mathbf{z}_u + \mathbf{z}_v) \approx \text{Dec}(\mathbf{z}_u) + \text{Dec}(\mathbf{z}_v)$
+<strong>Additivity (Mixing):</strong> You can mix multiple sounds by adding their latents together.
+<div style="text-align: center; margin: 1rem 0;">
+\(\operatorname{Dec}(\mathbf{z}_u + \mathbf{z}_v) \approx \operatorname{Dec}(\mathbf{z}_u) + \operatorname{Dec}(\mathbf{z}_v)\)
+</div>
 </li>
 </ul>
+
 <p>
-We show that combining these properties we can also perform <strong>source separation via subtraction</strong>. This demo page allows you to hear the effects of these properties across different models.
+Combining these properties unlocks some applications such as <strong>source separation via subtraction</strong>. By subtracting the latent of an accompaniment from the latent of a full mix, we can isolate any stem. For vocals, this can be expressed as:
+
+\(\operatorname{Dec}(\mathbf{z}_{\text{mix}} - \mathbf{z}_{\text{accomp}}) \approx \operatorname{Dec}(\mathbf{z}_{\text{vocals}})\)
 </p>
 
 <!-- Audio Demos Section -->
@@ -91,14 +108,13 @@ We show that combining these properties we can also perform <strong>source separ
 <!-- Model Comparison Table -->
 
 <p>
-The interactive players below compare our model (Lin-CAE) against two strong baseline autoencoders. Note how the baseline models fail to perform linear operations, while ours produces coherent results.
-</p
+The interactive players below compare our model (Lin-CAE) against a few baseline autoencoders on test samples from the MUSDB18-HQ dataset.
+
 
 <!-- Explanation of Operations -->
 
 <p>
-We recommend using headphones. Each row in the player performs a different operation in the latent space. Listen to the outputs from the baseline models to understand what "failure" sounds like—they often produce distorted, artifact-heavy, or silent audio.
-</p>
+We recommend using headphones. Each row in the player performs a different operation in the latent space.
 <ul>
 <li>
 <strong>Autoencoded Mix:</strong> The baseline reconstruction of the full mix. 
@@ -153,11 +169,24 @@ We recommend using headphones. Each row in the player performs a different opera
     </div>
   </div>
 
+
   <div id="players-wrapper"></div>
 </div>
+
 
 <script src="{{ '/assets/js/linear-cae_main.js' | relative_url }}" type="module"></script>
 
 ## Citation
 
 If you use our work in your research, please cite our paper:
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    if (typeof MathJax !== "undefined") {
+      // This tells MathJax to find and render all
+      // static LaTeX content on the entire page.
+      MathJax.typeset();
+    }
+  });
+</script>

@@ -1,17 +1,19 @@
 
 const BASE_AUDIO_URL = '/documents/audio/linear-cae/'; // <-- IMPORTANT: Change this to the base URL for your new project's audio files.
 const TABLE_HEADER = 'Operation / Model';
-
+// ;lets define some strings for Dec and Enc
+const DEC_STR = '\\operatorname{Dec}';
+const ENC_STR = '\\operatorname{Enc}';
 const MODELS = [
-    // This is a dummy entry for the main waveform. The component expects it.
-    { id: "original", name: "Original Mix (for setup)" },
-    { id: "ae_mix",      name: "Autoencoded Mix \\(D(E(\\text{mix}))\\)" },
-    { id: "additivity",  name: "Latent addition \\(Dec(E(\\text{Vocals}) + E(\\text{Drums}) + E(\\text{Bass}) + E(\\text{Other}))\\)" },
-    { id: "gt_vocals",   name: "Original Vocals" },
-    { id: "sep_vocals",  name: "Separated Vocals \\(D(E(\\text{mix}) - E(\\text{accomp}))\\)" },
-    { id: "scale_0_1",   name: "Latent Scaling \\(D(0.1 \\cdot E(\\text{vocals}))\\)" },
-    { id: "scale_0_5",   name: "Latent Scaling \\(D(0.5 \\cdot E(\\text{vocals}))\\)" },
-    { id: "scale_2_0",   name: "Latent Scaling \\(D(2.0 \\cdot E(\\text{vocals}))\\)" },
+  { id: "original", name: "Original Mix (for setup)" },
+  { id: "ae_mix", name: `Autoencoded Mix: \\(${DEC_STR}(${ENC_STR}(\\text{mix}))\\)` },
+  // { id: "additivity", name: `Latent addition: \\(${DEC_STR}(${ENC_STR}(\\text{vocals}) + ${ENC_STR}(\\text{drums}) + ${ENC_STR}(\\text{bass}) + ${ENC_STR}(\\text{other}))\\)` },
+  { id: "additivity", name: `Latent addition: \\(${DEC_STR}(\\mathbf{z}_{\\text{vocals}} + \\mathbf{z}_{\\text{drums}} + \\mathbf{z}_{\\text{bass}} + \\mathbf{z}_{\\text{other}})\\)` },
+  { id: "gt_vocals", name: "Original Vocals" },
+  { id: "sep_vocals", name: `Separated Vocals: \\(${DEC_STR}(\\mathbf{z}_{\\text{mix}} - \\mathbf{z}_{\\text{accomp}})\\)` },
+  { id: "scale_0_1", name: `Latent Scaling: \\(${DEC_STR}(0.1 \\times \\mathbf{z}_{\\text{vocals}})\\)` },
+  { id: "scale_0_5", name: `Latent Scaling: \\(${DEC_STR}(0.5 \\times \\mathbf{z}_{\\text{vocals}})\\)` },
+  { id: "scale_2_0", name: `Latent Scaling: \\(${DEC_STR}(2.0 \\times \\mathbf{z}_{\\text{vocals}})\\)` },
 ];
 
 // 3. INSTRUMENTS now define the ROWS of the table. Each is a specific audio output.

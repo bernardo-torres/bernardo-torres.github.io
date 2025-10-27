@@ -233,9 +233,14 @@ export class AudioTrackPlayer {
             return;
         }
         
-        stemLabel.textContent = `Stem: ${model.name} - ${instrument.name}`;
+        // stemLabel.textContent = `Stem: ${model.name} - ${instrument.name}`;
+        stemLabel.innerHTML = `${model.name} - ${instrument.name}`;
         stemLabel.style.display = 'block';
         stemWaveformEl.style.display = 'block';
+
+        if (typeof MathJax !== 'undefined') {
+            MathJax.typesetPromise([stemLabel]).catch((err) => console.log('MathJax error:', err));
+        }
         
         const instrumentColor = this._getInstrumentColor(instrument.id);
         const progressColor = this._getLighterColor(instrumentColor);
