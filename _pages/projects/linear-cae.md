@@ -177,14 +177,28 @@ We recommend using headphones. Each row in the player performs a different opera
 
 
   <div id="players-wrapper"></div>
+
+
+
+<h2>Citation</h2>
+
+<p>If you use our work in your research, please cite our paper:</p>
+
+<div style="background-color: #f6f8fa; border: 1px solid #d1d5db; border-radius: 0.5rem; padding: 1.5rem; margin: 1rem 0; font-family: 'Courier New', monospace; font-size: 0.9rem; overflow-x: auto;">
+<pre style="margin: 0; white-space: pre-wrap;">
+@misc{torres2025learninglinearityaudioconsistency,
+      title={Learning Linearity in Audio Consistency Autoencoders via Implicit Regularization},
+      author={Bernardo Torres and Manuel Moussallam and Gabriel Meseguer-Brocal},
+      year={2025},
+      eprint={2510.23530},
+      archivePrefix={arXiv},
+      primaryClass={cs.SD},
+      url={https://arxiv.org/abs/2510.23530},
+}
+</pre>
 </div>
 
-
 <script src="{{ '/assets/js/linear-cae_main.js' | relative_url }}" type="module"></script>
-
-## Citation
-
-If you use our work in your research, please cite our paper:
 
 
 <script>
