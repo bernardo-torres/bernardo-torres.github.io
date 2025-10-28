@@ -113,6 +113,27 @@ I am currently working on topics related to music source separation using synthe
 <div class="publication-item">
     <div class="pub-details">
         <p style="margin: 0; padding: 0;">
+            <strong>Learning Linearity in Audio Consistency Autoencoders via Implicit Regularization</strong>
+        </p>
+        <p style="margin-left: 0px; margin-top: 5px;">
+            Bernardo Torres, Manuel Moussallam and Gabriel Meseguer-Brocal  
+            <br>
+            Under review.  
+            <br>
+            <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('lincae')">ABS</a>
+            <a href="https://arxiv.org/abs/2510.23530" class="pdf-box"> 📄 Preprint (arXiv)</a>
+            <a href="https://github.com/bernardo-torres/linear-autoencoders" class="pdf-box"><i class="fab fa-fw fa-github"></i> code</a>
+            <a href="https://bernardo-torres.github.io/projects/linear-cae/" class="pdf-box"><i class="fas fa-fw fa-link"></i> blog/demos</a>
+            <div id="lincae" class="abstract-content" style="display: none;">
+                Audio autoencoders learn useful, compressed audio representations, but their non-linear latent spaces prevent intuitive algebraic manipulation such as mixing or scaling. We introduce a simple training methodology to induce linearity in a high-compression Consistency Autoencoder (CAE) by using data augmentation, thereby inducing homogeneity (equivariance to scalar gain) and additivity (the decoder preserves addition) without altering the model's architecture or loss function. When trained with our method, the CAE exhibits linear behavior in both the encoder and decoder while preserving reconstruction fidelity. We test the practical utility of our learned space on music source composition and separation via simple latent arithmetic. This work presents a straightforward technique for constructing structured latent spaces, enabling more intuitive and efficient audio processing.
+            </div>
+        </p>
+    </div>
+</div>
+
+<div class="publication-item">
+    <div class="pub-details">
+        <p style="margin: 0; padding: 0;">
             <strong>The Inverse Drum Machine: Source Separation Through Joint Transcription and Analysis-by-Synthesis</strong>
         </p>
         <p style="margin-left: 0px; margin-top: 5px;">
@@ -121,7 +142,7 @@ I am currently working on topics related to music source separation using synthe
             Under review.  
             <br>
             <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('idm')">ABS</a>
-            <a href="https://arxiv.org/pdf/2505.03337" class="pdf-box"> 📄 Preprint (arXiv)</a>
+            <a href="https://arxiv.org/abs/2505.03337" class="pdf-box"> 📄 Preprint (arXiv)</a>
             <a href="https://github.com/bernardo-torres/inverse-drum-machine" class="pdf-box"><i class="fab fa-fw fa-github"></i> code</a>
             <a href="https://bernardo-torres.github.io/projects/inverse-drum-machine/" class="pdf-box"><i class="fas fa-fw fa-link"></i> blog/demos</a>
             <div id="idm" class="abstract-content" style="display: none;">
@@ -168,7 +189,7 @@ I am currently working on topics related to music source separation using synthe
             Accepted for the <em>  Late-Breaking Demo (LBD) session at ISMIR 2025</em>.
             <br>
             <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('pesto_ot')">ABS</a>
-            <a href="https://arxiv.org/abs/2508.01493" class="pdf-box">📄 Preprint</a>
+            <a href="https://arxiv.org/abs/2508.01493" class="pdf-box">📄 PDF (arXiv)</a>
             <a href="https://github.com/SonyCSLParis/pesto" class="pdf-box"><i class="fab fa-fw fa-github"></i> code</a>
             <a href="/documents/ISMIR25_LBD_poster.pdf" class="pdf-box"> poster 
             </a>
