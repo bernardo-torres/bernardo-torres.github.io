@@ -48,11 +48,11 @@ MathJax = {
 <div class="page__hero">
 <h1>Learning Linearity in Audio Autoencoders</h1>
 <p align="center" style="margin-top: 1rem; font-size: 1.1rem;">
-<a href="https://arxiv.org/abs/" style="margin-right: 20px;">
+<a href="https://arxiv.org/abs/2510.23530" style="margin-right: 20px;">
 📄 <strong>Paper (arXiv)</strong>
 </a>
 <!-- | -->
-<a href="https://github.com/bernardo-torres/linear-consistency-autoencoders" style="margin-left: 20px;">
+<a href="https://github.com/bernardo-torres/linear-autoencoders" style="margin-left: 20px;">
 <i class="fab fa-fw fa-github"></i> <strong>GitHub</strong>
 </a>
 </p>
