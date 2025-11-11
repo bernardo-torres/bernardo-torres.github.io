@@ -139,7 +139,7 @@ I am currently working on topics related to music source separation using synthe
         <p style="margin-left: 0px; margin-top: 5px;">
             Bernardo Torres, Geoffroy Peeters, Gaël Richard  
             <br>
-            Under review.  
+            In <em> IEEE Transactions on Audio, Speech, and Language Processing (TASLP), 2025</em>.
             <br>
             <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('idm')">ABS</a>
             <a href="https://arxiv.org/abs/2505.03337" class="pdf-box"> 📄 Preprint (arXiv)</a>
@@ -165,7 +165,7 @@ I am currently working on topics related to music source separation using synthe
         <p style="margin-left: 0px; margin-top: 5px;">
             Alain Riou, Bernardo Torres, Ben Hayes, Stefan Lattner, Gaëtan Hadjeres, Gaël Richard, Geoffroy Peeters
             <br>
-            In <em>Transactions of the International Society of Music Information Retrieval (TISMIR)</em>.
+            In <em>Transactions of the International Society of Music Information Retrieval (TISMIR), 2025</em>.
             <br>
             <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('pesto_journal')">ABS</a>
             <a href="https://transactions.ismir.net/articles/251/files/68c0346a4b785.pdf" class="pdf-box">📄 PDF (TISMIR)</a>
