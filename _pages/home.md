@@ -77,10 +77,6 @@ You can find my CV <a href="/documents/Bernardo_Torres_CV_2025.pdf">here</a>.
 # Research
 I am currently working on topics related to music source separation using synthesis, analysis-by-synthesis, deep learning for audio generation and differentiable digital signal processing. Broader research interests include self-supervised learning, music information retrieval, timbre, optimal transport and generative models. -->
 
-<div style="text-align: left; font-size: 1.2em; font-weight: bold; margin: 10px 0 20px;">
-    Publications
-    <hr style="border: none; height: 1px; color: #ddd; background-color: #ddd; width: 12%; margin: 0.5em 0; text-align: left;">
-</div>
 
 <style>
     .publication-item {
@@ -110,26 +106,11 @@ I am currently working on topics related to music source separation using synthe
 
 
 
-<div class="publication-item">
-    <div class="pub-details">
-        <p style="margin: 0; padding: 0;">
-            <strong>Learning Linearity in Audio Consistency Autoencoders via Implicit Regularization</strong>
-        </p>
-        <p style="margin-left: 0px; margin-top: 5px;">
-            Bernardo Torres, Manuel Moussallam and Gabriel Meseguer-Brocal  
-            <br>
-            Under review.  
-            <br>
-            <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('lincae')">ABS</a>
-            <a href="https://arxiv.org/abs/2510.23530" class="pdf-box"> 📄 Preprint (arXiv)</a>
-            <a href="https://github.com/bernardo-torres/linear-autoencoders" class="pdf-box"><i class="fab fa-fw fa-github"></i> code</a>
-            <a href="https://bernardo-torres.github.io/projects/linear-cae/" class="pdf-box"><i class="fas fa-fw fa-link"></i> blog/demos</a>
-            <div id="lincae" class="abstract-content" style="display: none;">
-                Audio autoencoders learn useful, compressed audio representations, but their non-linear latent spaces prevent intuitive algebraic manipulation such as mixing or scaling. We introduce a simple training methodology to induce linearity in a high-compression Consistency Autoencoder (CAE) by using data augmentation, thereby inducing homogeneity (equivariance to scalar gain) and additivity (the decoder preserves addition) without altering the model's architecture or loss function. When trained with our method, the CAE exhibits linear behavior in both the encoder and decoder while preserving reconstruction fidelity. We test the practical utility of our learned space on music source composition and separation via simple latent arithmetic. This work presents a straightforward technique for constructing structured latent spaces, enabling more intuitive and efficient audio processing.
-            </div>
-        </p>
-    </div>
+<div style="text-align: left; font-size: 1.1em; font-weight: bold; margin: 25px 0 10px;">
+    Journal Publications
+    <hr style="border: none; height: 1px; color: #ddd; background-color: #ddd; width: 12%; margin: 0.5em 0; text-align: left;">
 </div>
+
 
 <div class="publication-item">
     <div class="pub-details">
@@ -142,7 +123,8 @@ I am currently working on topics related to music source separation using synthe
             In <em> IEEE Transactions on Audio, Speech, and Language Processing (TASLP), 2025</em>.
             <br>
             <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('idm')">ABS</a>
-            <a href="https://arxiv.org/abs/2505.03337" class="pdf-box"> 📄 Preprint (arXiv)</a>
+            <a href="https://arxiv.org/abs/2505.03337" class="pdf-box"> 📄 PDF (arXiv)</a>
+            <a href="https://ieeexplore.ieee.org/document/11229967" class="pdf-box"> 📄 PDF (IEEEXplore) </a>
             <a href="https://github.com/bernardo-torres/inverse-drum-machine" class="pdf-box"><i class="fab fa-fw fa-github"></i> code</a>
             <a href="https://bernardo-torres.github.io/projects/inverse-drum-machine/" class="pdf-box"><i class="fas fa-fw fa-link"></i> blog/demos</a>
             <div id="idm" class="abstract-content" style="display: none;">
@@ -177,6 +159,33 @@ I am currently working on topics related to music source separation using synthe
     </div>
 </div>
 
+
+<div style="text-align: left; font-size: 1.1em; font-weight: bold; margin: 25px 0 10px;">
+    Conference papers, preprints and demos
+    <hr style="border: none; height: 1px; color: #ddd; background-color: #ddd; width: 12%; margin: 0.5em 0; text-align: left;">
+</div>
+
+
+<div class="publication-item">
+    <div class="pub-details">
+        <p style="margin: 0; padding: 0;">
+            <strong>Learning Linearity in Audio Consistency Autoencoders via Implicit Regularization</strong>
+        </p>
+        <p style="margin-left: 0px; margin-top: 5px;">
+            Bernardo Torres, Manuel Moussallam and Gabriel Meseguer-Brocal  
+            <br>
+            Under review.  
+            <br>
+            <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('lincae')">ABS</a>
+            <a href="https://arxiv.org/abs/2510.23530" class="pdf-box"> 📄 Preprint (arXiv)</a>
+            <a href="https://github.com/bernardo-torres/linear-autoencoders" class="pdf-box"><i class="fab fa-fw fa-github"></i> code</a>
+            <a href="https://bernardo-torres.github.io/projects/linear-cae/" class="pdf-box"><i class="fas fa-fw fa-link"></i> blog/demos</a>
+            <div id="lincae" class="abstract-content" style="display: none;">
+                Audio autoencoders learn useful, compressed audio representations, but their non-linear latent spaces prevent intuitive algebraic manipulation such as mixing or scaling. We introduce a simple training methodology to induce linearity in a high-compression Consistency Autoencoder (CAE) by using data augmentation, thereby inducing homogeneity (equivariance to scalar gain) and additivity (the decoder preserves addition) without altering the model's architecture or loss function. When trained with our method, the CAE exhibits linear behavior in both the encoder and decoder while preserving reconstruction fidelity. We test the practical utility of our learned space on music source composition and separation via simple latent arithmetic. This work presents a straightforward technique for constructing structured latent spaces, enabling more intuitive and efficient audio processing.
+            </div>
+        </p>
+    </div>
+</div>
 
 <div class="publication-item">
     <div class="pub-details">
