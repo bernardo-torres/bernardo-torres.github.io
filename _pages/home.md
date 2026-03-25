@@ -174,7 +174,7 @@ I am currently working on topics related to music source separation using synthe
         <p style="margin-left: 0px; margin-top: 5px;">
             Bernardo Torres, Manuel Moussallam and Gabriel Meseguer-Brocal  
             <br>
-            Under review.  
+            Accepted for ICASSP 2026.
             <br>
             <a href="javascript:void(0)" class="pdf-box" onclick="toggleAbstract('lincae')">ABS</a>
             <a href="https://arxiv.org/abs/2510.23530" class="pdf-box"> 📄 Preprint (arXiv)</a>
