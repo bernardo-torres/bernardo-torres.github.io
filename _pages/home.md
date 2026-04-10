@@ -47,7 +47,7 @@ I hold a Bachelor's in Electrical and Computer Engineering from <a href="https:/
 
 
    <p style="margin-bottom: 1em;">
-  <strong>Contact:</strong> <em>bernardo [dot] torres AT telecom-paris [dot] fr</em>
+  <strong>Contact:</strong> <em>bernardo [AT] bernardotorres [dot] net</em>
 </p>
 
 <p>
@@ -57,7 +57,7 @@ I hold a Bachelor's in Electrical and Computer Engineering from <a href="https:/
   <i class="fab fa-fw fa-twitter"></i> <a href="https://twitter.com/torres_be_">Twitter</a>
   <i class="fa fa-graduation-cap"></i> <a href="https://scholar.google.com/citations?user=S5h1fHIAAAAJ&hl=en">Google Scholar</a>
 </p>
-You can find my CV <a href="/documents/cv.pdf">here</a>. 
+You can find my CV <a href="/documents/cv_public.pdf">here</a>. 
  </div>
  <div class="profile-photo">
    <img src="/documents/images/bernardo_torres.png" alt="Bernardo Torres">
