@@ -127,6 +127,8 @@ I am currently working on topics related to music source separation using synthe
             <a href="https://ieeexplore.ieee.org/document/11229967" class="pdf-box"> 📄 PDF (IEEEXplore) </a>
             <a href="https://github.com/bernardo-torres/inverse-drum-machine" class="pdf-box"><i class="fab fa-fw fa-github"></i> code</a>
             <a href="https://bernardo-torres.github.io/projects/inverse-drum-machine/" class="pdf-box"><i class="fas fa-fw fa-link"></i> blog/demos</a>
+            <a href="/documents/poster_idm.pdf" class="pdf-box"> poster 
+            </a>
             <div id="idm" class="abstract-content" style="display: none;">
                 We present the Inverse Drum Machine (IDM), a novel approach to drum source separation that leverages an analysis-by-synthesis framework combined with deep learning. Unlike recent supervised methods that require isolated stem recordings, our approach operates on drum mixtures with only transcription annotations. IDM integrates Automatic Drum Transcription and One-shot Drum Sample Synthesis, jointly optimizing these tasks in an end-to-end manner. By convolving synthesized one-shot samples with estimated onsets—akin to a drum machine—we reconstruct the individual drum stems and train a deep neural network on the reconstruction of the mixture. Experiments on the StemGMD dataset demonstrate that IDM achieves separation quality comparable to state-of-the-art supervised methods that require isolated stems, while significantly outperforming matrix decomposition baselines.
             </div>
@@ -180,6 +182,8 @@ I am currently working on topics related to music source separation using synthe
             <a href="https://arxiv.org/abs/2510.23530" class="pdf-box"> 📄 Preprint (arXiv)</a>
             <a href="https://github.com/bernardo-torres/linear-autoencoders" class="pdf-box"><i class="fab fa-fw fa-github"></i> code</a>
             <a href="https://bernardo-torres.github.io/projects/linear-cae/" class="pdf-box"><i class="fas fa-fw fa-link"></i> blog/demos</a>
+            <a href="/documents/poster_lincae.pdf" class="pdf-box"> poster 
+            </a>
             <div id="lincae" class="abstract-content" style="display: none;">
                 Audio autoencoders learn useful, compressed audio representations, but their non-linear latent spaces prevent intuitive algebraic manipulation such as mixing or scaling. We introduce a simple training methodology to induce linearity in a high-compression Consistency Autoencoder (CAE) by using data augmentation, thereby inducing homogeneity (equivariance to scalar gain) and additivity (the decoder preserves addition) without altering the model's architecture or loss function. When trained with our method, the CAE exhibits linear behavior in both the encoder and decoder while preserving reconstruction fidelity. We test the practical utility of our learned space on music source composition and separation via simple latent arithmetic. This work presents a straightforward technique for constructing structured latent spaces, enabling more intuitive and efficient audio processing.
             </div>
