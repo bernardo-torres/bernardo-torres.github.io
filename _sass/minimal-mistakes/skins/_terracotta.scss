@@ -1,0 +1,41 @@
+/* ==========================================================================
+   Terracotta skin — warm terracotta / amber / golden palette
+   ========================================================================== */
+
+/* Colors */
+$background-color      : #faf6f0 !default;  // soft warm white
+$text-color            : #3d2b1f !default;  // dark espresso
+$muted-text-color      : #8b6e52 !default;  // medium brown
+$primary-color         : #b85c38 !default;  // terracotta
+$border-color          : #e8d5b0 !default;  // warm beige
+$code-background-color      : mix(#fff, $background-color, 40%) !default;
+$code-background-color-dark : mix(#000, $background-color, 8%)  !default;
+$form-background-color      : mix(#fff, $background-color, 20%) !default;
+$footer-background-color    : #8b4513 !default;  // saddle brown
+$link-color            : #b85c38 !default;  // terracotta
+$link-color-hover      : mix(#fff, $link-color, 20%) !default;
+$link-color-visited    : mix(#000, $link-color, 25%) !default;
+$masthead-link-color       : $text-color !default;
+$masthead-link-color-hover : mix(#000, $text-color, 20%) !default;
+$navicon-link-color-hover  : mix(#000, $background-color, 30%) !default;
+
+/* notices */
+$notice-background-mix: 80% !default;
+
+/* Terracotta syntax highlighting (base16 — warm earthy tones) */
+$base00: #2c1a0e !default;
+$base01: #3d2b1f !default;
+$base02: #5a3e2b !default;
+$base03: #8b6e52 !default;
+$base04: #b49068 !default;
+$base05: #d4b896 !default;
+$base06: #e8d5b0 !default;
+$base07: #fdf6ec !default;
+$base08: #c1440e !default;  // terracotta red
+$base09: #d4831a !default;  // amber
+$base0a: #e5a229 !default;  // golden
+$base0b: #7a9e5f !default;  // muted sage
+$base0c: #5a8f7d !default;  // muted teal
+$base0d: #6b8cba !default;  // muted blue
+$base0e: #9b6bba !default;  // muted purple
+$base0f: #b85c38 !default;  // terracotta

@@ -153,7 +153,7 @@ This is the accompanying page for the paper "The Inverse Drum Machine: Source Se
 
 
 <p align="center">
-  <img src="/documents/images/inverse-drum-machine/overview.png" alt="Inverse Drum Machine Overview" style="max-width: 35%; height: auto; border-radius: 0.5rem;">
+  <img src="/documents/images/inverse-drum-machine/overview_idm.png" alt="Inverse Drum Machine Overview" style="max-width: 35%; height: auto; border-radius: 0.5rem;">
 </p>
 
 <h2>Drum Samples and Envelopes</h2>

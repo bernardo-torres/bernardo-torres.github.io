@@ -9,6 +9,39 @@ search: false
 @import "minimal-mistakes"; // main partials
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
 
+// =============================================================================
+// COLOR PALETTE — comment/uncomment a block to switch themes, then rebuild
+// =============================================================================
+
+// -- Terracotta / Amber (active) ----------------------------------------------
+$palette-bg       : #faf6f0;  // soft warm white
+$palette-bg-muted : #f2ebe0;  // slightly darker (abstract boxes)
+$palette-header   : #6b2d0e;  // dark burnt sienna (headings, masthead title)
+$palette-link     : #b85c38;  // terracotta
+$palette-link-hover: #d4831a; // amber
+$palette-text     : #3d2b1f;  // dark espresso
+$palette-nav-bg   : #faf6f0;  // masthead / nav background
+
+// -- Purple (previous theme — uncomment to restore) ---------------------------
+// $palette-bg       : #f8f9fa;
+// $palette-bg-muted : #f8f9fa;
+// $palette-header   : #3C3B6C;
+// $palette-link     : #8C37E5;
+// $palette-link-hover: #b561e2;
+// $palette-text     : #2d2d2d;
+// $palette-nav-bg   : #f8f9fa;
+
+// -- Dark Slate ---------------------------------------------------------------
+// $palette-bg       : #1e1e2e;
+// $palette-bg-muted : #2a2a3e;
+// $palette-header   : #cba6f7;
+// $palette-link     : #89b4fa;
+// $palette-link-hover: #b4d0fb;
+// $palette-text     : #cdd6f4;
+// $palette-nav-bg   : #1e1e2e;
+
+// =============================================================================
+
 // html {
 //   font-size: 14px;
 //   @include breakpoint($medium) {
@@ -91,6 +124,7 @@ h1, h2, h3, h4, h5, h6 {
   flex-shrink: 0;
   width: 220px;
   margin-left: 2rem;
+  overflow: hidden;
 
   img {
     width: 100%;
@@ -98,6 +132,8 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 0.5rem;
     max-width: 220px;
     object-fit: cover;
+    transform: scale(1.15);
+    transform-origin: center top;
   }
 }
 
@@ -119,24 +155,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 3rem;
 }
 
-/* Link styles */
-.page__content a {
-  color: #3f6aaf;
-  text-decoration: none;
-  
-  &:hover {
-    color: #1c3e70;
-  }
-  
-  &:focus {
-    color: #1c3e70;
-    outline: thin dotted;
-  }
-  
-  &:visited {
-    color: #1a3665;
-  }
-}
+/* Link styles — overridden below by palette variables */
 
 /* PDF box styles */
 .pdf-box {
@@ -161,11 +180,8 @@ h1, h2, h3, h4, h5, h6 {
   box-sizing: border-box;
   text-align: justify;
   width: 90%;
-  // font-style: italic;
-  // Lets make it a bit more readable
-  background-color: #f8f9fa;
-  // Change the border color to match the theme
-  border: 1px solid #3f6aaf;
+  background-color: $palette-bg-muted;
+  border: 1px solid $palette-link;
 }
 
 /* Responsive design */
@@ -242,89 +258,51 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-// Custom color variables
-$background-color: #f8f9fa;  // A very light grey
-$header-color: #3C3B6C;      // Your dark purple-blue
-$link-color: #8C37E5;        // Your bright purple
-$link-hover: #b561e2;        // Your lighter purple
-$text-color: #2d2d2d;        // Slightly softer than pure black
-
-// Base background color
 body {
-  background-color: $background-color;
+  background-color: $palette-bg;
+  color: $palette-text;
 }
 
-// Headers color
 h1, h2, h3, h4, h5, h6 {
-  color: $header-color;
+  color: $palette-header;
 }
 
-// Link colors
 .page__content a {
-  color: $link-color;
+  color: $palette-link;
   text-decoration: none;
-  
-  &:hover {
-    color: $link-hover;
-  }
-  
-  &:focus {
-    color: $link-hover;
-    outline: thin dotted;
-  }
-  
-  &:visited {
-    color: $link-color;
-  }
+
+  &:hover  { color: $palette-link-hover; }
+  &:focus  { color: $palette-link-hover; outline: thin dotted; }
+  &:visited { color: $palette-link; }
 }
 
-// PDF box styling update
 .pdf-box {
-  border: 1px solid $header-color;
-  color: $header-color;
-  
+  border: 1px solid $palette-header;
+  color: $palette-header;
+
   &:hover {
-    background-color: $header-color;
+    background-color: $palette-header;
     color: white;
   }
 }
 
-// Social icons color
 .fab, .fa {
-  color: $header-color;
+  color: $palette-header;
 }
 
-// Publications section styling
-.publication-item {
-  strong {
-    color: $header-color;
-  }
-}
-
-// Masthead styling (if you want to match the theme)
-.masthead {
-  background-color: $background-color;
-  
-  .site-title {
-    color: $header-color;
-  }
+.publication-item strong {
+  color: $palette-header;
 }
 
 .masthead, .greedy-nav {
-  background-color: $background-color !important;
+  background-color: $palette-nav-bg !important;
 }
 
-// Make sure this applies to the entire navigation area
 .greedy-nav {
-  .site-title {
-    color: $header-color !important;
-  }
-  
+  .site-title    { color: $palette-header !important; }
+
   .visible-links {
-    background-color: $background-color !important;
-    
-    a {
-      color: $header-color !important;
-    }
+    background-color: $palette-nav-bg !important;
+    a { color: $palette-header !important; }
   }
 }
