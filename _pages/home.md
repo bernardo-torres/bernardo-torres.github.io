@@ -184,6 +184,8 @@ I am currently working on topics related to music source separation using synthe
             <a href="https://bernardo-torres.github.io/projects/linear-cae/" class="pdf-box"><i class="fas fa-fw fa-link"></i> blog/demos</a>
             <a href="/documents/poster_lincae.pdf" class="pdf-box"> poster 
             </a>
+            <a href="/documents/lin_cae_presentation.pdf" class="pdf-box"> slides 
+            </a>
             <div id="lincae" class="abstract-content" style="display: none;">
                 Audio autoencoders learn useful, compressed audio representations, but their non-linear latent spaces prevent intuitive algebraic manipulation such as mixing or scaling. We introduce a simple training methodology to induce linearity in a high-compression Consistency Autoencoder (CAE) by using data augmentation, thereby inducing homogeneity (equivariance to scalar gain) and additivity (the decoder preserves addition) without altering the model's architecture or loss function. When trained with our method, the CAE exhibits linear behavior in both the encoder and decoder while preserving reconstruction fidelity. We test the practical utility of our learned space on music source composition and separation via simple latent arithmetic. This work presents a straightforward technique for constructing structured latent spaces, enabling more intuitive and efficient audio processing.
             </div>
