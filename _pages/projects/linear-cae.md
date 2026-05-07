@@ -44,21 +44,46 @@ MathJax = {
 <link rel="stylesheet" href="{{ '/assets/css/audioplayerstyle.css' | relative_url }}">
 <script src="https://unpkg.com/wavesurfer.js@6.6.3/dist/wavesurfer.min.js"></script>
 
-
 <div class="page__hero">
 <h1>Learning Linearity in Audio Autoencoders</h1>
-<p align="center" style="margin-top: 1rem; font-size: 1.1rem;">
-<a href="https://arxiv.org/abs/2510.23530" style="margin-right: 20px;">
+
+<p align="center" style="margin-top: 0.5rem; font-size: 1rem; color: #555;">
+Bernardo Torres<sup>1</sup>, Manuel Moussallam<sup>2</sup>, Gabriel Meseguer-Brocal<sup>2</sup>
+<br>
+<span style="font-size: 0.9rem;">
+<sup>1</sup>Telecom Paris &nbsp;·&nbsp;
+<sup>2</sup>Deezer Research
+</span>
+</p>
+
+<p align="center" style="margin-top: 1.25rem; font-size: 1.15rem; max-width: 80%; margin-left: auto; margin-right: auto; line-height: 1.5;">
+<strong>We make an audio autoencoder's latent space behave like a vector space</strong> — adding and scaling latents corresponds to mixing and changing volume in the audio domain.
+</p>
+
+<p align="center" style="margin-top: 1.5rem; font-size: 1.1rem;">
+<a href="https://arxiv.org/abs/2510.23530" style="margin: 0 15px;">
 📄 <strong>Paper (arXiv)</strong>
 </a>
-<!-- | -->
-<a href="https://github.com/bernardo-torres/linear-autoencoders" style="margin-left: 20px;">
+<a href="/documents/poster_lincae.pdf" style="margin: 0 15px;">
+🖼️ <strong>Poster</strong>
+</a>
+<a href="https://github.com/bernardo-torres/linear-autoencoders" style="margin: 0 15px;">
 <i class="fab fa-fw fa-github"></i> <strong>GitHub</strong>
 </a>
 </p>
 </div>
 
 <!-- Introduction -->
+
+<div style="background-color: #f0f7ff; border-left: 4px solid #2b6cb0; padding: 1.5rem; margin: 2rem auto; max-width: 80%; border-radius: 0.25rem;">
+<h3 style="margin-top: 0; color: #2b6cb0;">🎧 TL/DR: Listen first</h3>
+<p style="margin-bottom: 1rem;">
+The clearest demonstration: we add four stem latents (vocals + drums + bass + other) and decode the sum. A linear decoder should reconstruct the mixture. Compare the same operation across models below Lin-CAE recovers the mix, while baselines produce noise.
+</p>
+<p style="margin-bottom: 0; font-size: 0.95rem; color: #555;">
+<strong>Jump to:</strong> the <em>Latent Addition</em> row in the audio demos, and switch between Lin-CAE and the baselines (M2L, Stable Audio VAE).
+</p>
+</div>
 
 <p>
 Autoencoders are powerful tools for learning compressed representations of sound, but their internal "latent" spaces are typically complex and non-linear. While in some applications this might be by design to capture high-level representations, it is often desirable to have low-level control over audio manipulations directly in the latent space. For example, adding the representations of two sounds doesn't create the representation of their mixture.
@@ -107,6 +132,19 @@ Combining these properties unlocks some applications such as <strong>source sepa
 </p>
 
 <!-- Audio Demos Section -->
+<h2>Why this is useful</h2>
+
+<ul>
+<li>
+<strong>Mix and edit audio inside the compressed space.</strong> No need to decode, edit, and re-encode: just add, subtract, and scale latents directly.
+</li>
+<li>
+<strong>Compositional generation.</strong> A generative model trained over Lin-CAE latents can sample stems independently and combine them additively into a coherent mixture.
+</li>
+<li>
+<strong>An alternative substrate for downstream models.</strong> Lin-CAE behaves like audio, but on a 64&times; compressed space. If you do audio processing in the latent space but don't want to deal with messy latents, Lin-CAE provides a structured starting point.
+</li>
+</ul>
 
 <div class="audio-demos-section">
 <h2>Audio Demos</h2>
