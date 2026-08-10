@@ -16,7 +16,9 @@ classes: wide
 
 # Bio
 
-Hello! I am a PhD student at [Telecom Paris](https://www.telecom-paris.fr/),  working under the supervision of prof. [Gaël Richard](https://www.telecom-paris.fr/gael-richard) and prof. [Geoffroy Peeters](https://perso.telecom-paristech.fr/gpeeters/), part of the [ADASP](https://adasp.telecom-paris.fr/) group and the [HI-Audio](https://hi-audio.imt.fr/) project.
+**News:** I defended my PhD in July 2026! 🎉
+
+Hello! I am an audio machine learning researcher, having recently completed my PhD at [Telecom Paris](https://www.telecom-paris.fr/),  working under the supervision of prof. [Gaël Richard](https://www.telecom-paris.fr/gael-richard) and prof. [Geoffroy Peeters](https://perso.telecom-paristech.fr/gpeeters/), part of the [ADASP](https://adasp.telecom-paris.fr/) group and the [HI-Audio](https://hi-audio.imt.fr/) project.
 
 Previously, I was an intern at [Sony CSL Paris](https://cslmusicteam.sony.fr/) as part of my Master's program research internship.
 

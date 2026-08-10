@@ -709,7 +709,7 @@ This is the accompanying page for the paper "The Inverse Drum Machine: Source Se
 
 
 <p align="center">
-  <img src="/assets/images/inverse-drum-machine/overview.png" alt="Inverse Drum Machine Overview" style="max-width: 35%; height: auto; border-radius: 0.5rem;">
+  <img src="/documents/images/inverse-drum-machine/overview.png" alt="Inverse Drum Machine Overview" style="max-width: 35%; height: auto; border-radius: 0.5rem;">
 </p>
 
 <h2>Drum Samples and Envelopes</h2>
@@ -719,7 +719,7 @@ Here we provide the drum samples and envelopes of the model reported in the pape
 
 <div class="additional-content-controls">
   <p class="content-notice">
-    <i>Note: The interactive drum samples and envelopes visualizations may take some time to load. For best performance, you can toggle them on only when needed, or <a href="/assets/html/inverse-drum-machine/IDM/test_drum_samples.html" target="_blank">open the drum samples</a> and <a href="/assets/html/inverse-drum-machine/IDM/test_envelopes.html" target="_blank">envelopes</a> in separate windows.</i>
+    <i>Note: The interactive drum samples and envelopes visualizations may take some time to load. For best performance, you can toggle them on only when needed, or <a href="/documents/html/inverse-drum-machine/IDM/test_drum_samples.html" target="_blank">open the drum samples</a> and <a href="/documents/html/inverse-drum-machine/IDM/test_envelopes.html" target="_blank">envelopes</a> in separate windows.</i>
   </p>
   
   <button id="toggleVisualizationsBtn" class="toggle-button">Show Visualizations</button>
@@ -732,14 +732,14 @@ Here we provide the drum samples and envelopes of the model reported in the pape
       <p style="color: #e53e3e; font-weight: bold; margin-bottom: 0.5rem;">
         <strong>Warning:</strong> Some drum samples can be loud! Please lower your volume before clicking.
       </p>
-      <div class="iframe-placeholder" data-src="/assets/html/inverse-drum-machine/IDM/test_drum_samples.html">
+      <div class="iframe-placeholder" data-src="/documents/html/inverse-drum-machine/IDM/test_drum_samples.html">
         <div class="placeholder-content">Click to load Drum Samples visualization</div>
       </div>
     </div>
     
     <div style="flex: 1 1 100%; min-width: 300px;">
       <h3>Envelopes</h3>
-      <div class="iframe-placeholder" data-src="/assets/html/inverse-drum-machine/IDM/test_envelopes.html">
+      <div class="iframe-placeholder" data-src="/documents/html/inverse-drum-machine/IDM/test_envelopes.html">
         <div class="placeholder-content">Click to load Envelopes visualization</div>
       </div>
     </div>
@@ -1140,7 +1140,7 @@ async function initializeStemWaveform(track, model, instrument) {
   stemWaveformContainer.style.display = 'block';
   
   // Determine audio path
-  const audioPath = `/assets/audio/inverse-drum-machine/separation_outputs/${experimentName}/${track.baseFile}/${model.dirName}/${instrumentId}_${model.suffix}.wav`;
+  const audioPath = `/documents/audio/inverse-drum-machine/separation_outputs/${experimentName}/${track.baseFile}/${model.dirName}/${instrumentId}_${model.suffix}.wav`;
   
   // Cleanup existing waveform
   if (waveSurfers[stemWavesurferId]) {
@@ -1328,7 +1328,7 @@ stemWs.on('seek', position => {
         const fullMixCell = document.createElement('td');
         fullMixCell.colSpan = displayInstruments.length - 1;
         const audioId = `${track.id}_${model.id}_full`;
-        const audioPath = `/assets/audio/inverse-drum-machine/separation_outputs/${experimentName}/${track.baseFile}/mix.wav`;
+        const audioPath = `/documents/audio/inverse-drum-machine/separation_outputs/${experimentName}/${track.baseFile}/mix.wav`;
         const button = createPlayerButton(audioId, audioPath, track.id, model.id, "full");
         fullMixCell.appendChild(button);
         row.appendChild(fullMixCell);
@@ -1337,7 +1337,7 @@ stemWs.on('seek', position => {
           if (instrument.id === "full") return;
           const cell = document.createElement('td');
           const audioId = `${track.id}_${model.id}_${instrument.id}`;
-          const audioPath = `/assets/audio/inverse-drum-machine/separation_outputs/${experimentName}/${track.baseFile}/${model.dirName}/${instrument.id}_${model.suffix}.wav`;
+          const audioPath = `/documents/audio/inverse-drum-machine/separation_outputs/${experimentName}/${track.baseFile}/${model.dirName}/${instrument.id}_${model.suffix}.wav`;
           const button = createPlayerButton(audioId, audioPath, track.id, model.id, instrument.id);
           cell.appendChild(button);
           row.appendChild(cell);
@@ -1370,7 +1370,7 @@ stemWs.on('seek', position => {
       interact: true
     });
     
-    ws.load(`/assets/audio/inverse-drum-machine/separation_outputs/${experimentName}/${track.baseFile}/mix.wav`);
+    ws.load(`/documents/audio/inverse-drum-machine/separation_outputs/${experimentName}/${track.baseFile}/mix.wav`);
     ws.on('ready', () => ws.setMute(true));
     ws.on('error', err => console.warn('WaveSurfer error:', err));
     waveSurfers[track.id] = ws;
@@ -1728,7 +1728,7 @@ async function checkStemAvailability() {
           if (instrument.id === "full" && model.id !== "GT") return;
           
           const audioId = `${track.id}_${model.id}_${instrument.id}`;
-          const audioPath = `/assets/audio/inverse-drum-machine/separation_outputs/${experimentName}/${track.baseFile}/${model.dirName}/${instrument.id}_${model.suffix}.wav`;
+          const audioPath = `/documents/audio/inverse-drum-machine/separation_outputs/${experimentName}/${track.baseFile}/${model.dirName}/${instrument.id}_${model.suffix}.wav`;
           
           // Find the button
           const btn = document.querySelector(`button[data-id="${audioId}"]`);
