@@ -20,8 +20,8 @@ title                    : "Bernardo Torres"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Bernardo Torres"
-description              : "An amazing website."
-url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+description              : "Audio machine learning researcher working on source separation, music information retrieval and self-supervised learning."
+url                      : "https://bernardotorres.net"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "github.com/bernardo-torres"
 teaser                   : # path of fallback teaser image, e.g. "/documents/images/500x300.png"
@@ -86,7 +86,7 @@ facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 : # Open Graph/Twitter default site image
+og_image                 : "/documents/images/bernardo_torres_web.jpg" # Open Graph/Twitter default site image
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
@@ -105,7 +105,7 @@ analytics:
 # Site Author
 author:
   name             : "Bernardo Torres"
-  avatar           : "/documents/images/bernardo_torres.png"
+  avatar           : "/documents/images/bernardo_torres_web.jpg"
   bio              : "Researcher"
   location         : "Paris, France"
   email            :

@@ -1,0 +1,174 @@
+# Publications shown on the homepage, in the order they appear here (newest first).
+#
+# Fields:
+#   id          unique slug, used for the abstract toggle
+#   title       paper title
+#   authors     list of names; "Bernardo Torres" is highlighted automatically
+#   venue       short tag shown on the page (e.g. "ICASSP 2026")
+#   venue_full  full venue name, shown on hover
+#   year        publication year
+#   hide        optional; `hide: true` keeps the entry here but leaves it off the page
+#   highlight   optional; gives the entry an accent background
+#   note        optional extra line (e.g. supervisors)
+#   abstract    optional; adds an "Abstract" toggle
+#   links       list of { type, url, label? } where type is one of
+#               paper, code, demo, poster, slides (label overrides the default text)
+
+- id: lincae
+  title: "Learning Linearity in Audio Consistency Autoencoders via Implicit Regularization"
+  authors: [Bernardo Torres, Manuel Moussallam, Gabriel Meseguer-Brocal]
+  venue: ICASSP 2026
+  venue_full: IEEE International Conference on Acoustics, Speech and Signal Processing
+  year: 2026
+  abstract: >-
+    Audio autoencoders learn useful, compressed audio representations, but their non-linear
+    latent spaces prevent intuitive algebraic manipulation such as mixing or scaling. We
+    introduce a simple training methodology to induce linearity in a high-compression
+    Consistency Autoencoder (CAE) by using data augmentation, thereby inducing homogeneity
+    (equivariance to scalar gain) and additivity (the decoder preserves addition) without
+    altering the model's architecture or loss function. When trained with our method, the CAE
+    exhibits linear behavior in both the encoder and decoder while preserving reconstruction
+    fidelity. We test the practical utility of our learned space on music source composition and
+    separation via simple latent arithmetic. This work presents a straightforward technique for
+    constructing structured latent spaces, enabling more intuitive and efficient audio
+    processing.
+  links:
+    - { type: paper, label: Paper (arXiv), url: "https://arxiv.org/abs/2510.23530" }
+    - { type: code, url: "https://github.com/bernardo-torres/linear-autoencoders" }
+    - { type: demo, url: "/projects/linear-cae/" }
+    - { type: poster, url: "/documents/poster_lincae.pdf" }
+    - { type: slides, url: "/documents/lin_cae_presentation.pdf" }
+
+- id: idm
+  title: "The Inverse Drum Machine: Source Separation Through Joint Transcription and Analysis-by-Synthesis"
+  authors: [Bernardo Torres, Geoffroy Peeters, Gaël Richard]
+  venue: TASLP 2025
+  venue_full: IEEE Transactions on Audio, Speech, and Language Processing
+  year: 2025
+  abstract: >-
+    We present the Inverse Drum Machine (IDM), a novel approach to drum source separation that
+    leverages an analysis-by-synthesis framework combined with deep learning. Unlike recent
+    supervised methods that require isolated stem recordings, our approach operates on drum
+    mixtures with only transcription annotations. IDM integrates Automatic Drum Transcription
+    and One-shot Drum Sample Synthesis, jointly optimizing these tasks in an end-to-end manner.
+    By convolving synthesized one-shot samples with estimated onsets—akin to a drum machine—we
+    reconstruct the individual drum stems and train a deep neural network on the reconstruction
+    of the mixture. Experiments on the StemGMD dataset demonstrate that IDM achieves separation
+    quality comparable to state-of-the-art supervised methods that require isolated stems, while
+    significantly outperforming matrix decomposition baselines.
+  links:
+    - { type: paper, label: Paper (IEEE), url: "https://ieeexplore.ieee.org/document/11229967" }
+    - { type: paper, label: arXiv, url: "https://arxiv.org/abs/2505.03337" }
+    - { type: code, url: "https://github.com/bernardo-torres/inverse-drum-machine" }
+    - { type: demo, url: "/projects/inverse-drum-machine/" }
+    - { type: poster, url: "/documents/poster_idm.pdf" }
+
+- id: pesto-journal
+  title: "PESTO: Real-Time Pitch Estimation with Self-supervised Transposition-equivariant Objective"
+  authors: [Alain Riou, Bernardo Torres, Ben Hayes, Stefan Lattner, Gaëtan Hadjeres, Gaël Richard, Geoffroy Peeters]
+  venue: TISMIR 2025
+  venue_full: Transactions of the International Society for Music Information Retrieval
+  year: 2025
+  abstract: >-
+    In this paper, we introduce PESTO, a self-supervised learning approach for single-pitch
+    estimation using a Siamese architecture. Our model processes individual frames of a
+    Variable-Q Transform (VQT) and predicts pitch distributions. The neural network is designed
+    to be equivariant to translations, notably thanks to a Toeplitz fully-connected layer. In
+    addition, we construct pitch-shifted pairs by translating and cropping the VQT frames and
+    train our model with a novel class-based transposition-equivariant objective, eliminating
+    the need for annotated data. Thanks to this architecture and training objective, our model
+    achieves remarkable performances while being very lightweight (130k parameters). Evaluations
+    on music and speech datasets (MIR-1K, MDB-stem-synth, and PTDB) demonstrate that PESTO not
+    only outperforms self-supervised baselines but also competes with supervised methods,
+    exhibiting superior cross-dataset generalization. Finally, we enhance PESTO's practical
+    utility by developing a streamable VQT implementation using cached convolutions. Combined
+    with our model's low latency (less than 10 ms) and minimal parameter count, this makes PESTO
+    particularly suitable for real-time applications.
+  links:
+    - { type: paper, url: "https://transactions.ismir.net/articles/251/files/68c0346a4b785.pdf" }
+    - { type: code, url: "https://github.com/SonyCSLParis/pesto" }
+
+- id: pesto-ot
+  hide: true
+  title: "Translation-Equivariant Self-Supervised Learning for Pitch Estimation with Optimal Transport"
+  authors: [Bernardo Torres, Alain Riou, Gaël Richard, Geoffroy Peeters]
+  venue: ISMIR 2025 LBD
+  venue_full: Late-Breaking Demo session, ISMIR 2025
+  year: 2025
+  abstract: >-
+    In this paper, we propose an Optimal Transport objective for learning one-dimensional
+    translation-equivariant systems and demonstrate its applicability to single pitch
+    estimation. Our method provides a theoretically grounded, more numerically stable, and
+    simpler alternative for training state-of-the-art self-supervised pitch estimators.
+  links:
+    - { type: paper, label: Paper (arXiv), url: "https://arxiv.org/abs/2508.01493" }
+    - { type: code, url: "https://github.com/SonyCSLParis/pesto" }
+    - { type: poster, url: "/documents/ISMIR25_LBD_poster.pdf" }
+
+- id: sot
+  title: "Unsupervised Harmonic Parameter Estimation Using Differentiable DSP and Spectral Optimal Transport"
+  authors: [Bernardo Torres, Geoffroy Peeters, Gaël Richard]
+  venue: ICASSP 2024
+  venue_full: IEEE International Conference on Acoustics, Speech and Signal Processing
+  year: 2024
+  abstract: >-
+    In neural audio signal processing, pitch conditioning has been used to enhance the
+    performance of synthesizers. However, jointly training pitch estimators and synthesizers is
+    a challenge when using standard audio-to-audio reconstruction loss, leading to reliance on
+    external pitch trackers. To address this issue, we propose using a spectral loss function
+    inspired by optimal transportation theory that minimizes the displacement of spectral
+    energy. We validate this approach through an unsupervised autoencoding task that fits a
+    harmonic template to harmonic signals. We jointly estimate the fundamental frequency and
+    amplitudes of harmonics using a lightweight encoder and reconstruct the signals using a
+    differentiable harmonic synthesizer. The proposed approach offers a promising direction for
+    improving unsupervised parameter estimation in neural audio applications.
+  links:
+    - { type: paper, label: Paper (arXiv), url: "https://arxiv.org/pdf/2312.14507.pdf" }
+    - { type: code, url: "https://github.com/bernardo-torres/1d-spectral-optimal-transport" }
+    - { type: poster, url: "/documents/Torres_ICASSP_2024_poster.pdf" }
+
+- id: umss
+  hide: true
+  title: "A Fully Differentiable Model for Unsupervised Singing Voice Separation"
+  authors: [Gaël Richard, Pierre Chouteau, Bernardo Torres]
+  venue: ICASSP 2024
+  venue_full: IEEE International Conference on Acoustics, Speech and Signal Processing
+  year: 2024
+  abstract: >-
+    A novel model was recently proposed by Schulze-Forster et al. in [1] for unsupervised music
+    source separation. This model allows to tackle some of the major shortcomings of existing
+    source separation frameworks. Specifically, it eliminates the need for isolated sources
+    during training, performs efficiently with limited data, and can handle homogeneous sources
+    (such as singing voice). But, this model relies on an external multipitch estimator and
+    incorporates an Ad hoc voice assignment procedure. In this paper, we propose to extend this
+    framework and to build a fully differentiable model by integrating a multipitch estimator
+    and a novel differentiable assignment module within the core model. We show the merits of
+    our approach through a set of experiments, and we highlight in particular its potential for
+    processing diverse and unseen data.
+  links:
+    - { type: paper, label: Paper (arXiv), url: "https://arxiv.org/pdf/2401.16837" }
+
+- id: singer-id
+  title: "Singer Identity Representation Learning using Self-Supervised Techniques"
+  authors: [Bernardo Torres, Stefan Lattner, Gaël Richard]
+  venue: ISMIR 2023
+  venue_full: International Society for Music Information Retrieval Conference
+  year: 2023
+  abstract: >-
+    Significant strides have been made in creating voice identity representations using speech
+    data. However, the same level of progress has not been achieved for singing voices. To
+    bridge this gap, we suggest a framework for training singer identity encoders to extract
+    representations suitable for various singing-related tasks, such as singing voice similarity
+    and synthesis. We explore different selfsupervised learning techniques on a large collection
+    of isolated vocal tracks and apply data augmentations during training to ensure that the
+    representations are invariant to pitch and content variations. We evaluate the quality of
+    the resulting representations on singer similarity and identification tasks across multiple
+    datasets, with a particular emphasis on out-of-domain generalization. Our proposed framework
+    produces high-quality embeddings that outperform both speaker verification and wav2vec 2.0
+    pre-trained baselines on singing voice while operating at 44.1 kHz. We release our code and
+    trained models to facilitate further research on singing voice and related areas.
+  links:
+    - { type: paper, label: Paper (arXiv), url: "https://arxiv.org/pdf/2401.05064" }
+    - { type: code, url: "https://github.com/SonyCSLParis/ssl-singer-identity" }
+    - { type: demo, url: "https://sites.google.com/view/singer-representation-learning" }
+    - { type: poster, url: "/documents/ISMIR_23_Poster.pdf" }

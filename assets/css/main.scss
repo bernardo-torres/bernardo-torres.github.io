@@ -7,7 +7,7 @@ search: false
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+// Web fonts (Inter, JetBrains Mono) are loaded in _includes/head/custom.html
 
 // =============================================================================
 // COLOR PALETTE — comment/uncomment a block to switch themes, then rebuild
@@ -58,12 +58,15 @@ $palette-nav-bg   : #faf6f0;  // masthead / nav background
 //   }
 // }
 
-$font_family: 'Roboto', monospace;
+// Fonts: proportional text, monospace accents (site title, nav, headings, tags)
+$font-text: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+$font-mono: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
+$font_family: $font-mono;
 
 // Update your html settings
 html {
   font-size: 14px;
-  font-family: $font_family;
+  font-family: $font-text;
   
   @include breakpoint($medium) {
     font-size: 14px;
@@ -99,77 +102,15 @@ html {
   font-family: $font_family !important;
 }
 
-// Add this to ensure the font is applied everywhere
 body {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: $font-text;
 }
 
-// You might also want to specifically style headings
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 700;  // Makes headings bold
+  font-family: $font-mono;
+  font-weight: 700;
 }
 
-
-// New intro layout styles
-.intro-wrapper {
-  display: flex;
-  align-items: flex-start;
-  gap: 2rem;
-  margin: 2rem 0 3rem 0;
-  width: 100%;
-}
-
-.profile-photo {
-  flex-shrink: 0;
-  width: 220px;
-  margin-left: 2rem;
-  overflow: hidden;
-
-  img {
-    width: 100%;
-    border-radius: 0%;
-    margin-top: 0.5rem;
-    max-width: 220px;
-    object-fit: cover;
-    transform: scale(1.15);
-    transform-origin: center top;
-  }
-}
-
-// Option 1: Space Mono - A modern typewriter font
-// Option 3: Fira Code - Very modern, developer-friendly
-.intro-content {
-  h1 {
-    // font-family: 'Fira Code', monospace;
-    font-size: 2.2em;
-    margin-bottom: 1em;
-  }
-  // p {
-  //   font-family: 'Fira Code', monospace;
-  // }
-}
-
-.contact-section {
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-}
-
-/* Link styles — overridden below by palette variables */
-
-/* PDF box styles */
-.pdf-box {
-  display: inline-block;
-  padding: 1px 5px;
-  margin: 0px;
-  border: 1px solid #000;
-  text-align: center;
-  text-decoration: none;
-  color: black;
-  font-weight: bold;
-  border-radius: 5px;
-  font-size: 11px;
-}
 
 /* Abstract content styles */
 .abstract-content {
@@ -182,41 +123,6 @@ h1, h2, h3, h4, h5, h6 {
   width: 90%;
   background-color: $palette-bg-muted;
   border: 1px solid $palette-link;
-}
-
-/* Responsive design */
-@media screen and (max-width: 768px) {
-  .intro-wrapper {
-    flex-direction: column !important;  // Force column layout on mobile
-    align-items: center;
-    gap: 1.5rem;
-  }
-  
-  .profile-photo {
-    width: 220px;  // Slightly larger for top position
-    margin-left: 0;  // Remove side margin
-    order: -1;  // This puts the photo first
-    
-    img {
-      max-width: 200px;
-    }
-  }
-  
-  .intro-content {
-    font-size: 0.9em;
-    width: 100%;  // Full width for text
-  }
-}
-
-/* Even smaller screens */
-@media screen and (max-width: 480px) {
-  .profile-photo {
-    width: 160px;
-    
-    img {
-      max-width: 160px;
-    }
-  }
 }
 
 /* Publication items responsive */
@@ -242,22 +148,6 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-.contact-line {
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
-  margin-top: 2em;
-  
-  strong {
-    white-space: nowrap;
-  }
-}
-
-.social-links {
-  margin-top: 0.5em;
-}
-
-
 body {
   background-color: $palette-bg;
   color: $palette-text;
@@ -276,14 +166,48 @@ h1, h2, h3, h4, h5, h6 {
   &:visited { color: $palette-link; }
 }
 
-.pdf-box {
-  border: 1px solid $palette-header;
+// Soft rounded link tags (publication buttons on the homepage and research page)
+@mixin soft-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  margin: 0;
+  padding: 0.2em 0.75em;
+  border: 1px solid rgba($palette-link, 0.4);
+  border-radius: 999px;
+  background: transparent;
   color: $palette-header;
+  font-family: $font-mono;
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.6;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 
-  &:hover {
-    background-color: $palette-header;
-    color: white;
-  }
+  .fab, .fa, .fas { color: inherit; }
+}
+
+@mixin soft-tag-active {
+  background-color: $palette-link;
+  border-color: $palette-link;
+  color: #fff;
+}
+
+.page__content .pdf-box,
+.page__content .pdf-box:visited,
+.page__content .pub-tag,
+.page__content .pub-tag:visited {
+  @include soft-tag;
+}
+
+.page__content .pdf-box:hover,
+.page__content .pdf-box:focus-visible,
+.page__content .pub-tag:hover,
+.page__content .pub-tag:focus-visible,
+.page__content .pub-tag[aria-expanded="true"] {
+  @include soft-tag-active;
 }
 
 .fab, .fa {
@@ -305,4 +229,262 @@ h1, h2, h3, h4, h5, h6 {
     background-color: $palette-nav-bg !important;
     a { color: $palette-header !important; }
   }
+}
+
+// Slim footer: a thin band with a single copyright line
+.page__footer {
+  margin-top: 4em;
+
+  footer {
+    margin-top: 0;
+    padding: 0.7em 1em;
+  }
+}
+
+.page__footer-copyright {
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  color: rgba(#fff, 0.85);
+  text-align: center;
+}
+
+// =============================================================================
+// HOMEPAGE
+// =============================================================================
+
+html { scroll-behavior: smooth; }
+
+.home-intro,
+.home-section {
+  max-width: 64rem; // keep line length comfortable on wide screens
+  scroll-margin-top: 1.5rem;
+}
+
+// -- Intro --------------------------------------------------------------------
+.home-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 210px;
+  gap: 3rem;
+  align-items: start;
+  margin: 2.5rem 0 1rem;
+
+  p {
+    line-height: 1.7;
+    margin: 0 0 1em;
+  }
+}
+
+.home-intro__lede {
+  font-size: 1.2em;
+  font-weight: 600;
+  line-height: 1.45 !important;
+  color: $palette-header;
+}
+
+.home-intro__photo {
+  margin-top: 0.3em; // line up with the first line of the lede
+  aspect-ratio: 4 / 5; // portrait on wide screens, square on small ones (see below)
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba($palette-header, 0.12);
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 30%;
+    transform: scale(1.15); // zoom in slightly around the face
+    transform-origin: 48% 40%;
+  }
+}
+
+// -- Contact ------------------------------------------------------------------
+.home-contact {
+  margin-top: 1.75rem;
+}
+
+.home-contact__email {
+  font-size: 0.9em;
+  color: rgba($palette-text, 0.8);
+
+  .fas { margin-right: 0.35em; }
+}
+
+.home-contact__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li { margin: 0; }
+
+  a,
+  a:visited {
+    @include soft-tag;
+    font-size: 0.8rem;
+    padding: 0.3em 0.85em;
+  }
+
+  a:hover,
+  a:focus-visible {
+    @include soft-tag-active;
+  }
+}
+
+.icon-bluesky {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
+
+// -- Section headings ---------------------------------------------------------
+.home-section {
+  margin-top: 3rem;
+}
+
+.page__content .home-section__title {
+  margin: 0 0 1.25rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgba($palette-link, 0.25);
+  font-size: 0.95em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $palette-header;
+}
+
+// -- News ---------------------------------------------------------------------
+.news-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: grid;
+    grid-template-columns: 6.5em minmax(0, 1fr);
+    gap: 1rem;
+    margin: 0 0 0.6rem;
+    line-height: 1.6;
+  }
+}
+
+.news-list__date {
+  font-family: $font-mono;
+  font-size: 0.9em;
+  font-weight: 600;
+  color: $palette-link;
+  white-space: nowrap;
+}
+
+// -- Publications -------------------------------------------------------------
+.pub-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pub {
+  margin: 0;
+  padding: 0.85rem 1rem;
+  border-left: 3px solid transparent;
+  border-radius: 6px;
+
+  & + .pub { margin-top: 0.25rem; }
+}
+
+.pub--highlight {
+  border-left-color: $palette-link;
+  background-color: $palette-bg-muted;
+}
+
+.pub__venue {
+  font-family: $font-mono;
+  display: inline-block;
+  margin-right: 0.4em;
+  vertical-align: 0.1em;
+  padding: 0.05em 0.55em;
+  border-radius: 4px;
+  background-color: rgba($palette-link, 0.12);
+  color: $palette-link;
+  font-size: 0.72rem;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: help;
+}
+
+.page__content .pub__title {
+  font-family: $font-text;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+  font-size: 1em;
+  line-height: 1.4;
+  color: $palette-header;
+}
+
+.page__content .pub__authors {
+  margin: 0.35rem 0 0;
+  font-size: 0.88em;
+  color: rgba($palette-text, 0.8);
+
+  strong {
+    color: $palette-text;
+    font-weight: 700;
+  }
+}
+
+.page__content .pub__note {
+  margin: 0.15rem 0 0;
+  font-size: 0.85em;
+  font-style: italic;
+  color: rgba($palette-text, 0.7);
+}
+
+.pub__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.6rem;
+}
+
+.pub__abstract {
+  margin-top: 0.75rem;
+  padding: 0.8rem 1rem;
+  border-left: 3px solid $palette-link;
+  border-radius: 4px;
+  background-color: $palette-bg;
+  font-size: 0.85em;
+  line-height: 1.65;
+
+  .pub:not(.pub--highlight) & { background-color: $palette-bg-muted; }
+}
+
+.page__content .pub-more {
+  margin: 2rem 0 0;
+  font-size: 0.9em;
+}
+
+// -- Small screens ------------------------------------------------------------
+@media screen and (max-width: 768px) {
+  .home-intro {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .home-intro__photo {
+    order: -1;
+    aspect-ratio: 1;
+    width: 160px;
+    margin: 0 auto;
+  }
+
+  .news-list li {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .pub { padding: 0.75rem 0.5rem; }
 }

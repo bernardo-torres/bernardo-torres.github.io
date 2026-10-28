@@ -1,17 +1,13 @@
-# main links
-# main links links
-# main:
-#   - title: "Research"
-#     url: /research/
-    
-#   - title: "Bio and CV"
-#     url: /bio_cv/
-    
-  # - title: "Projects"
-  #   url: /projects/
-    
-  # - title: "Blog"
-  #   url: /blog/
+# Sections of the homepage (anchors, so everything stays on one page)
+main:
+  - title: "About"
+    url: /#about
+  - title: "News"
+    url: /#news
+  - title: "Publications"
+    url: /#publications
+  - title: "Contact"
+    url: /#contact
 
 # general research links
 research:

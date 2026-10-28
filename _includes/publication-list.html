@@ -1,0 +1,48 @@
+{%- comment -%}
+  Renders site.data.publications, skipping entries with `hide: true`.
+  Link labels/icons are defined here so every entry stays consistent.
+{%- endcomment -%}
+{%- assign me = "Bernardo Torres" -%}
+{%- assign pubs = site.data.publications | where_exp: "pub", "pub.hide != true" -%}
+
+<ol class="pub-list">
+{%- for pub in pubs %}
+  <li class="pub{% if pub.highlight %} pub--highlight{% endif %}">
+    <h3 class="pub__title">
+      <span class="pub__venue" title="{{ pub.venue_full | escape }}">{{ pub.venue }}</span>
+      {{ pub.title }}
+    </h3>
+
+    <p class="pub__authors">
+      {%- for author in pub.authors -%}
+        {%- if author == me %}<strong>{{ author }}</strong>{% else %}{{ author }}{% endif -%}
+        {%- unless forloop.last %}, {% endunless -%}
+      {%- endfor -%}
+    </p>
+    {%- if pub.note %}
+    <p class="pub__note">{{ pub.note }}</p>
+    {%- endif %}
+
+    <div class="pub__links">
+      {%- if pub.abstract %}
+      <button type="button" class="pub-tag" aria-expanded="false" aria-controls="abs-{{ pub.id }}" data-abstract-toggle>📝 Abstract</button>
+      {%- endif -%}
+      {%- for link in pub.links -%}
+        {%- case link.type -%}
+          {%- when "paper" -%}{%- assign icon = "📄" -%}{%- assign text = "Paper" -%}
+          {%- when "code" -%}{%- assign icon = '<i class="fab fa-github" aria-hidden="true"></i>' -%}{%- assign text = "Code" -%}
+          {%- when "demo" -%}{%- assign icon = "🎧" -%}{%- assign text = "Demo" -%}
+          {%- when "poster" -%}{%- assign icon = "🖼️" -%}{%- assign text = "Poster" -%}
+          {%- when "slides" -%}{%- assign icon = "📊" -%}{%- assign text = "Slides" -%}
+          {%- else -%}{%- assign icon = "🔗" -%}{%- assign text = link.type | capitalize -%}
+        {%- endcase %}
+      <a class="pub-tag" href="{{ link.url | relative_url }}">{{ icon }} {{ link.label | default: text }}</a>
+      {%- endfor %}
+    </div>
+
+    {%- if pub.abstract %}
+    <div class="pub__abstract" id="abs-{{ pub.id }}" hidden>{{ pub.abstract }}</div>
+    {%- endif %}
+  </li>
+{%- endfor %}
+</ol>
