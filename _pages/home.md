@@ -33,12 +33,14 @@ $(document).ready(function(){
 
 <div class="intro-wrapper">
  <div class="intro-content" style="text-align: justify;">
+   <p><strong>News:</strong> I defended my PhD in July 2026! 🎉</p>
+
    <p>
-    Hello! I am a PhD candidate at <a href="https://www.telecom-paris.fr/">Telecom Paris</a>, working on machine learning for audio and music processing under the supervision of prof. <a href="https://www.telecom-paris.fr/gael-richard">Gaël Richard</a> and prof. <a href="https://perso.telecom-paristech.fr/gpeeters/">Geoffroy Peeters</a>. I am part of the <a href="https://adasp.telecom-paris.fr/">ADASP</a> group and the <a href="https://hi-audio.imt.fr/">HI-Audio</a> project. Previously, I worked as a research scientist intern at <a href="https://research.deezer.com/about/">Deezer Research</a> and  <a href="https://cslmusicteam.sony.fr/">Sony CSL (Music Team)</a>.
+    Hello! I am an audio machine learning researcher, having recently completed my PhD at <a href="https://www.telecom-paris.fr/">Telecom Paris</a>, working on machine learning for audio and music processing under the supervision of prof. <a href="https://www.telecom-paris.fr/gael-richard">Gaël Richard</a> and prof. <a href="https://perso.telecom-paristech.fr/gpeeters/">Geoffroy Peeters</a>. I am part of the <a href="https://adasp.telecom-paris.fr/">ADASP</a> group and the <a href="https://hi-audio.imt.fr/">HI-Audio</a> project. Previously, I worked as a research scientist intern at <a href="https://research.deezer.com/about/">Deezer Research</a> and  <a href="https://cslmusicteam.sony.fr/">Sony CSL (Music Team)</a>.
     </p>
 
 <p>
-I conduct research at the intersection of signal processing and deep learning for audio. During my PhD I have worked extensively on audio source separation and music information retrieval. I am particularly interested in self-supervised and unsupervised methods for training smart and efficient models.
+I conduct research at the intersection of signal processing and deep learning for audio. During my PhD I worked extensively on audio source separation and music information retrieval. I am particularly interested in self-supervised and unsupervised methods for training smart and efficient models.
 </p>
 
    <p>
@@ -57,7 +59,7 @@ I hold a Bachelor's in Electrical and Computer Engineering from <a href="https:/
   <i class="fab fa-fw fa-twitter"></i> <a href="https://twitter.com/torres_be_">Twitter</a>
   <i class="fa fa-graduation-cap"></i> <a href="https://scholar.google.com/citations?user=S5h1fHIAAAAJ&hl=en">Google Scholar</a>
 </p>
-You can find my <a href="/documents/cv_public.pdf"> CV here</a>. I am currently on the job market and seeking full-time opportunities!
+You can find my <a href="/documents/cv_public.pdf"> CV here</a>.
  </div>
  <div class="profile-photo">
    <img src="/documents/images/bernardo_torres.png" alt="Bernardo Torres">
