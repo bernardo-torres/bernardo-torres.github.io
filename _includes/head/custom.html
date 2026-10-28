@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;600;700&display=swap">
 <link rel="stylesheet" href="{{ '/assets/css/main.scss' | relative_url }}">
 
-<script src="/assets/js/abstract.js"></script>
+<script src="{{ '/assets/js/abstract.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
 
 
 <!-- end custom head snippets -->
